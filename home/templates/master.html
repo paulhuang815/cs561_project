@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+.footer {
+   height: 100px;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #1B213B;
+   color: white;
+   text-align: center;
+}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}?1">
+</head>
+<body>
+<div class="header">
+    <button class="btn btn-lg col-3 heading-button" onclick="location.href='{% url 'home-index' %}'">HomePage</button>
+{#    <button class="btn btn-lg col-3 heading-button">Map</button>#}
+{#    <button class="btn btn-lg col-3 heading-button" onclick="location.href='{% url 'home-weather' %}'">Weather</button>#}
+</div>
+<div class="container">
+    {% block content %}
+    {% endblock content %}
+</div>
+<!--<div class="footer">-->
+<!--    </div>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script src="{% static 'js/demo.js' %}"></script>
+</body>
+</html>

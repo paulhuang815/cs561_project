@@ -1,0 +1,41 @@
+.container {
+
+}
+
+.header {
+    background-color: #F1F1F1;
+    text-align: center;
+    margin: auto;
+}
+
+.heading-button {
+    margin: auto;
+}
+
+table {
+    table-layout: fixed;
+    font-size: 20px;
+}
+
+.table {
+    font-size: 12px;
+}
+
+.btn-query {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 1rem;
+}
+
+td {
+    width: 25%;
+}
+
+hr.style-one {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
