@@ -3,7 +3,7 @@
 # Installation
 
 //Clone project from github
-$ git clone https://github.com/david820505/Django_Base.git
+$ git clone https://github.com/CS561-Shipping-estimate-platform/cs561_project.git
 
 // install packages
 $ pip install -r requirements.txt
