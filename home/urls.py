@@ -5,5 +5,6 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('', views.index, name='home-index'),
-    url(r'^', views.table, name='views_table'),
+    url(r'table', views.table, name='views_table'),
+    url(r'input', views.input, name='input'),
 ]
