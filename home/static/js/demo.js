@@ -18,6 +18,7 @@ $(document).ready(function () {
                 url: '{% url "input" %}',
                 // url: '../views/table',
                 type: 'GET',
+                dataSrc:'data',
                 data: { 
                     "Dimension units": $('#Dimension_units').val(),
                     "Height": $('#Height').val(),
