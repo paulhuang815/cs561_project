@@ -6,6 +6,17 @@ from django.http import HttpResponse, JsonResponse
 
 # from .weatherModels import WeaTest
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+# Receiving Data from AJAX
+def searchForm(request):
+    form_data_dict = {}
+    form_data_list = json.loads(request.POST.get('formData', None))
+    for field in form_data_list:
+        form_data_dict[field["name"]] = field["value"]
+    print(form_data_dict)
+    return render(request, 'index.html')
 
 
 
@@ -38,6 +49,7 @@ def inputtojson(input):
     }
     return data
 
+
 def input(request):
     inputdata = request.GET
     #print('not json : ')
@@ -66,16 +78,27 @@ def index(request):
     return render(request, 'index.html')
 
 def table(request):
+    # data = {"data": [
+    #     {
+    #         "id": "10000001",
+    #         "cid": "20454554",
+    #         "city": "Corvallis",
+    #         "latitude": "1112.5555",
+    #         "longitude": "134.54684",
+    #         "street_name": "SW Chickadee ST",
+    #         "injured_count": "4",
+    #         "crash_time": "05/11/2015"
+    #     },
+    # ]
+    # }
     data = {"data": [
         {
-            "id": "10000001",
-            "cid": "20454554",
-            "city": "Corvallis",
-            "latitude": "1112.5555",
-            "longitude": "134.54684",
-            "street_name": "SW Chickadee ST",
-            "injured_count": "4",
-            "crash_time": "05/11/2015"
+            "UPS_Service": "David_test",
+            "Money": "56565",
+        },
+        {
+            "UPS_Service": "David_test2",
+            "Money": "1265",
         },
     ]
     }

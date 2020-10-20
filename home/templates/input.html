@@ -1,9 +1,8 @@
-{% extends "master.html" %}
+{#{% extends "master.html" %}#}
 
-{% block content %}
-
-<form action = "" method = "get">
-    <!--{% csrf_token %}--> 
+{% block input_idx %}
+{#<!--{% csrf_token %}-->#}
+<form id="search_form" method = "post">{% csrf_token %}
     <div class="form-group">
       <label for="dimension">Item dimension</label><br>
       <label for="Units">Units</label>
@@ -31,7 +30,7 @@
       <input type="text" class="form-control" id="Weight" name="Weight" placeholder="Enter Weight only pounds or cm kilograms.">
     </div>
     <br>
-    
+
     <div class="form-group">
       <label for="Ship From">Shipping From :</label><br>
       <label for="Address">Address</label>
@@ -77,10 +76,10 @@
       </select>
     </div>
     <br>
-    
-    
-    
-    
+
+
+
+
     <!--<div class="form-group">
       <label for="city">City</label>
       <input type="text" class="form-control" id="city" name="city" aria-describedby="city_help" placeholder="Enter city">
@@ -94,7 +93,7 @@
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>-->
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </form>
 
-{% endblock content %}
+{% endblock input_idx %}
