@@ -43,7 +43,7 @@ def ups(info):
         'UPSSecurity': {
             'UsernameToken': {
                 'Username': 'xray_404',
-                'Password': 'Ups-19941024'
+                'Password': 'cs561_ups'
             },
 
             'ServiceAccessToken': {
