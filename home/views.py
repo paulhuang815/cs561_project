@@ -6,6 +6,17 @@ from django.http import HttpResponse, JsonResponse
 
 # from .weatherModels import WeaTest
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+# Receiving Data from AJAX
+def searchForm(request):
+    form_data_dict = {}
+    form_data_list = json.loads(request.POST.get('formData', None))
+    for field in form_data_list:
+        form_data_dict[field["name"]] = field["value"]
+    print(form_data_dict)
+    return render(request, 'index.html')
 
 
 
