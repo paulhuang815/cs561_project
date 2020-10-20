@@ -49,6 +49,30 @@ $(document).ready(function () {
     // $('#submit').click(function () {
     //     var csrfmiddlewaretoken = $("#add_member_Form").find("input[name='csrfmiddlewaretoken']" ).val();
     //     var formData = $('#search_form').serializeArray();
+    //$('#submit').click(function () {
+        // frm.submit(function () {
+    //    var csrfmiddlewaretoken = $("#add_member_Form").find("input[name='csrfmiddlewaretoken']" ).val();
+    //    var formData = $('#search_form').serializeArray();
+    //    formData = JSON.stringify(formData);
+    //    $.ajax({
+    //        url: '{% url "searchForm" %}',
+    //        data: {
+    //            "csrfmiddlewaretoken" : csrfmiddlewaretoken,
+    //            "formData" : formData
+    //        },
+    //        type: "POST",
+    //        dataType: "json",
+    //        success: function(result) {
+    //            alert(result.Result);
+    //        },
+    //        error: function(xhr, ajaxOptions, thrownError){
+    //            alert(thrownError + '\n' + xhr.status + '\n' + ajaxOptions);
+    //        }
+    //    });
+    //});
+
+    // $('#submit').click(function () {
+    //
     //     $('#datatable').DataTable({
     //         "processing": true,
     //         "serverSide": true,
@@ -119,13 +143,14 @@ $(document).ready(function () {
                 dataSrc: 'data',
             },
             "columns": [
-                {"data": "UPS_Service"},
+                {"data": "Company"},
+                {"data": "Service"},
                 {"data": "Money"}
             ]
     });
 
     $('#submit').click(function () {
-          table.ajax.url('{% url "table" %}/?' + $('#search_form').serialize()).load();
+          table.ajax.url('{% url "input" %}/?' + $('#search_form').serialize()).load();
           return false;
     });
 

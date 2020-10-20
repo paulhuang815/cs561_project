@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'table', views.table, name='views_table'),
     url(r'input', views.input, name='input'),
     url(r'searchForm', views.searchForm, name='searchForm'),
+    url(r'^ups/$', views.ups_api, name='ups_api'),
 ]
