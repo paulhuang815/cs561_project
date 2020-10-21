@@ -19,10 +19,10 @@ class UpsTest(TestCase):
             info_dict = json.load(f)
 
         for i in info_dict.values():
-            json_str = json.dumps(i)
-            with open("./home/ups_test.json", 'w', encoding='UTF-8') as f:
-                f.write(json_str)
-            result = ups("./home/ups_test.json")
+            # json_str = json.dumps(i)
+            # with open("./home/ups_test.json", 'w', encoding='UTF-8') as f:
+            #     f.write(json_str)
+            result = ups(i)
             print(result)
             self.assertIsNotNone(result)
 

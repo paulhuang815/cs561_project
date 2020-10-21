@@ -119,8 +119,8 @@ def ups(info):
     # Create rate request dictionary
     #with open(info, 'r', encoding='UTF-8') as f:
     info_dict = info
-    print(info_dict)
-    print(info_dict["Dimension units"])
+    # print(info_dict)
+    # print(info_dict["Dimension units"])
 
     # Conversion unit of Dimension
     if info_dict["Dimension units"] != "inches":  # CM to Inches
