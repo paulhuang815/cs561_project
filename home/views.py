@@ -207,11 +207,13 @@ def ups(info):
 
         rst = list()
         for i in output_dict['RatedShipment']:
-            rst.append({'UPS Service': ups_code[i['Service']['Code']],
+            rst.append({"Company": "UPS", 'Service': ups_code[i['Service']['Code']],
                         'Money': i['TotalCharges']['MonetaryValue']})
 
+        rst_dict = {"data": rst}
+
         # print(rst)
-        return rst
+        return rst_dict
 
     except Fault as error:
         print(ET.tostring(error.detail))
