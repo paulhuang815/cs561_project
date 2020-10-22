@@ -227,8 +227,11 @@ def ups_api(data):
     return result
     # return HttpResponse(result)
 
+start = False
+
 def input(request):              # This function is get data from web and call api then return the data to web.
     from home.tests import integration_test
+    global start
 
     # request.GET can get the data from web.
     inputdata = request.GET
@@ -240,7 +243,9 @@ def input(request):              # This function is get data from web and call a
     result = ups_api(inputdata)
     
     # Run integration test.
-    # integration_test(inputdata, result)
+    if (start == False):
+        integration_test(inputdata, result)
+        start = True
 
     # test data.
     # data = {"data": [
