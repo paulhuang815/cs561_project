@@ -227,33 +227,33 @@ def ups_api(data):
     return result
     # return HttpResponse(result)
 
-def input(request):
+def input(request):              # This function is get data from web and call api then return the data to web.
     from home.tests import integration_test
-    inputdata = request.GET
-    # print('not json : ')
-    # print(inputdata)
-    # a = inputdata['ShipFrom[Address]']
-    # print('\n')
-    inputdata = inputtojson(inputdata)
-    # print('json : ')
-    # print(inputdata)
-    # print('\n')
-    result = ups_api(inputdata)
-    # print(result)
-    integration_test(inputdata, result)
-    # print(inputdata["Height"])
 
-    data = {"data": [
-        {
-            "Company": "UPS",
-            "Service": "Saver",
-            "Money": "1552.60",
-        },
-        {
-            "Company": "UPS",
-            "Service": "Worldwide Expedited",
-            "Money": "932.72",
-        },
-    ]
-    }
-    return JsonResponse(data)
+    # request.GET can get the data from web.
+    inputdata = request.GET
+    
+    # change the web data to json.
+    inputdata = inputtojson(inputdata)
+    
+    # call the ups api and get response data.
+    result = ups_api(inputdata)
+    
+    # Run integration test.
+    # integration_test(inputdata, result)
+
+    # test data.
+    # data = {"data": [
+    #     {
+    #         "Company": "UPS",
+    #         "Service": "Saver",
+    #         "Money": "1552.60",
+    #     },
+    #     {
+    #         "Company": "UPS",
+    #         "Service": "Worldwide Expedited",
+    #         "Money": "932.72",
+    #     },
+    # ]
+    # }
+    return JsonResponse(result)
