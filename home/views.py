@@ -222,24 +222,26 @@ def ups(info):
 
 def ups_api(data):
     result = ups(data)
-    print(result)
+    # print(result)
     # print(type(result))
     return result
     # return HttpResponse(result)
 
 def input(request):
+    from home.tests import integration_test
     inputdata = request.GET
-    print('not json : ')
-    print(inputdata)
-    #a = inputdata['ShipFrom[Address]']
-    print('\n')
+    # print('not json : ')
+    # print(inputdata)
+    # a = inputdata['ShipFrom[Address]']
+    # print('\n')
     inputdata = inputtojson(inputdata)
-    print('json : ')
-    print(inputdata)
-    print('\n')
+    # print('json : ')
+    # print(inputdata)
+    # print('\n')
     result = ups_api(inputdata)
-    print(result)
-    #print(inputdata["Height"])
+    # print(result)
+    integration_test(inputdata, result)
+    # print(inputdata["Height"])
 
     data = {"data": [
         {

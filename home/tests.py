@@ -1,5 +1,16 @@
 from django.test import TestCase
 
+# This is to give text color.
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
 # Create your tests here.
 class UpsTest(TestCase):
@@ -28,3 +39,107 @@ class UpsTest(TestCase):
 
         print('----------End Ups Api Test----------')
 
+
+
+def get_data_from_web_test(data_from_web):      # this function is to test the server can successful get data and the data is what we expected.
+    from datetime import datetime
+    import json
+
+    # check how many cases success and fail. 
+    check = []
+
+    # Start test the server can get data correct or not.
+    print(bcolors.WARNING + 'Test information : Sever can get data correct or not' + bcolors.ENDC)
+    print('Date : ' + datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+
+    # check the data is None or not and print the obtained data.
+    g_result = ''
+    if(data_from_web == None):
+        g_result = bcolors.FAIL + "Fail" + bcolors.ENDC
+        check.append(0)
+    else:
+        g_result = bcolors.OKGREEN + "Success" + bcolors.ENDC
+        check.append(1)
+    print('Data obtained by the server : ' + g_result)
+    print('Data : ', data_from_web)
+
+    # open info.json file to get expected data.
+    # check open file correct and print expected data.
+    with open('./home/info.json', 'r', encoding='UTF-8') as f:
+        expected_data = json.load(f)
+    e_result = ''
+    if(expected_data == None):
+        e_result = bcolors.FAIL + "Fail" + bcolors.ENDC
+        check.append(0)
+    else:
+        e_result = bcolors.OKGREEN + "Success" + bcolors.ENDC
+        check.append(1)
+    print('Server expected data : ' + e_result)
+    print('Data : ', expected_data)
+
+    # compare optained data and expected data are same or not.
+    print('Compare optained and expected data : ')
+    c_result = ''
+    if(data_from_web == expected_data):
+        c_result = bcolors.OKGREEN + "Correct" + bcolors.ENDC
+        check.append(1)
+    else:
+        c_result = bcolors.FAIL + "Fault" + bcolors.ENDC
+        check.append(0)
+    print('Comparison result : ' + c_result)
+
+    # print cases result.
+    if(sum(check) == len(check)):
+        print('Test Result : ' + bcolors.OKGREEN + 'Done' + bcolors.ENDC + f' total test {len(check):1} function.')
+    else:
+        print(f'Test Result : total test {len(check):1} function, success: {sum(check):1}, fail: {len(check)-sum(check):1} ')
+
+    # End test.
+
+def get_data_from_api_test(data_from_api):        # this function is to test the api can successful response data.
+    from datetime import datetime
+    import json
+    
+    # check how many cases success and fail. 
+    check = []
+
+    # Start test the api have result or not.
+    # Because the data is from api probably will change so we can not compare.
+    print(bcolors.WARNING + 'Test information : Test api have result' + bcolors.ENDC)
+    print('Date : ' + datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+
+    # Check api reture data and print it.
+    a_result = ''
+    if(data_from_api == None):
+        a_result = bcolors.FAIL + "Fail" + bcolors.ENDC
+        check.append(0)
+    else:
+        a_result = bcolors.OKGREEN + "Success" + bcolors.ENDC
+        check.append(1)
+    print('Api response reault : ' + a_result)
+    print('Data : ', data_from_api)
+
+    # print cases result.
+    if(sum(check) == len(check)):
+        print('Test Result : ' + bcolors.OKGREEN + 'Done' + bcolors.ENDC + f' total test {len(check):1} function.')
+    else:
+        print(f'Test Result : total test {len(check):1} function, success: {sum(check):1}, fail: {len(check)-sum(check):1} ')
+
+    # End test.
+
+
+def integration_test(data_from_web, data_from_api):      # This function is do the integration test
+    from datetime import datetime
+
+    # Start integration test.
+    print(bcolors.HEADER + '---------- Start Test : Integration test ----------' + bcolors.ENDC)
+    print('Date : ' + datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+
+    # Run get_data_from_web_test function.
+    get_data_from_web_test(data_from_web)
+
+    # Run get_data_from_api_test function.
+    get_data_from_api_test(data_from_api)
+
+    # End integration test.
+    print(bcolors.HEADER + '---------- End Test : Integration test ----------' + bcolors.ENDC)
