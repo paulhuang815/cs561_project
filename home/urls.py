@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from django.conf.urls import url
+from django.views.static import serve
 
 
 urlpatterns = [
@@ -9,4 +10,5 @@ urlpatterns = [
     url(r'input', views.input, name='input'),
     url(r'searchForm', views.searchForm, name='searchForm'),
     url(r'^ups/$', views.ups_api, name='ups_api'),
+    # url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]

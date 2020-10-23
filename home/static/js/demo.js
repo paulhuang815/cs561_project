@@ -137,7 +137,7 @@ $(document).ready(function () {
             "paging": true,
             "deferLoading": 0, //載入時不執行查詢
             "ajax": {
-                url: '{% url "input" %}',
+                url: '/input',
                 // url: '../views/table',
                 type: 'GET',
                 dataSrc: 'data',
@@ -150,7 +150,7 @@ $(document).ready(function () {
     });
 
     $('#submit').click(function () {
-          table.ajax.url('{% url "input" %}/?' + $('#search_form').serialize()).load();
+          table.ajax.url('input/?' + $('#search_form').serialize()).load();
           return false;
     });
 
