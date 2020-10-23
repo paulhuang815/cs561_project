@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storages',
 ]
 
 MIDDLEWARE = [
@@ -121,11 +120,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-AZURE_ACCOUNT_NAME = "shippingcheap"
-AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.azurewebsites.net'
-STATIC_LOCATION = "static"
 
-STATIC_URL = '/static/', f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+
+STATIC_URL = '/static/'
 
 
 
