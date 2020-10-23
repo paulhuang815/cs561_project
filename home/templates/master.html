@@ -2,16 +2,24 @@
 <html lang="en">
 <head>
     <style>
-.footer {
-   height: 100px;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: #1B213B;
-   color: white;
-   text-align: center;
-}
-</style>
+        .footer {
+            height: 100px;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #1B213B;
+            color: #333333;
+            text-align: center;
+        }
+
+        .cusBackground {
+            height: 500px;
+            background-color: lightblue;
+            width: 100%;
+            left: 0;
+        }
+
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
@@ -23,17 +31,66 @@
 </head>
 <body>
 <div class="header">
-    <button class="btn btn-lg col-3 heading-button" onclick="location.href='{% url 'home-index' %}'">HomePage</button>
-{#    <button class="btn btn-lg col-3 heading-button">Map</button>#}
-{#    <button class="btn btn-lg col-3 heading-button" onclick="location.href='{% url 'home-weather' %}'">Weather</button>#}
+    {#    <button class="btn btn-lg col-3 heading-button" onclick="location.href='{% url 'home-index' %}'">HomePage</button>#}
+    {#    <button class="btn btn-lg col-3 heading-button">Map</button>#}
+    {#    <button class="btn btn-lg col-3 heading-button" onclick="location.href='{% url 'home-weather' %}'">Weather</button>#}
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: whitesmoke;">
+        <div class="d-flex flex-grow-1" style="margin-left:200px;">
+            {#            <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>#}
+            <a class="navbar-brand d-none d-lg-inline-block" href="#">
+                <img src="/home/static/image/BP.jpg" width="50" height="50" alt="">
+                ShippingPrice
+            </a>
+            {#            <a class="navbar-brand-two mx-auto d-lg-none d-inline-block" href="#">#}
+            {#                #}
+            {#            </a>#}
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="#" class="nav-link m-2 menu-item nav-active">Our Goal</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link m-2 menu-item">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link m-2 menu-item">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </div>
-<div class="container">
-{#    {% block input_idx %}#}
-{#    {% endblock input_idx %}#}
-{#    {% include 'input.html' %}#}
+<div class="cusBackground">
+    <div class="container h-100">
+        <div class="row align-items-center h-100">
+            <div class="col-6 mx-auto">
+                <p>
+                <h2>Find the cheapest shipping prices</h2></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-top: 150px;">
+    {#    {% block input_idx %}#}
+    {#    {% endblock input_idx %}#}
+    {#    {% include 'input.html' %}#}
     {% block content %}
     {% endblock content %}
 </div>
+<footer class="footer">
+    <div class="container h-100">
+        <div class="row align-items-center h-100">
+            <div class="col-6 mx-auto">
+                <p style="color: #e3f2fd">Copyright@</p>
+            </div>
+        </div>
+    </div>
+</footer>
 <!--<div class="footer">-->
 <!--    </div>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
