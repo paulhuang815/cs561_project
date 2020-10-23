@@ -4,3 +4,4 @@ mysqlclient
 django-mysql
 djangorestframework
 django-model-utils
+zeep
