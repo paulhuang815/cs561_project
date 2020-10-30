@@ -48,10 +48,6 @@ def inputtojson(input):
     }
     return data
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 924a18c37c35094902032b9eb7a3359fd9ea561c
 def index(request):
     return render(request, 'index.html')
 
