@@ -48,7 +48,6 @@ def inputtojson(input):
     }
     return data
 
-
 def index(request):
     return render(request, 'index.html')
 
@@ -80,7 +79,6 @@ def table(request):
     }
     return JsonResponse(data)
 
-
 def ups(info):
     import xml.etree.ElementTree as ET
     from zeep import Client, Settings, helpers
@@ -92,7 +90,6 @@ def ups(info):
 
     # Set API KEY
     headers = {
-
         'UPSSecurity': {
             'UsernameToken': {
                 'Username': 'xray_404',
@@ -102,13 +99,11 @@ def ups(info):
             'ServiceAccessToken': {
                 'AccessLicenseNumber': '0D8AA783849110D2'
             }
-
         }
     }
 
     # Create request dictionary
     requestDictionary = {
-
         "RequestOption": "Shop",
         "TransactionReference": {
             "CustomerContext": " "  # NULL
