@@ -48,7 +48,7 @@
                         <label for="Units">Units</label>
                     </div>
                     <div class="col-md-3">
-                        <select class="form-control" name="Dimension units" id="Dimension units"
+                        <select class="form-control" name="Dimension_units" id="Dimension_units"
                                 placeholder="choose one">
                             <option value="inches">inches</option>
                             <option value="cm">cm</option>
@@ -71,7 +71,7 @@
                                placeholder="Enter Weight only pounds or cm kilograms.">
                     </div>
                     <div class="col-md-2">
-                        <select class="form-control" name="Weight unit" id="Weight unit" placeholder="choose one">
+                        <select class="form-control" name="Weight_unit" id="Weight_unit" placeholder="choose one">
                             <option value="pounds">pounds</option>
                             <option value="kilograms">kilograms</option>
                         </select>
@@ -103,12 +103,36 @@
                         <label for="Address">Address</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="From AddressLine" name="From AddressLine"
-                               placeholder="Enter your ship from address.">
+                        <input type="text" class="form-control" id="From_AddressLine" name="From_AddressLine"
+                               placeholder="Enter your ship From_address.">
                     </div>
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="CountryCode">Country</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control" name="From_CountryCode" id="From_CountryCode"
+                                placeholder="Enter Country" value="US" disabled=false>
+                        </input>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="StateProvinceCode">State</label>
+                    </div>
+                    <div class="col-md-4 autocomplete">
+                        <input class="form-control" name="From_StateProvinceCode" id="From_StateProvinceCode"
+                                placeholder="Enter State">
+                        </input>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="form-group">
             <div class="container">
                 <div class="row">
@@ -116,43 +140,15 @@
                         <label for="City">City</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="From City" name="From City"
+                        <input type="text" class="form-control" id="From_City" name="From_City"
                                placeholder="Enter city">
                     </div>
-                    <div class="col-md-2">
-                        <label for="CountryCode">Country</label>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-control" name="From CountryCode" id="From CountryCode"
-                                placeholder="choose one">
-                            <option value="US">US</option>
-                            <option value="CN">CN</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="container">
-                <div class="row">
                     <div class="col-md-2">
                         <label for="zipcode">Zipcode</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="From PostalCode" name="From PostalCode"
+                        <input type="text" class="form-control" id="From_PostalCode" name="From_PostalCode"
                                placeholder="Enter Zip Code">
-                    </div>
-                    <div class="col-md-2">
-                        <label for="StateProvinceCode">State Province</label>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-control" name="From StateProvinceCode" id="From StateProvinceCode"
-                                placeholder="choose one">
-                            <option value="GA">GA</option>
-                            <option value="BJ">BJ</option>
-                        </select>
                     </div>
                 </div>
             </div>
@@ -170,12 +166,35 @@
                         <label for="Address">Address</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="To AddressLine" name="To AddressLine"
-                               placeholder="Enter your ship to address.">
+                        <input type="text" class="form-control" id="To_AddressLine" name="To_AddressLine"
+                               placeholder="Enter your ship To_address." onFocus="geolocate()">
                     </div>
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="CountryCode">Country</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control" name="To_CountryCode" id="To_CountryCode" placeholder="Enter Country">
+                        </input>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="StateProvinceCode">State</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control" name="To_StateProvinceCode" id="To_StateProvinceCode"
+                                placeholder="Enter State">
+                        </input>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="form-group">
             <div class="container">
                 <div class="row">
@@ -183,41 +202,14 @@
                         <label for="City">City</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="To City" name="To City" placeholder="Enter city">
+                        <input type="text" class="form-control" id="To_City" name="To_City" placeholder="Enter city">
                     </div>
-                    <div class="col-md-2">
-                        <label for="CountryCode">Country</label>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-control" name="To CountryCode" id="To CountryCode" placeholder="choose one">
-                            <option value="US">US</option>
-                            <option value="CN">CN</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="container">
-                <div class="row">
                     <div class="col-md-2">
                         <label for="zipcode">Zipcode</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="To PostalCode" name="To PostalCode"
+                        <input type="text" class="form-control" id="To_PostalCode" name="To_PostalCode"
                                placeholder="Enter Zip Code">
-                    </div>
-                    <div class="col-md-2">
-                        <label for="StateProvinceCode">State Province</label>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-control" name="To StateProvinceCode" id="To StateProvinceCode"
-                                placeholder="choose one">
-                            <option value="GA">GA</option>
-                            <option value="BJ">BJ</option>
-                        </select>
                     </div>
                 </div>
             </div>
@@ -279,7 +271,7 @@
         <tr>
             <th>Company</th>
             <th>Service</th>
-            <th>Money</th>
+            <th>Price</th>
             <th>Link</th>
         </tr>
         </thead>

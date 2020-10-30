@@ -21,28 +21,28 @@ def searchForm(request):
 
 def inputtojson(input):
     data = {
-        "Dimension units": input['Dimension units'],
+        "Dimension units": input['Dimension_units'],
         "Height": input['Height'],
         "Length": input['Length'],
         "Width": input['Width'],
-        "Weight unit": input['Weight unit'],
+        "Weight unit": input['Weight_unit'],
         "Weight": input['Weight'],
         "ShipFrom": {
             "Address": {
-            "AddressLine": input['From AddressLine'],
-            "City": input['From City'],
-            "CountryCode": input['From CountryCode'],
-            "PostalCode": input['From PostalCode'],
-            "StateProvinceCode": input['From StateProvinceCode']
+            "AddressLine": input['From_AddressLine'],
+            "City": input['From_City'],
+            "CountryCode": input['From_CountryCode'],
+            "PostalCode": input['From_PostalCode'],
+            "StateProvinceCode": input['From_StateProvinceCode']
             }
         },
         "ShipTo": {
             "Address": {
-            "AddressLine": input['To AddressLine'],
-            "City": input['To City'],
-            "CountryCode": input['To CountryCode'],
-            "PostalCode": input['To PostalCode'],
-            "StateProvinceCode": input['To StateProvinceCode']
+            "AddressLine": input['To_AddressLine'],
+            "City": input['To_City'],
+            "CountryCode": input['To_CountryCode'],
+            "PostalCode": input['To_PostalCode'],
+            "StateProvinceCode": input['To_StateProvinceCode']
             }
         }
     }
@@ -235,6 +235,7 @@ def input(request):              # This function is get data from web and call a
 
     # request.GET can get the data from web.
     inputdata = request.GET
+    print(inputdata)
     
     # change the web data to json.
     inputdata = inputtojson(inputdata)
