@@ -128,8 +128,7 @@ def get_data_from_web_test(
 
     # End test.
 
-
-def get_data_from_ups_api_test(data_from_api):  # this function is to test the ups api can successful response data.
+def get_data_from_api_test(name, data_from_api):  # this function is to test the ups api can successful response data.
     from datetime import datetime
     import json
 
@@ -138,39 +137,7 @@ def get_data_from_ups_api_test(data_from_api):  # this function is to test the u
 
     # Start test the api have result or not.
     # Because the data is from api probably will change so we can not compare.
-    print(bcolors.WARNING + 'Test information : Test ups api have result' + bcolors.ENDC)
-    print('Date : ' + datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
-
-    # Check api reture data and print it.
-    a_result = ''
-    if (data_from_api == []):
-        a_result = bcolors.FAIL + "Fail" + bcolors.ENDC
-        check.append(0)
-    else:
-        a_result = bcolors.OKGREEN + "Success" + bcolors.ENDC
-        check.append(1)
-    print('Api response reault : ' + a_result)
-    print('Data : ', data_from_api)
-
-    # print cases result.
-    if (sum(check) == len(check)):
-        print('Test Result : ' + bcolors.OKGREEN + 'Done' + bcolors.ENDC + f' total test {len(check):1} function.')
-    else:
-        print(
-            f'Test Result : total test {len(check):1} function, success: {sum(check):1}, fail: {len(check) - sum(check):1} ')
-
-    # End test.
-
-def get_data_from_fedex_api_test(data_from_api):  # this function is to test the ups api can successful response data.
-    from datetime import datetime
-    import json
-
-    # check how many cases success and fail. 
-    check = []
-
-    # Start test the api have result or not.
-    # Because the data is from api probably will change so we can not compare.
-    print(bcolors.WARNING + 'Test information : Test fedex api have result' + bcolors.ENDC)
+    print(bcolors.WARNING + 'Test information : Test ' + name + ' api have result' + bcolors.ENDC)
     print('Date : ' + datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
     # Check api reture data and print it.
@@ -204,11 +171,11 @@ def integration_test(data_from_web, data_from_ups_api, data_from_fedex_api):  # 
     # Run get_data_from_web_test function.
     get_data_from_web_test(data_from_web)
 
-    # Run get_data_from_ups_api_test function.
-    get_data_from_ups_api_test(data_from_ups_api)
+    # Run get_data_from_api_test to check ups.
+    get_data_from_api_test('ups', data_from_ups_api)
 
-    # Run get_data_from_fedex_api_test function.
-    get_data_from_fedex_api_test(data_from_fedex_api)
+    # Run get_data_from_api_test to check fedex.
+    get_data_from_api_test('fedex', data_from_fedex_api)
 
     # End integration test.
     print(bcolors.HEADER + '---------- End Test : Integration test ----------' + bcolors.ENDC)

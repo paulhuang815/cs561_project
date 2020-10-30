@@ -72,7 +72,7 @@ $(document).ready(function () {
                             butt.href = 'https://www.ups.com/us/en/global.page';
                             butt.type = 'button';
                             butt.setAttribute('class', "btn btn-primary btn-sm");
-                            butt.innerHTML = "skip";
+                            butt.innerHTML = "go to";
                             td2.appendChild(butt);
                             tr.appendChild(td2);
                             tbody.appendChild(tr);
