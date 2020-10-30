@@ -281,40 +281,43 @@ def fedex(info):
         print(e)
         return []
 
+start = False
 
 def shipping_api(data):
+    from home.tests import integration_test
+    global start
+
+    # print the input data.
+    print("input data : ", data)
+
+    # call ups api.
     result_ups = ups(data)
-    result_fedex = fedex(data)
     print("result_ups : ", result_ups)
+
+    # call fedex api.
+    result_fedex = fedex(data)
     print("result_fedex : ", result_fedex)
+
+    # Run integration test.
+    if (start == False):
+        integration_test(data, result_ups, result_fedex)
+        start = True
+
     rst_dict = {"data": result_ups + result_fedex}
-    # print(result)
-    # print(type(result))
+    
     return rst_dict
     # return HttpResponse(result)
 
-
-start = False
-
-
 def input(request):  # This function is get data from web and call api then return the data to web.
-    from home.tests import integration_test
-    global start
 
     # request.GET can get the data from web.
     inputdata = request.GET
 
     # change the web data to json.
     inputdata = inputtojson(inputdata)
-    print(inputdata)
 
     # call the ups api and get response data.
     result = shipping_api(inputdata)
-
-    # Run integration test.
-    if (start == False):
-        integration_test(inputdata, result)
-        start = True
 
     # test data.
     # data = {"data": [

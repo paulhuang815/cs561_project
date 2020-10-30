@@ -106,12 +106,12 @@ def get_data_from_web_test(
         e_result = bcolors.OKGREEN + "Success" + bcolors.ENDC
         check.append(1)
     print('Server expected data : ' + e_result)
-    print('Data : ', expected_data)
+    print('Data : ', expected_data["1"])
 
     # compare optained data and expected data are same or not.
     print('Compare optained and expected data : ')
     c_result = ''
-    if (data_from_web == expected_data):
+    if (data_from_web == expected_data["1"]):
         c_result = bcolors.OKGREEN + "Correct" + bcolors.ENDC
         check.append(1)
     else:
@@ -129,7 +129,7 @@ def get_data_from_web_test(
     # End test.
 
 
-def get_data_from_api_test(data_from_api):  # this function is to test the api can successful response data.
+def get_data_from_ups_api_test(data_from_api):  # this function is to test the ups api can successful response data.
     from datetime import datetime
     import json
 
@@ -138,12 +138,44 @@ def get_data_from_api_test(data_from_api):  # this function is to test the api c
 
     # Start test the api have result or not.
     # Because the data is from api probably will change so we can not compare.
-    print(bcolors.WARNING + 'Test information : Test api have result' + bcolors.ENDC)
+    print(bcolors.WARNING + 'Test information : Test ups api have result' + bcolors.ENDC)
     print('Date : ' + datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
     # Check api reture data and print it.
     a_result = ''
-    if (data_from_api == None):
+    if (data_from_api == []):
+        a_result = bcolors.FAIL + "Fail" + bcolors.ENDC
+        check.append(0)
+    else:
+        a_result = bcolors.OKGREEN + "Success" + bcolors.ENDC
+        check.append(1)
+    print('Api response reault : ' + a_result)
+    print('Data : ', data_from_api)
+
+    # print cases result.
+    if (sum(check) == len(check)):
+        print('Test Result : ' + bcolors.OKGREEN + 'Done' + bcolors.ENDC + f' total test {len(check):1} function.')
+    else:
+        print(
+            f'Test Result : total test {len(check):1} function, success: {sum(check):1}, fail: {len(check) - sum(check):1} ')
+
+    # End test.
+
+def get_data_from_fedex_api_test(data_from_api):  # this function is to test the ups api can successful response data.
+    from datetime import datetime
+    import json
+
+    # check how many cases success and fail. 
+    check = []
+
+    # Start test the api have result or not.
+    # Because the data is from api probably will change so we can not compare.
+    print(bcolors.WARNING + 'Test information : Test fedex api have result' + bcolors.ENDC)
+    print('Date : ' + datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+
+    # Check api reture data and print it.
+    a_result = ''
+    if (data_from_api == []):
         a_result = bcolors.FAIL + "Fail" + bcolors.ENDC
         check.append(0)
     else:
@@ -162,7 +194,7 @@ def get_data_from_api_test(data_from_api):  # this function is to test the api c
     # End test.
 
 
-def integration_test(data_from_web, data_from_api):  # This function is do the integration test
+def integration_test(data_from_web, data_from_ups_api, data_from_fedex_api):  # This function is do the integration test
     from datetime import datetime
 
     # Start integration test.
@@ -172,8 +204,11 @@ def integration_test(data_from_web, data_from_api):  # This function is do the i
     # Run get_data_from_web_test function.
     get_data_from_web_test(data_from_web)
 
-    # Run get_data_from_api_test function.
-    get_data_from_api_test(data_from_api)
+    # Run get_data_from_ups_api_test function.
+    get_data_from_ups_api_test(data_from_ups_api)
+
+    # Run get_data_from_fedex_api_test function.
+    get_data_from_fedex_api_test(data_from_fedex_api)
 
     # End integration test.
     print(bcolors.HEADER + '---------- End Test : Integration test ----------' + bcolors.ENDC)
