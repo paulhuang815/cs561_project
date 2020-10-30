@@ -7,6 +7,7 @@ from django.http import HttpResponse, JsonResponse
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 
+
 @csrf_exempt
 # Receiving Data from AJAX
 def searchForm(request):
@@ -18,41 +19,39 @@ def searchForm(request):
     return render(request, 'index.html')
 
 
-
 def inputtojson(input):
     data = {
-        "Dimension units": input['Dimension_units'],
+        "Dimension units": input['Dimension units'],
         "Height": input['Height'],
         "Length": input['Length'],
         "Width": input['Width'],
-        "Weight unit": input['Weight_unit'],
+        "Weight unit": input['Weight unit'],
         "Weight": input['Weight'],
         "ShipFrom": {
             "Address": {
-            "AddressLine": input['From_AddressLine'],
-            "City": input['From_City'],
-            "CountryCode": input['From_CountryCode'],
-            "PostalCode": input['From_PostalCode'],
-            "StateProvinceCode": input['From_StateProvinceCode']
+                "AddressLine": input['From AddressLine'],
+                "City": input['From City'],
+                "CountryCode": input['From CountryCode'],
+                "PostalCode": input['From PostalCode'],
+                "StateProvinceCode": input['From StateProvinceCode']
             }
         },
         "ShipTo": {
             "Address": {
-            "AddressLine": input['To_AddressLine'],
-            "City": input['To_City'],
-            "CountryCode": input['To_CountryCode'],
-            "PostalCode": input['To_PostalCode'],
-            "StateProvinceCode": input['To_StateProvinceCode']
+                "AddressLine": input['To AddressLine'],
+                "City": input['To City'],
+                "CountryCode": input['To CountryCode'],
+                "PostalCode": input['To PostalCode'],
+                "StateProvinceCode": input['To StateProvinceCode']
             }
         }
     }
     return data
 
 
-
-
 def index(request):
     return render(request, 'index.html')
+
 
 def table(request):
     # data = {"data": [
@@ -117,7 +116,7 @@ def ups(info):
     }
 
     # Create rate request dictionary
-    #with open(info, 'r', encoding='UTF-8') as f:
+    # with open(info, 'r', encoding='UTF-8') as f:
     info_dict = info
     # print(info_dict)
     # print(info_dict["Dimension units"])
@@ -129,15 +128,17 @@ def ups(info):
         info_dict["Width"] = float(info_dict["Width"]) * 0.393700787
 
     if float(info_dict["Length"]) + 2 * float(info_dict["Height"]) + 2 * float(info_dict["Width"]) > 165:
-        return 'Package exceeds the maximum size total constraints of 165 inches ' \
-               '(length + girth, where girth is 2 x width plus 2 x height)'
+        print('Package exceeds the maximum size total constraints of 165 inches ' \
+              '(length + girth, where girth is 2 x width plus 2 x height)')
+        return None
 
-    # Conversion unit of Weight
+        # Conversion unit of Weight
     if info_dict["Weight unit"] != "pounds":  # KG to pounds
         info_dict["Weight"] = float(info_dict["Height"]) * 2.20462262
 
     if float(info_dict["Weight"]) > 150.00:
-        return 'The maximum per package weight is 150.00 pounds.'
+        print('The maximum per package weight is 150.00 pounds.')
+        return None
     # print(info_dict)
 
     # Create rate request dictionary
@@ -210,39 +211,108 @@ def ups(info):
             rst.append({"Company": "UPS", 'Service': ups_code[i['Service']['Code']],
                         'Money': i['TotalCharges']['MonetaryValue']})
 
-        rst_dict = {"data": rst}
-
         # print(rst)
-        return rst_dict
+        return rst
 
     except Fault as error:
         print(ET.tostring(error.detail))
         return None
 
 
-def ups_api(data):
-    result = ups(data)
+def fedex(info):
+    from fedex.config import FedexConfig
+    from fedex.services.rate_service import FedexRateServiceRequest
+
+    # Set API KEY
+    CONFIG_OBJ = FedexConfig(key='vMdHkxHdMhV2oMlI',
+                             password='oA0a7k3QUwkaApVBkrigbFMoN',
+                             account_number='787098177',
+                             meter_number='252470584')
+
+    # Create request
+    rate = FedexRateServiceRequest(CONFIG_OBJ)
+
+    # service type
+    rate.RequestedShipment.DropoffType = None
+    rate.RequestedShipment.ServiceType = None
+    rate.RequestedShipment.PackagingType = None
+
+    # sender information
+    rate.RequestedShipment.Shipper.Address.StateOrProvinceCode = info["ShipFrom"]["Address"]["StateProvinceCode"]
+    rate.RequestedShipment.Shipper.Address.PostalCode = info["ShipFrom"]["Address"]["PostalCode"]
+    rate.RequestedShipment.Shipper.Address.CountryCode = info["ShipFrom"]["Address"]["CountryCode"]
+
+    # receiver information
+    rate.RequestedShipment.Recipient.Address.StateOrProvinceCode = info["ShipTo"]["Address"]["StateProvinceCode"]
+    rate.RequestedShipment.Recipient.Address.PostalCode = info["ShipTo"]["Address"]["PostalCode"]
+    rate.RequestedShipment.Recipient.Address.CountryCode = info["ShipTo"]["Address"]["CountryCode"]
+
+    # payer
+    rate.RequestedShipment.EdtRequestType = 'NONE'
+    rate.RequestedShipment.ShippingChargesPayment.PaymentType = 'SENDER'
+
+    # item information
+    package1_weight = rate.create_wsdl_object_of_type('Weight')
+    # Conversion unit of Weight
+    if info["Weight unit"] != "pounds":  # KG to pounds
+        info["Weight"] = float(info["Height"]) * 2.20462262
+
+    if float(info["Weight"]) > 150.00:
+        print('The maximum per package weight is 150.00 pounds.')
+        return None
+
+    package1_weight.Value = round(float(info["Weight"]), 2)
+    package1_weight.Units = "LB"
+    package1 = rate.create_wsdl_object_of_type('RequestedPackageLineItem')
+    package1.Weight = package1_weight
+    package1.PhysicalPackaging = None
+    package1.GroupPackageCount = 1
+    rate.add_package(package1)
+
+    # Try operation
+    try:
+        # send request
+        rate.send_request()
+
+        rst = list()
+        for service in rate.response.RateReplyDetails:
+            for rate_detail in service.RatedShipmentDetails:
+                rst.append({"Company": "Fedex", 'Service': str(service.ServiceType),
+                            'Money': str(rate_detail.ShipmentRateDetail.TotalNetFedExCharge.Amount)})
+
+        return rst
+
+    except Exception as e:
+        print(e)
+        return None
+
+
+def shipping_api(data):
+    result_ups = ups(data)
+    result_fedex = fedex(data)
+    rst_dict = {"data": result_ups + result_fedex}
     # print(result)
     # print(type(result))
-    return result
+    return rst_dict
     # return HttpResponse(result)
+
 
 start = False
 
-def input(request):              # This function is get data from web and call api then return the data to web.
+
+def input(request):  # This function is get data from web and call api then return the data to web.
     from home.tests import integration_test
     global start
 
     # request.GET can get the data from web.
     inputdata = request.GET
-    print(inputdata)
-    
+
     # change the web data to json.
     inputdata = inputtojson(inputdata)
-    
+
     # call the ups api and get response data.
-    result = ups_api(inputdata)
-    
+    result = shipping_api(inputdata)
+
     # Run integration test.
     if (start == False):
         integration_test(inputdata, result)

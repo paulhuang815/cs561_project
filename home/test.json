@@ -76,6 +76,32 @@
         "StateProvinceCode": "BJ"
       }
     }
+  },
+  "4": {
+    "Dimension units": "inches",
+    "Height": "40.12",
+    "Length": "10",
+    "Width": "10",
+    "Weight unit": "pounds",
+    "Weight": "100",
+    "ShipFrom": {
+      "Address": {
+        "AddressLine": "366 Robin LN SE",
+        "City": "Marietta",
+        "CountryCode": "US",
+        "PostalCode": "30067",
+        "StateProvinceCode": "GA"
+      }
+    },
+    "ShipTo": {
+      "Address": {
+        "AddressLine": "Beixia Rd Beibei District",
+        "City": "BEIJING",
+        "CountryCode": "CN",
+        "PostalCode": "100000",
+        "StateProvinceCode": "BJ"
+      }
+    }
   }
 }
 
