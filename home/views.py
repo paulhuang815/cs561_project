@@ -125,7 +125,7 @@ def ups(info):
     if float(info_dict["Length"]) + 2 * float(info_dict["Height"]) + 2 * float(info_dict["Width"]) > 165:
         print('Package exceeds the maximum size total constraints of 165 inches ' \
               '(length + girth, where girth is 2 x width plus 2 x height)')
-        return None
+        return []
 
         # Conversion unit of Weight
     if info_dict["Weight unit"] != "pounds":  # KG to pounds
@@ -133,7 +133,7 @@ def ups(info):
 
     if float(info_dict["Weight"]) > 150.00:
         print('The maximum per package weight is 150.00 pounds.')
-        return None
+        return []
     # print(info_dict)
 
     # Create rate request dictionary
@@ -211,7 +211,7 @@ def ups(info):
 
     except Fault as error:
         print(ET.tostring(error.detail))
-        return None
+        return []
 
 
 def fedex(info):
@@ -254,7 +254,7 @@ def fedex(info):
 
     if float(info["Weight"]) > 150.00:
         print('The maximum per package weight is 150.00 pounds.')
-        return None
+        return []
 
     package1_weight.Value = round(float(info["Weight"]), 2)
     package1_weight.Units = "LB"
@@ -279,7 +279,7 @@ def fedex(info):
 
     except Exception as e:
         print(e)
-        return None
+        return []
 
 
 def shipping_api(data):
