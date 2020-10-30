@@ -26,7 +26,7 @@ $(document).ready(function () {
         // return false;
         $('#From_CountryCode').removeAttr('disabled');
         $.ajax({
-            url: '{% url "input" %}',
+            url: 'input/?',
             type: 'GET',
             tradition: true,
             async : false,
