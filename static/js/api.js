@@ -9,7 +9,11 @@
       country: "long_name",
       postal_code: "short_name"
   };
-
+  // street_number + route = address
+  // locality = city
+  // administrative_area_level_1 = state
+  // country = country
+  // postal_code = zipcode
   function initAutocomplete() {
       // Create the autocomplete object, restricting the search predictions to
       // geographical location types.
@@ -46,8 +50,20 @@
               // document.getElementById(addressType).value = val;
           }
       }
-      toaddress = '{' + toaddress + '}';
+      toaddress = '{' + toaddress + '"hello":"hello"}';
+      
       console.log(toaddress);
+      taj = JSON.parse(toaddress);
+      $('#To_AddressLine').val(taj.street_number + taj.route);
+      $('#To_CountryCode').val(taj.country);
+      $('#To_StateProvinceCode').val(taj.administrative_area_level_1);
+      $('#To_City').val(taj.locality);
+      $('#To_PostalCode').val(taj.postal_code);
+      // street_number + route = address
+      // locality = city
+      // administrative_area_level_1 = state
+      // country = country
+      // postal_code = zipcode
   }
 
     // [END maps_places_autocomplete_addressform_fillform]
