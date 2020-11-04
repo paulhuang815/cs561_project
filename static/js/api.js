@@ -51,7 +51,6 @@
           }
       }
       toaddress = '{' + toaddress + '"hello":"hello"}';
-      
       console.log(toaddress);
       taj = JSON.parse(toaddress);
       $('#To_AddressLine').val(taj.street_number + ' ' + taj.route);

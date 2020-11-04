@@ -3,6 +3,18 @@
 
 }
 
+.ct {
+    position: relative;
+    text-align: center;
+}
+
+.ct .centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .header {
     background-color: #F1F1F1;
     text-align: center;

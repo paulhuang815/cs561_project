@@ -51,10 +51,9 @@
           }
       }
       toaddress = '{' + toaddress + '"hello":"hello"}';
-      
       console.log(toaddress);
       taj = JSON.parse(toaddress);
-      $('#To_AddressLine').val(taj.street_number + taj.route);
+      $('#To_AddressLine').val(taj.street_number + ' ' + taj.route);
       $('#To_CountryCode').val(taj.country);
       $('#To_StateProvinceCode').val(taj.administrative_area_level_1);
       $('#To_City').val(taj.locality);
