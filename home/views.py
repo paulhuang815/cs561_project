@@ -357,14 +357,14 @@ def input(request):  # This function is get data from web and call api then retu
     result = shipping_api(inputdata)
 
     # test data.
-    # data = {"data": [
+    # result = {"data": [
     #     {
     #         "Company": "UPS",
     #         "Service": "Saver",
     #         "Money": "1552.60",
     #     },
     #     {
-    #         "Company": "UPS",
+    #         "Company": "Fedex",
     #         "Service": "Worldwide Expedited",
     #         "Money": "932.72",
     #     },
