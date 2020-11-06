@@ -127,7 +127,7 @@ def ups(info):
               '(length + girth, where girth is 2 x width plus 2 x height)')
         return []
 
-        # Conversion unit of Weight
+    # Conversion unit of Weight
     if info_dict["Weight unit"] != "pounds":  # KG to pounds
         info_dict["Weight"] = float(info_dict["Height"]) * 2.20462262
 
@@ -281,6 +281,39 @@ def fedex(info):
         print(e)
         return []
 
+
+def usps(info):
+    from .controler.usps_key import USPSApi, Package
+
+    usps_api = USPSApi('589FORLE4209', test=True)
+
+    # Conversion unit of Dimension
+    if info["Dimension units"] != "inches":  # CM to Inches
+        info["Height"] = float(info["Height"]) * 0.393700787
+        info["Length"] = float(info["Length"]) * 0.393700787
+        info["Width"] = float(info["Width"]) * 0.393700787
+
+    # Conversion unit of Weight
+    if info["Weight unit"] != "pounds":  # KG to pounds
+        info["Weight"] = float(info["Height"]) * 2.20462262
+
+    try:
+        pack = Package(
+            zip_origination=info["ShipFrom"]["Address"]["PostalCode"],
+            zip_destination=info["ShipTo"]["Address"]["PostalCode"],
+            pounds=info["Weight"],
+            width=info["Width"],
+            length=info["Length"],
+            height=info["Height"],
+            country=info["ShipTo"]["Address"]["CountryCode"]
+        )
+        validation = usps_api.shipping_rate(pack)
+        return validation.rst
+    except Exception as e:
+        # print(e)
+        return []
+
+
 start = False
 
 def shipping_api(data):
@@ -298,12 +331,16 @@ def shipping_api(data):
     result_fedex = fedex(data)
     print("result_fedex : ", result_fedex)
 
+    # call usps api.
+    result_usps = usps(data)
+    print("result_usps : ", result_usps)
+
     # Run integration test.
     if (start == False):
         integration_test(data, result_ups, result_fedex)
         start = True
 
-    rst_dict = {"data": result_ups + result_fedex}
+    rst_dict = {"data": result_ups + result_fedex + result_usps}
     
     return rst_dict
     # return HttpResponse(result)

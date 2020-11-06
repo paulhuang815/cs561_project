@@ -54,6 +54,22 @@ class ApiTest(TestCase):
 
         print('----------End Fedex Api Test----------\n')
 
+    def test_Usps_api(self):
+        import json
+        from home.views import usps
+
+        print('----------Start USPS Api Test----------')
+
+        with open("./home/test.json", 'r', encoding='UTF-8') as f:
+            info_dict = json.load(f)
+
+        for i in info_dict.values():
+            result = usps(i)
+            print(result)
+            self.assertIsNotNone(result)
+
+        print('----------End USPS Api Test----------\n')
+
     def test_Shipping(self):
         import json
         from home.views import shipping_api

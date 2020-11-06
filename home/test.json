@@ -1,11 +1,11 @@
 {
   "1": {
     "Dimension units": "inches",
-    "Height": "40.12",
+    "Height": "20.12",
     "Length": "10",
     "Width": "10",
     "Weight unit": "pounds",
-    "Weight": "100",
+    "Weight": "50",
     "ShipFrom": {
       "Address": {
         "AddressLine": "366 Robin LN SE",
@@ -79,11 +79,11 @@
   },
   "4": {
     "Dimension units": "inches",
-    "Height": "40.12",
+    "Height": "20.12",
     "Length": "10",
     "Width": "10",
     "Weight unit": "pounds",
-    "Weight": "100",
+    "Weight": "50",
     "ShipFrom": {
       "Address": {
         "AddressLine": "366 Robin LN SE",
