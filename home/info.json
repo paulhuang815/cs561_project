@@ -1,11 +1,11 @@
 {
   "1": {
     "Dimension units": "inches",
-    "Height": "40.12",
+    "Height": "20.12",
     "Length": "10",
     "Width": "10",
     "Weight unit": "pounds",
-    "Weight": "100",
+    "Weight": "50",
     "ShipFrom": {
       "Address": {
         "AddressLine": "366 Robin LN SE",
@@ -17,10 +17,10 @@
     },
     "ShipTo": {
       "Address": {
-        "AddressLine": "1845 NW Polk AVE",
-        "City": "Corvallis",
+        "AddressLine": "2614 Sw Western Blvd Apt 9",
+        "City": "CORVALLIS",
         "CountryCode": "US",
-        "PostalCode": "97330",
+        "PostalCode": "97333",
         "StateProvinceCode": "OR"
       }
     }

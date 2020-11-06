@@ -20,6 +20,8 @@ $(document).ready(function () {
                             return '<img src="static/image/ups.png" style="widgh:50px;height:50px"><div style="display:none">UPS</div>';
                         case "Fedex":
                             return '<img src="static/image/fedex.png" style="widgh:100px;height:50px"><div style="display:none">Fedex</div>';
+                        case "USPS":
+                            return '<img src="static/image/usps.png" style="widgh:100px;height:50px"><div style="display:none">USPS</div>';
                         default:
                             return data;
                         }
@@ -36,6 +38,8 @@ $(document).ready(function () {
                             return '<a href="https://www.ups.com/us/en/global.page" type="button" class="btn btn-primary btn-sm" target="_blank">go to</a>';
                         case "Fedex":
                             return '<a href="https://www.fedex.com/en-us/home.html" type="button" class="btn btn-primary btn-sm" target="_blank">go to</a>';
+                        case "USPS":
+                            return '<a href="https://www.usps.com/ship/" type="button" class="btn btn-primary btn-sm" target="_blank">go to</a>';
                         default:
                             return data;
                         }
@@ -44,6 +48,7 @@ $(document).ready(function () {
             ]
         });
         table.ajax.url('input/?' + $('#search_form').serialize()).load();
+        //$('#divtable').css("visibility", "visible");
         $('#From_CountryCode').attr('disabled', 'disabled');
         return false;
         // $('#From_CountryCode').removeAttr('disabled');

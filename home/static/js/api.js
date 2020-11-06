@@ -58,6 +58,7 @@
       $('#To_StateProvinceCode').val(taj.administrative_area_level_1);
       $('#To_City').val(taj.locality);
       $('#To_PostalCode').val(taj.postal_code);
+      toaddress = '';
       // street_number + route = address
       // locality = city
       // administrative_area_level_1 = state
