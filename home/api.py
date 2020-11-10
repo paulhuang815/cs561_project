@@ -50,7 +50,7 @@ def ups(info):
 
     # Conversion unit of Weight
     if info_dict["Weight unit"] != "pounds":  # KG to pounds
-        info_dict["Weight"] = float(info_dict["Height"]) * 2.20462262
+        info_dict["Weight"] = float(info_dict["Weight"]) * 2.20462262
 
     if float(info_dict["Weight"]) > 150.00:
         print('The maximum per package weight is 150.00 pounds.')
@@ -171,7 +171,7 @@ def fedex(info):
     package1_weight = rate.create_wsdl_object_of_type('Weight')
     # Conversion unit of Weight
     if info["Weight unit"] != "pounds":  # KG to pounds
-        info["Weight"] = float(info["Height"]) * 2.20462262
+        info["Weight"] = float(info["Weight"]) * 2.20462262
 
     if float(info["Weight"]) > 150.00:
         print('The maximum per package weight is 150.00 pounds.')
@@ -216,7 +216,7 @@ def usps(info):
 
     # Conversion unit of Weight
     if info["Weight unit"] != "pounds":  # KG to pounds
-        info["Weight"] = float(info["Height"]) * 2.20462262
+        info["Weight"] = float(info["Weight"]) * 2.20462262
 
     try:
         pack = Package(

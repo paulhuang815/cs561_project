@@ -24,7 +24,7 @@ class ApiTest(TestCase):
 
     def test_UPS_api(self):
         import json
-        from home.views import ups
+        from home.api import ups
 
         print('----------Start Ups Api Test----------')
 
@@ -40,7 +40,7 @@ class ApiTest(TestCase):
 
     def test_Fedex_api(self):
         import json
-        from home.views import fedex
+        from home.api import fedex
 
         print('----------Start Fedex Api Test----------')
 
@@ -56,7 +56,7 @@ class ApiTest(TestCase):
 
     def test_Usps_api(self):
         import json
-        from home.views import usps
+        from home.api import usps
 
         print('----------Start USPS Api Test----------')
 
