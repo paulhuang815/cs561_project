@@ -40,26 +40,7 @@ def table(request):
 start = False
 
 def shipping_api(data):
-<<<<<<< HEAD
-    from home.api import ups, fedex, usps
-    from home.tests import integration_test
-    global start
 
-    # print the input data.
-    # print("input data : ", data)
-
-    # call ups api.
-    result_ups = ups(data)
-    print("result_ups : ", result_ups)
-
-    # call fedex api.
-    result_fedex = fedex(data)
-    print("result_fedex : ", result_fedex)
-
-    # call usps api.
-    result_usps = usps(data)
-    print("result_usps : ", result_usps)
-=======
     from home.api import ups, fedex, usps, sendle
     from home.tests import integration_test
     global start
@@ -82,18 +63,16 @@ def shipping_api(data):
     # call sendle api.
     result_sendle = sendle(data)
     print("result_sendle : ", result_sendle)
->>>>>>> ccc66cb351c458f49758792be44f5f169a774b2a
+
 
     # Run integration test.
     if (start == False):
         integration_test(data, result_ups, result_fedex, result_usps)
         start = True
 
-<<<<<<< HEAD
-    rst_dict = {"data": result_ups + result_fedex + result_usps}
-=======
+
     rst_dict = {"data": result_ups + result_fedex + result_usps + result_sendle}
->>>>>>> ccc66cb351c458f49758792be44f5f169a774b2a
+
     
     return rst_dict
     # return HttpResponse(result)

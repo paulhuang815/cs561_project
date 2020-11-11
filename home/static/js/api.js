@@ -9,14 +9,13 @@
       country: "long_name",
       postal_code: "short_name"
   };
-<<<<<<< HEAD
+
 
    var sizePass = false;
   var weightPass = false;
   var AddressPass1 = false;
   var AddressPass2 = false;
-=======
->>>>>>> ccc66cb351c458f49758792be44f5f169a774b2a
+
   // street_number + route = address
   // locality = city
   // administrative_area_level_1 = state
@@ -201,7 +200,7 @@
           closeAllLists(e.target);
       });
   }
-<<<<<<< HEAD
+
 
   function TestSize(){
       var height = document.getElementById('Height').value;
@@ -368,5 +367,4 @@
       }
 
   }
-=======
->>>>>>> ccc66cb351c458f49758792be44f5f169a774b2a
+
