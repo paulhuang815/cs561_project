@@ -1,5 +1,6 @@
 import json
 
+
 def ups(info):
     import xml.etree.ElementTree as ET
     from zeep import Client, Settings, helpers
@@ -199,7 +200,7 @@ def fedex(info):
         return rst
 
     except Exception as e:
-        print(e)
+        print('Fedex error information:' + str(e))
         return []
 
 
@@ -231,5 +232,85 @@ def usps(info):
         validation = usps_api.shipping_rate(pack)
         return validation.rst
     except Exception as e:
-        print(e)
+        print('USPS error information:' + str(e))
+        return []
+
+
+def sendle(info):
+    import requests
+
+    if info["ShipFrom"]["Address"]["CountryCode"] == 'US' and info["ShipTo"]["Address"]["CountryCode"] == 'US':
+        # Conversion unit of Weight
+        if info["Weight unit"] != "pounds":  # KG to pounds
+            info["Weight"] = float(info["Weight"]) * 2.20462262
+
+        if float(info["Weight"]) > 70:
+            print('In US, the maximum per package weight is 70 pounds.')
+            return []
+
+        package = {'pickup_suburb': info["ShipFrom"]["Address"]["City"],
+                   'pickup_postcode': info["ShipFrom"]["Address"]["PostalCode"],
+                   'pickup_country': 'US',
+                   'delivery_suburb': info["ShipTo"]["Address"]["City"],
+                   'delivery_postcode': info["ShipTo"]["Address"]["PostalCode"],
+                   'delivery_country': 'US',
+                   'weight_value': info["Weight"],
+                   'weight_units': 'lb',
+                   }
+
+    elif info["ShipFrom"]["Address"]["CountryCode"] == 'AU':
+        # Conversion unit of Weight
+        if info["Weight unit"] == "pounds":  # pounds to KG
+            info["Weight"] = float(info["Weight"]) / 2.20462262
+
+        if float(info["Weight"]) > 25:
+            print('In Austria, the maximum per package weight is 25 kilograms.')
+            return []
+
+        # create package
+        if info["ShipTo"]["Address"]["CountryCode"] == 'AU':
+            # domestic
+            package = {'pickup_suburb': info["ShipFrom"]["Address"]["City"],
+                       'pickup_postcode': info["ShipFrom"]["Address"]["PostalCode"],
+                       'pickup_country': 'AU',
+                       'delivery_suburb': info["ShipTo"]["Address"]["City"],
+                       'delivery_postcode': info["ShipTo"]["Address"]["PostalCode"],
+                       'delivery_country': 'AU',
+                       'weight_value': info["Weight"],
+                       'weight_units': 'kg',
+                       }
+        else:
+            # international
+            package = {'pickup_suburb': info["ShipFrom"]["Address"]["City"],
+                       'pickup_postcode': info["ShipFrom"]["Address"]["PostalCode"],
+                       'delivery_country': info["ShipTo"]["Address"]["CountryCode"],
+                       'weight_value': info["Weight"],
+                       'weight_units': 'kg',
+                       }
+
+    else:
+        return []
+
+    # try api
+    try:
+        url = 'https://api.sendle.com/api/quote'
+        r = requests.get(url, params=package)
+        # print(r.content)
+
+        rst = list()
+        for i in r.json():
+            # print(i)
+            if info["ShipTo"]["Address"]["CountryCode"] == 'AU':
+                rst.append({"Company": "Sendle",
+                            'Service': str(i['plan_name']),
+                            'Money': str(i['quote']['gross']['amount']) + 'AUD'})
+            elif info["ShipFrom"]["Address"]["CountryCode"] == 'US':
+                rst.append({"Company": "Sendle",
+                            'Service': str(i['plan_name']),
+                            'Money': str(i['quote']['gross']['amount'])})
+
+        return rst
+
+    except Exception as e:
+        print('Sendle error information:' + str(e))
         return []

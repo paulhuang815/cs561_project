@@ -70,6 +70,22 @@ class ApiTest(TestCase):
 
         print('----------End USPS Api Test----------\n')
 
+    def test_Sendle_api(self):
+        import json
+        from home.api import sendle
+
+        print('----------Start Sendle Api Test----------')
+
+        with open("./home/test.json", 'r', encoding='UTF-8') as f:
+            info_dict = json.load(f)
+
+        for i in info_dict.values():
+            result = sendle(i)
+            print(result)
+            self.assertIsNotNone(result)
+
+        print('----------End Sendle Api Test----------\n')
+
     def test_Shipping(self):
         import json
         from home.views import shipping_api
