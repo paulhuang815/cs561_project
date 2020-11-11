@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var table = $('#datatable').DataTable({
         "processing": true,
+<<<<<<< HEAD
             "serverSide": false,
             "deferRender": true,
             "iDisplayLength": 25,
@@ -66,6 +67,64 @@ $(document).ready(function () {
         //$('#divtable').css("visibility", "visible");
         $('#From_CountryCode').attr('disabled', 'disabled');
 
+=======
+        "serverSide": false,
+        "deferRender": true,
+        "iDisplayLength": 25,
+        "paging": false,
+        "deferLoading": 0, //載入時不執行查詢
+        "order": [[2, "asc"]],
+        "info": true,
+        "drawCallback": function (settings) {
+            var result = settings.json;
+            if (result !== undefined) {
+                console.log(result.data.length);
+            }
+        },
+        "columns": [
+            {
+                "data": "Company",
+                "orderable": true,
+                "render": function (data) {
+                    switch (data) {
+                    case "UPS":
+                        return '<img src="static/image/ups.png" style="widgh:50px;height:50px"><div style="display:none">UPS</div>';
+                    case "Fedex":
+                        return '<img src="static/image/fedex.png" style="widgh:100px;height:50px"><div style="display:none">Fedex</div>';
+                    case "USPS":
+                        return '<img src="static/image/usps.png" style="widgh:50px;height:50px"><div style="display:none">USPS</div>';
+                    default:
+                        return data;
+                    }
+                }
+            },
+            {"data": "Service", "orderable": true},
+            {"data": "Money", "orderable": true},
+            {
+                "data": "Company",
+                "orderable": false,
+                "render": function (data) {
+                    switch (data) {
+                    case "UPS":
+                        return '<a href="https://www.ups.com/us/en/global.page" type="button" class="btn btn-primary btn-sm" target="_blank">go to</a>';
+                    case "Fedex":
+                        return '<a href="https://www.fedex.com/en-us/home.html" type="button" class="btn btn-primary btn-sm" target="_blank">go to</a>';
+                    case "USPS":
+                        return '<a href="https://www.usps.com/ship/" type="button" class="btn btn-primary btn-sm" target="_blank">go to</a>';
+                    default:
+                        return data;
+                    }
+                }
+            }
+        ]
+    });
+
+    $('#submit').click(function () {
+        $('#From_CountryCode').removeAttr('disabled');
+        table.ajax.url('input/?' + $('#search_form').serialize()).load();
+        //$('#divtable').css("visibility", "visible");
+        $('#From_CountryCode').attr('disabled', 'disabled');
+>>>>>>> ccc66cb351c458f49758792be44f5f169a774b2a
         return false;
         // $('#From_CountryCode').removeAttr('disabled');
         // $.ajax({

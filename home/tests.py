@@ -24,7 +24,7 @@ class ApiTest(TestCase):
 
     def test_UPS_api(self):
         import json
-        from home.views import ups
+        from home.api import ups
 
         print('----------Start Ups Api Test----------')
 
@@ -40,13 +40,78 @@ class ApiTest(TestCase):
 
     def test_Fedex_api(self):
         import json
+<<<<<<< HEAD
         from home.views import fedex
+
+        print('----------Start Fedex Api Test----------')
+=======
+        from home.api import fedex
 
         print('----------Start Fedex Api Test----------')
 
         with open("./home/info.json", 'r', encoding='UTF-8') as f:
             info_dict = json.load(f)
 
+        for i in info_dict.values():
+            result = fedex(i)
+            print(result)
+            self.assertIsNotNone(result)
+
+        print('----------End Fedex Api Test----------\n')
+
+    def test_Usps_api(self):
+        import json
+        from home.api import usps
+
+        print('----------Start USPS Api Test----------')
+
+        with open("./home/test.json", 'r', encoding='UTF-8') as f:
+            info_dict = json.load(f)
+
+        for i in info_dict.values():
+            result = usps(i)
+            print(result)
+            self.assertIsNotNone(result)
+
+        print('----------End USPS Api Test----------\n')
+
+    def test_Sendle_api(self):
+        import json
+        from home.api import sendle
+
+        print('----------Start Sendle Api Test----------')
+
+        with open("./home/test.json", 'r', encoding='UTF-8') as f:
+            info_dict = json.load(f)
+
+        for i in info_dict.values():
+            result = sendle(i)
+            print(result)
+            self.assertIsNotNone(result)
+
+        print('----------End Sendle Api Test----------\n')
+
+    def test_Shipping(self):
+        import json
+        from home.views import shipping_api
+
+        print('----------Start Shipping Test----------')
+
+        with open("./home/info.json", 'r', encoding='UTF-8') as f:
+            info_dict = json.load(f)
+
+        for i in info_dict.values():
+            result = shipping_api(i)
+            print(result)
+            self.assertIsNotNone(result)
+
+        print('----------End Shipping Test----------\n')
+>>>>>>> ccc66cb351c458f49758792be44f5f169a774b2a
+
+        with open("./home/info.json", 'r', encoding='UTF-8') as f:
+            info_dict = json.load(f)
+
+<<<<<<< HEAD
         for i in info_dict.values():
             result = fedex(i)
             print(result)
@@ -87,6 +152,8 @@ class ApiTest(TestCase):
         print('----------End Shipping Test----------\n')
 
 
+=======
+>>>>>>> ccc66cb351c458f49758792be44f5f169a774b2a
 def get_data_from_web_test(
         data_from_web):  # this function is to test the server can successful get data and the data is what we expected.
     from datetime import datetime
@@ -194,7 +261,11 @@ def integration_test(data_from_web, data_from_ups_api, data_from_fedex_api, data
     get_data_from_api_test('fedex', data_from_fedex_api)
 
     # Run get_data_from_api_test to check usps.
+<<<<<<< HEAD
     get_data_from_api_test('fedex', data_from_usps_api)
+=======
+    get_data_from_api_test('usps', data_from_usps_api)
+>>>>>>> ccc66cb351c458f49758792be44f5f169a774b2a
 
     # End integration test.
     print(bcolors.HEADER + '---------- End Test : Integration test ----------' + bcolors.ENDC)

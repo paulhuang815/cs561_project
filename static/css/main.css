@@ -1,6 +1,19 @@
 
+<<<<<<< HEAD
 .container {
 
+=======
+.b {
+  width: 100%;
+}
+
+.container.b {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: 300px;
+  margin-left:150px;
+>>>>>>> ccc66cb351c458f49758792be44f5f169a774b2a
 }
 
 .ct {
