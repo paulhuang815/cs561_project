@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="Height" name="Height"
-                               placeholder="Enter Height only inches or cm units.">
+                               placeholder="Enter Height only inches or cm units." onblur="TestSize()">
                     </div>
                     <div class="col-md-1">
                         <label for="length">Length</label>
@@ -27,14 +27,14 @@
                     <div class="col-md-3">
 
                         <input type="text" class="form-control" id="Length" name="Length"
-                               placeholder="Enter Length only inches or cm units.">
+                               placeholder="Enter Length only inches or cm units." onblur="TestSize()">
                     </div>
                     <div class="col-md-1">
                         <label for="width">Width</label>
                     </div>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="Width" name="Width"
-                               placeholder="Enter Width only inches or cm units.">
+                               placeholder="Enter Width only inches or cm units." onblur="TestSize()">
 
                     </div>
                 </div>
@@ -48,14 +48,17 @@
                         <label for="Units">Units</label>
                     </div>
                     <div class="col-md-3">
-                        <select class="form-control" name="Dimension units" id="Dimension units"
-                                placeholder="choose one">
+                        <select class="form-control" name="Dimension_units" id="Dimension_units"
+                                placeholder="choose one" onchange="TestSize()">
                             <option value="inches">inches</option>
                             <option value="cm">cm</option>
                         </select>
                     </div>
                 </div>
             </div>
+        </div>
+        <div style="margin-bottom: 30px;display: none;" id="waring1">
+            <p id ="waring1p">Package exceeds the maximum size total constraints of 165 inches <br> hint: (length + girth, where girth is 2 x width plus 2 x height) </p>
         </div>
 
         <hr>
@@ -68,10 +71,10 @@
                     </div>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="Weight" name="Weight"
-                               placeholder="Enter Weight only pounds or cm kilograms.">
+                               placeholder="Enter Weight only pounds or cm kilograms." onblur="TestWeight()">
                     </div>
                     <div class="col-md-2">
-                        <select class="form-control" name="Weight unit" id="Weight unit" placeholder="choose one">
+                        <select class="form-control" name="Weight_unit" id="Weight_unit" placeholder="choose one" onchange="TestWeight()">
                             <option value="pounds">pounds</option>
                             <option value="kilograms">kilograms</option>
                         </select>
@@ -89,8 +92,12 @@
                 </div>
             </div>
         </div>
+        <div style="margin-bottom: 30px;display: none;" id="waring2">
+            <p id ="waring2p">The maximum per package weight is 150.00 pounds. </p>
+        </div>
 
         <hr>
+
         <div class="form-inline" style="margin-bottom: 30px;">
             <i class="fa fa-plane-departure fa-2x" style="align: middle;"></i>
             <h3 style="margin-left: 10px;">Shipping From</h3>
@@ -103,12 +110,36 @@
                         <label for="Address">Address</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="From AddressLine" name="From AddressLine"
-                               placeholder="Enter your ship from address.">
+                        <input type="text" class="form-control" id="From_AddressLine" name="From_AddressLine"
+                               placeholder="Enter your ship From_address." onblur="TestAddress1()">
                     </div>
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="CountryCode">Country</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control" name="From_CountryCode" id="From_CountryCode"
+                                placeholder="Enter Country" value="US" disabled=false onblur="TestAddress1()">
+                        </input>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="StateProvinceCode">State</label>
+                    </div>
+                    <div class="col-md-4 autocomplete">
+                        <input class="form-control" name="From_StateProvinceCode" id="From_StateProvinceCode"
+                                placeholder="Enter State" onblur="TestAddress1()">
+                        </input>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="form-group">
             <div class="container">
                 <div class="row">
@@ -116,47 +147,24 @@
                         <label for="City">City</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="From City" name="From City"
-                               placeholder="Enter city">
+                        <input type="text" class="form-control" id="From_City" name="From_City"
+                               placeholder="Enter city" onblur="TestAddress1()">
                     </div>
-                    <div class="col-md-2">
-                        <label for="CountryCode">Country</label>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-control" name="From CountryCode" id="From CountryCode"
-                                placeholder="choose one">
-                            <option value="US">US</option>
-                            <option value="CN">CN</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="container">
-                <div class="row">
                     <div class="col-md-2">
                         <label for="zipcode">Zipcode</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="From PostalCode" name="From PostalCode"
-                               placeholder="Enter Zip Code">
-                    </div>
-                    <div class="col-md-2">
-                        <label for="StateProvinceCode">State Province</label>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-control" name="From StateProvinceCode" id="From StateProvinceCode"
-                                placeholder="choose one">
-                            <option value="GA">GA</option>
-                            <option value="BJ">BJ</option>
-                        </select>
+                        <input type="text" class="form-control" id="From_PostalCode" name="From_PostalCode"
+                               placeholder="Enter Zip Code" onblur="TestAddress1()">
                     </div>
                 </div>
             </div>
         </div>
+
+        <div style="margin-bottom: 30px;display: none;" id="waring3">
+            <p id ="waring3p">The maximum per package weight is 150.00 pounds. </p>
+        </div>
+
         <hr>
         <div class="form-inline" style="margin-bottom: 30px;">
             <i class="fa fa-plane-arrival fa-2x" style="align: middle;"></i>
@@ -170,12 +178,35 @@
                         <label for="Address">Address</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="To AddressLine" name="To AddressLine"
-                               placeholder="Enter your ship to address.">
+                        <input type="text" class="form-control" id="To_AddressLine" name="To_AddressLine"
+                               placeholder="Enter your ship To_address." onFocus="geolocate()">
                     </div>
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="CountryCode">Country</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control" name="To_CountryCode" id="To_CountryCode" placeholder="Enter Country" onblur="TestAddress2()">
+                        </input>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="StateProvinceCode">State</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control" name="To_StateProvinceCode" id="To_StateProvinceCode"
+                                placeholder="Enter State" onblur="TestAddress2()">
+                        </input>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="form-group">
             <div class="container">
                 <div class="row">
@@ -183,54 +214,29 @@
                         <label for="City">City</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="To City" name="To City" placeholder="Enter city">
+                        <input type="text" class="form-control" id="To_City" name="To_City" placeholder="Enter city" onblur="TestAddress2()">
                     </div>
-                    <div class="col-md-2">
-                        <label for="CountryCode">Country</label>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-control" name="To CountryCode" id="To CountryCode" placeholder="choose one">
-                            <option value="US">US</option>
-                            <option value="CN">CN</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="container">
-                <div class="row">
                     <div class="col-md-2">
                         <label for="zipcode">Zipcode</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="To PostalCode" name="To PostalCode"
-                               placeholder="Enter Zip Code">
-                    </div>
-                    <div class="col-md-2">
-                        <label for="StateProvinceCode">State Province</label>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-control" name="To StateProvinceCode" id="To StateProvinceCode"
-                                placeholder="choose one">
-                            <option value="GA">GA</option>
-                            <option value="BJ">BJ</option>
-                        </select>
+                        <input type="text" class="form-control" id="To_PostalCode" name="To_PostalCode"
+                               placeholder="Enter Zip Code" onblur="TestAddress2()">
                     </div>
                 </div>
             </div>
         </div>
 
+        <div style="margin-bottom: 30px;display: none;" id="waring4">
+            <p id ="waring4p">The maximum per package weight is 150.00 pounds. </p>
+        </div>
+
         <div class="form-group">
             <div class="text-center">
-                <button type="submit" id="submit" name="submit" class="btn btn-primary">Start Searching</button>
+                <button type="submit" id="submit" name="submit" class="btn btn-primary" >Start Searching</button>
             </div>
         </div>
     </form>
-
-
 
 
     {#<tr>#}
@@ -273,13 +279,14 @@
             <i class="fa fa-search-dollar fa-2x" style="align: middle;"></i>
             <h3 style="margin-left: 10px;">Results</h3>
         </div>
-    <div class="table-container">
+    <!-- <div id="divtable" class="table-container" style="visibility: hidden;"> -->
+    <div id="divtable" class="table-container">
         <table id="datatable" class="table table-striped  table-sm" width="100%">
         <thead>
         <tr>
             <th>Company</th>
             <th>Service</th>
-            <th>Money</th>
+            <th>Price</th>
             <th>Link</th>
         </tr>
         </thead>
