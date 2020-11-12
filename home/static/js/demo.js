@@ -28,7 +28,9 @@ $(document).ready(function () {
                     case "Fedex":
                         return '<img src="static/image/fedex.png" style="width:50px; height:50px"><div style="display:none">Fedex</div>';
                     case "USPS":
-                        return '<img src="static/image/usps.png" style="width:55px; height:30px"><div style="display:none">USPS</div>';
+                        return '<img src="static/image/usps.png" style="width:55px; height:40px"><div style="display:none">USPS</div>';
+                    case "Sendle":
+                        return '<img src="static/image/sendle.png" style="width:60px; height:30px"><div style="display:none">Sendle</div>';
                     default:
                         return data;
                     }
@@ -47,6 +49,8 @@ $(document).ready(function () {
                         return '<a href="https://www.fedex.com/en-us/home.html" type="button" class="btn btn-primary btn-sm" target="_blank">go to</a>';
                     case "USPS":
                         return '<a href="https://www.usps.com/ship/" type="button" class="btn btn-primary btn-sm" target="_blank">go to</a>';
+                    case "Sendle":
+                        return '<a href="https://try.sendle.com/en-us/pricing" type="button" class="btn btn-primary btn-sm" target="_blank">go to</a>';
                     default:
                         return data;
                     }
