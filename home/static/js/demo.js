@@ -25,11 +25,11 @@ $(document).ready(function () {
                     "render": function (data) {
                         switch (data) {
                         case "UPS":
-                            return '<img src="static/image/ups.png" style="widgh:50px;height:50px"><div style="display:none">UPS</div>';
+                            return '<img src="static/image/ups.png" height:50px"><div style="display:none">UPS</div>';
                         case "Fedex":
-                            return '<img src="static/image/fedex.png" style="widgh:100px;height:50px"><div style="display:none">Fedex</div>';
+                            return '<img src="static/image/fedex.png" height:50px"><div style="display:none">Fedex</div>';
                         case "USPS":
-                            return '<img src="static/image/usps.png" style="widgh:50px;height:50px"><div style="display:none">USPS</div>';
+                            return '<img src="static/image/usps.png" style="width:60px"><div style="display:none">USPS</div>';
                         default:
                             return data;
                         }
