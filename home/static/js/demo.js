@@ -24,7 +24,7 @@ $(document).ready(function () {
                 "render": function (data) {
                     switch (data) {
                     case "UPS":
-                        return '<img src="static/image/ups.png" style="width:50px;"><div style="display:none">UPS</div>';
+                        return '<img src="static/image/ups.png" style="width:45px;"><div style="display:none">UPS</div>';
                     case "Fedex":
                         return '<img src="static/image/fedex.png" style="width:50px;"><div style="display:none">Fedex</div>';
                     case "USPS":
