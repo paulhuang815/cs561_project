@@ -10,8 +10,7 @@
       postal_code: "short_name"
   };
 
-
-   var sizePass = false;
+  var sizePass = false;
   var weightPass = false;
   var AddressPass1 = false;
   var AddressPass2 = false;
@@ -208,10 +207,6 @@
       var Width = document.getElementById('Width').value;
       var reg = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/;
       var unit1 = document.getElementById('Dimension_units').value;
-
-
-
-
 
       if( height == '' || Length == '' || Width == ''){
           document.getElementById('waring1p').innerHTML = 'please input all number';

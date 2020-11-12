@@ -197,7 +197,7 @@ def get_data_from_api_test(name, data_from_api):  # this function is to test the
     # End test.
 
 
-def integration_test(data_from_web, data_from_ups_api, data_from_fedex_api, data_from_usps_api):  # This function is do the integration test
+def integration_test(data_from_web, data_from_ups_api, data_from_fedex_api, data_from_usps_api, data_frin_sendle_api):  # This function is do the integration test
     from datetime import datetime
 
     # Start integration test.
@@ -214,8 +214,10 @@ def integration_test(data_from_web, data_from_ups_api, data_from_fedex_api, data
     get_data_from_api_test('fedex', data_from_fedex_api)
 
     # Run get_data_from_api_test to check usps.
-
     get_data_from_api_test('usps', data_from_usps_api)
+
+    # Run get_data_from_api_test to check Sendle.
+    get_data_from_api_test('Sendle', data_frin_sendle_api)
 
     # End integration test.
     print(bcolors.HEADER + '---------- End Test : Integration test ----------' + bcolors.ENDC)
