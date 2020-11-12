@@ -307,7 +307,7 @@ def sendle(info):
             if info["ShipTo"]["Address"]["CountryCode"] == 'AU':
                 rst.append({"Company": "Sendle",
                             'Service': str(i['plan_name']),
-                            'Money': str(i['quote']['gross']['amount']) + 'AUD'})
+                            'Money': str(float(i['quote']['gross']['amount']) * 0.72)})
             elif info["ShipFrom"]["Address"]["CountryCode"] == 'US':
                 rst.append({"Company": "Sendle",
                             'Service': str(i['plan_name']),
