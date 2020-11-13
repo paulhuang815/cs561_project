@@ -111,7 +111,7 @@
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="From_AddressLine" name="From_AddressLine"
-                               placeholder="Enter your ship From_address." onblur="TestAddress1()">
+                               placeholder="Enter your ship From_address." onblur="TestAddress1()" onFocus="geolocate_from()">
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                     </div>
                     <div class="col-md-4">
                         <input class="form-control" name="From_CountryCode" id="From_CountryCode"
-                                placeholder="Enter Country" value="US" disabled=false onblur="TestAddress1()">
+                                placeholder="Enter Country" onblur="TestAddress1()">
                         </input>
                     </div>
                     <div class="col-md-2">
@@ -179,7 +179,7 @@
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="To_AddressLine" name="To_AddressLine"
-                               placeholder="Enter your ship To_address." onFocus="geolocate()">
+                               placeholder="Enter your ship To_address." onFocus="geolocate_to()">
                     </div>
                 </div>
             </div>

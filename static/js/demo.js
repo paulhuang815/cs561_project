@@ -15,7 +15,6 @@ $(document).ready(function () {
                     alert('Address is wrong, please check');
                 }
             }
-
         },
         "columns": [
             {
@@ -24,13 +23,13 @@ $(document).ready(function () {
                 "render": function (data) {
                     switch (data) {
                     case "UPS":
-                        return '<img src="static/image/ups.png" style="width:45px;"><div style="display:none">UPS</div>';
+                        return '<img src="static/image/ups.png" style="width:45px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UPS';
                     case "Fedex":
-                        return '<img src="static/image/fedex.png" style="width:50px;"><div style="display:none">Fedex</div>';
+                        return '<img src="static/image/fedex.png" style="width:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fedex';
                     case "USPS":
-                        return '<img src="static/image/usps.png" style="width:50px;"><div style="display:none">USPS</div>';
+                        return '<img src="static/image/usps.png" style="width:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;USPS';
                     case "Sendle":
-                        return '<img src="static/image/sendle.png" style="width:50px;"><div style="display:none">Sendle</div>';
+                        return '<img src="static/image/sendle.png" style="width:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sendle';
                     default:
                         return data;
                     }
@@ -54,7 +53,6 @@ $(document).ready(function () {
                     default:
                         return data;
                     }
-                    
                 }
             }
         ]
@@ -62,12 +60,12 @@ $(document).ready(function () {
 
     $('#submit').click(function () {
         //alert('e');
-        $('#From_CountryCode').removeAttr('disabled');
+        //$('#From_CountryCode').removeAttr('disabled');
 
         table.ajax.url('input/?' + $('#search_form').serialize()).load();
 
         //$('#divtable').css("visibility", "visible");
-        $('#From_CountryCode').attr('disabled', 'disabled');
+        //$('#From_CountryCode').attr('disabled', 'disabled');
 
         return false;
         // $('#From_CountryCode').removeAttr('disabled');
