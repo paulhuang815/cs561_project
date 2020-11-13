@@ -44,13 +44,13 @@ $(document).ready(function () {
                 "render": function (data) {
                     switch (data) {
                     case "UPS":
-                        return '<a href="https://www.ups.com/us/en/global.page" type="button" class="btn btn-primary btn-sm" target="_blank">go to</a>';
+                        return '<a href="https://www.ups.com/us/en/global.page" type="button" class="btn btn-primary btn-sm" target="_blank">Go to</a>';
                     case "Fedex":
-                        return '<a href="https://www.fedex.com/en-us/home.html" type="button" class="btn btn-primary btn-sm" target="_blank">go to</a>';
+                        return '<a href="https://www.fedex.com/en-us/home.html" type="button" class="btn btn-primary btn-sm" target="_blank">Go to</a>';
                     case "USPS":
-                        return '<a href="https://www.usps.com/ship/" type="button" class="btn btn-primary btn-sm" target="_blank">go to</a>';
+                        return '<a href="https://www.usps.com/ship/" type="button" class="btn btn-primary btn-sm" target="_blank">Go to</a>';
                     case "Sendle":
-                        return '<a href="https://try.sendle.com/en-us/pricing" type="button" class="btn btn-primary btn-sm" target="_blank">go to</a>';
+                        return '<a href="https://try.sendle.com/en-us/pricing" type="button" class="btn btn-primary btn-sm" target="_blank">Go to</a>';
                     default:
                         return data;
                     }
