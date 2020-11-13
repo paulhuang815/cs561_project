@@ -7,7 +7,7 @@
       route: "long_name",
       locality: "long_name",
       administrative_area_level_1: "short_name",
-      country: "long_name",
+      country: "short_name",
       postal_code: "short_name"
   };
 
@@ -77,7 +77,7 @@ function getKeyByValue(object, value) {
         else {
             $('#From_AddressLine').val("None");
         }
-        $('#From_CountryCode').val(getKeyByValue(Country, faj.country));
+        $('#From_CountryCode').val(faj.country);
         if (faj.administrative_area_level_1) {
             $('#From_StateProvinceCode').val(faj.administrative_area_level_1);
         }
@@ -129,7 +129,7 @@ function getKeyByValue(object, value) {
         else {
             $('#To_AddressLine').val("None");
         }
-        $('#To_CountryCode').val(getKeyByValue(Country, taj.country));
+        $('#To_CountryCode').val(taj.country);
         if (taj.administrative_area_level_1) {
             $('#To_StateProvinceCode').val(taj.administrative_area_level_1);
         }
