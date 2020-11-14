@@ -402,15 +402,10 @@ function getKeyByValue(object, value) {
       var space5 = document.getElementById('From_StateProvinceCode').value;
 
       var reg = new RegExp("^[0-9]*$");
-      if(space1 == '' ||space2 == '' ||space3 == '' ||space4 == '' || space5 == ''){
+      if(space1 == ''){
           document.getElementById('waring3p').innerHTML = 'the address cannot be empty';
-          document.getElementById('waring3').style.display = "block";
-          AddressPass1 = false;
-      }
-      else if ( !reg.test(space4) ){
-          document.getElementById('waring3p').innerHTML = 'the zipcode should be number';
-          document.getElementById('waring3').style.display = "block";
           document.getElementById('submit').disabled = 'true';
+          document.getElementById('waring3').style.display = "block";
           AddressPass1 = false;
       }
       else {
@@ -431,24 +426,16 @@ function getKeyByValue(object, value) {
 
 
       var reg = new RegExp("^[0-9]*$");
-      if(space5 == '' ||space6 == '' ||space7 == '' ||space8 == '' || space9 == ''){
+      if(space6 == ''){
           document.getElementById('waring4p').innerHTML = 'the address cannot be empty';
           document.getElementById('submit').disabled = 'true';
           document.getElementById('waring4').style.display = "block";
           AddressPass2 = false;
       }
-      else if (!reg.test(space8) ){
-          document.getElementById('waring4p').innerHTML = 'the zipcode should be number';
-          document.getElementById('submit').disabled = 'true';
-          document.getElementById('waring4').style.display = "block";
-          AddressPass2 = false;
-      }
-
-
       else {
           document.getElementById('waring4').style.display = "none";
           AddressPass2 = true;
-          FinalTest()
+          FinalTest();
       }
 
   }
