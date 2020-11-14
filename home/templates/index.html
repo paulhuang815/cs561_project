@@ -15,27 +15,26 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-1">
-                        <label for="height">Height</label>
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" id="Height" name="Height"
-                               placeholder="Enter Height only inches or cm units." onchange="TestSize()">
-                    </div>
-                    <div class="col-md-1">
                         <label for="length">Length</label>
                     </div>
                     <div class="col-md-3">
 
                         <input type="text" class="form-control" id="Length" name="Length"
-                               placeholder="Enter Length only inches or cm units." onchange="TestSize()">
+                               placeholder="Enter Length" onchange="TestSize()">
                     </div>
                     <div class="col-md-1">
                         <label for="width">Width</label>
                     </div>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="Width" name="Width"
-                               placeholder="Enter Width only inches or cm units." onchange="TestSize()">
-
+                               placeholder="Enter Width" onchange="TestSize()">
+                    </div>
+                    <div class="col-md-1">
+                        <label for="height">Height</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="Height" name="Height"
+                               placeholder="Enter Height" onchange="TestSize()">
                     </div>
                 </div>
 
@@ -71,7 +70,7 @@
                     </div>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="Weight" name="Weight"
-                               placeholder="Enter Weight only pounds or cm kilograms." onchange="TestWeight()">
+                               placeholder="Enter Weight" onchange="TestWeight()">
                     </div>
                     <div class="col-md-2">
                         <select class="form-control" name="Weight_unit" id="Weight_unit" placeholder="choose one" onchange="TestWeight()">
@@ -111,7 +110,7 @@
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="From_AddressLine" name="From_AddressLine"
-                               placeholder="Enter your ship From_address." onchange="TestAddress1()" onFocus="geolocate_from()">
+                               placeholder="Enter your 'From' address" onchange="TestAddress1()" onFocus="geolocate_from()">
                     </div>
                 </div>
             </div>
@@ -151,7 +150,7 @@
                                placeholder="Enter city">
                     </div>
                     <div class="col-md-2">
-                        <label for="zipcode">Zipcode</label>
+                        <label for="zipcode">Zip Code</label>
                     </div>
                     <div class="col-md-4">
                         <input type="text" class="form-control" id="From_PostalCode" name="From_PostalCode"
@@ -168,7 +167,7 @@
         <hr>
         <div class="form-inline" style="margin-bottom: 30px;">
             <i class="fa fa-plane-arrival fa-2x" style="align: middle;"></i>
-            <h3 style="margin-left: 10px;">Shipping to</h3>
+            <h3 style="margin-left: 10px;">Shipping To</h3>
         </div>
 
         <div class="form-group">
@@ -179,7 +178,7 @@
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="To_AddressLine" name="To_AddressLine"
-                               placeholder="Enter your ship To_address." onFocus="geolocate_to()" onchange = "TestAddress2()">
+                               placeholder="Enter your 'To' address" onFocus="geolocate_to()" onchange = "TestAddress2()">
                     </div>
                 </div>
             </div>
@@ -218,7 +217,7 @@
 
                     </div>
                     <div class="col-md-2">
-                        <label for="zipcode">Zipcode</label>
+                        <label for="zipcode">Zip Code</label>
                     </div>
                     <div class="col-md-4">
                         <input type="text" class="form-control" id="To_PostalCode" name="To_PostalCode"
@@ -297,13 +296,18 @@
         </table>
     </div>
 
-    <div class="form-inline" style="margin-bottom: 30px; margin-top: 100px;">
+    <!--div class="form-inline" style="margin-bottom: 30px; margin-top: 100px;">
             <i class="fa fa-hands fa-2x" style="align: middle;"></i>
             <h3 style="margin-left: 10px;">Our Goal</h3>
-    </div>
+    </div-->
     <div class="form-inline" style="margin-bottom: 30px; margin-top: 100px;">
             <i class="fa fa-flushed fa-2x" style="align: middle;"></i>
             <h3 style="margin-left: 10px;">About Us</h3>
+    </div>
+    <div>
+        <p style="color: black; font-size:18px;"> 
+            This is a project for CS561 in 2020 Fall term. <br>
+            Author: Sheng-Po Huang, Ta-wei Hwang, Yue Chen, Chuan Cheng, Jingyu Xiang, and Shih-Chao Hung.</p>
     </div>
 
     {##}

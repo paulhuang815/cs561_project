@@ -311,13 +311,13 @@ function getKeyByValue(object, value) {
       var unit1 = document.getElementById('Dimension_units').value;
 
       if( height == '' || Length == '' || Width == ''){
-          document.getElementById('waring1p').innerHTML = 'please input all number';
+          document.getElementById('waring1p').innerHTML = 'Package dimensions must be at least 1 in for Length, 1 in for Width, and 1 in for Height. Please enter an amount for each of the dimensions fields.';
           document.getElementById('submit').disabled = 'true';
           document.getElementById('waring1').style.display ="block";
           return;
       }
       else if( !reg.test(height) || !reg.test(Length) || !reg.test(Width)){
-          document.getElementById('waring1p').innerHTML = 'the size should be number';
+          document.getElementById('waring1p').innerHTML = 'The size should be number';
           document.getElementById('submit').disabled = 'true';
           document.getElementById('waring1').style.display ="block";
           return;
@@ -342,7 +342,7 @@ function getKeyByValue(object, value) {
 
           document.getElementById('waring1').style.display ="block";
           document.getElementById('submit').disabled = 'true';
-          document.getElementById('waring1p').innerHTML= "Package exceeds the maximum size total constraints of 165 inches <br> hint: (length + girth, where girth is 2 x width plus 2 x height)";
+          document.getElementById('waring1p').innerHTML= "Package exceeds the maximum size total constraints of 165 inches / 419.1 cm <br> hint: (length + girth, where girth is 2 x width plus 2 x height)";
       }
       else {
           document.getElementById('waring1').style.display ="none";
@@ -365,24 +365,19 @@ function getKeyByValue(object, value) {
       }
 
       if(weight == ''){
-           document.getElementById('waring2p').innerHTML = 'the weight cannot be empty';
+           document.getElementById('waring2p').innerHTML = 'Weight is required.';
            document.getElementById('submit').disabled = 'true';
            document.getElementById('waring2').style.display ="block";
       }
-      else if( !reg.test(weight) ){
-          document.getElementById('waring2p').innerHTML = 'the weight should be number';
+      else if( !reg.test(weight) || weight <= 0 ){
+          document.getElementById('waring2p').innerHTML = 'Only numeric values are allowed. Weight should be more than 0.';
           document.getElementById('submit').disabled = 'true';
           document.getElementById('waring2').style.display ="block";
       }
       else if (weight >= 150){
-          document.getElementById('waring2p').innerHTML = 'the weight cannot be higher than 150 pounds';
+          document.getElementById('waring2p').innerHTML = 'Max. weight 150 pounds / 68 kilograms';
           document.getElementById('submit').disabled = 'true';
           document.getElementById('waring2').style.display ="block";
-      }
-      else if (weight <= 0 ){
-          document.getElementById('waring2p').innerHTML = 'the weight cannot be lighter than 0 pounds';
-          document.getElementById('submit').disabled = 'true';
-          document.getElementById('waring2').style.display = "block";
       }
       else {
 
@@ -403,7 +398,7 @@ function getKeyByValue(object, value) {
 
       var reg = new RegExp("^[0-9]*$");
       if(space1 == ''){
-          document.getElementById('waring3p').innerHTML = 'the address cannot be empty';
+          document.getElementById('waring3p').innerHTML = "Please enter 'Shipping From' address.";
           document.getElementById('submit').disabled = 'true';
           document.getElementById('waring3').style.display = "block";
           AddressPass1 = false;
@@ -427,7 +422,7 @@ function getKeyByValue(object, value) {
 
       var reg = new RegExp("^[0-9]*$");
       if(space6 == ''){
-          document.getElementById('waring4p').innerHTML = 'the address cannot be empty';
+          document.getElementById('waring4p').innerHTML = "Please enter 'Shipping To' address.";
           document.getElementById('submit').disabled = 'true';
           document.getElementById('waring4').style.display = "block";
           AddressPass2 = false;
