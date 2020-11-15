@@ -133,7 +133,7 @@ function getKeyByValue(object, value) {
         if (taj.street_number || taj.route) {
             var str = '';
             if (taj.street_number) {
-                str += taj.street_number;
+                str += taj.street_number + ' ';
             }
             if (taj.route) {
                 str += taj.route;
