@@ -5,7 +5,7 @@
   const componentForm = {
       street_number: "short_name",
       route: "long_name",
-      locality: "long_name",
+      locality: "short_name",
       administrative_area_level_1: "short_name",
       country: "short_name",
       postal_code: "short_name"
@@ -71,11 +71,18 @@ function getKeyByValue(object, value) {
         faj = JSON.parse(fromaddress);
 
         // from
-        if (faj.street_number && faj.route) {
-            $('#From_AddressLine').val(faj.street_number + ' ' + faj.route);
+        if (faj.street_number || faj.route) {
+            var str = '';
+            if (faj.street_number) {
+                str += faj.street_number + ' ';
+            }
+            if (faj.route) {
+                str += faj.route;
+            }
+            $('#From_AddressLine').val(str);
         }
         else {
-            $('#From_AddressLine').val("None");
+            //$('#From_AddressLine').val("None");
         }
         $('#From_CountryCode').val(faj.country);
         if (faj.administrative_area_level_1) {
@@ -123,11 +130,18 @@ function getKeyByValue(object, value) {
         taj = JSON.parse(toaddress);
 
         //to
-        if (taj.street_number && taj.route) {
-            $('#To_AddressLine').val(taj.street_number + ' ' + taj.route);
+        if (taj.street_number || taj.route) {
+            var str = '';
+            if (taj.street_number) {
+                str += taj.street_number;
+            }
+            if (taj.route) {
+                str += taj.route;
+            }
+            $('#To_AddressLine').val(str);
         }
         else {
-            $('#To_AddressLine').val("None");
+            //$('#To_AddressLine').val("None");
         }
         $('#To_CountryCode').val(taj.country);
         if (taj.administrative_area_level_1) {
