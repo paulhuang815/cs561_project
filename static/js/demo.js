@@ -60,12 +60,12 @@ $(document).ready(function () {
 
     $('#submit').click(function () {
         //alert('e');
-        //$('#From_CountryCode').removeAttr('disabled');
-
+        $('.cscz').removeAttr('disabled');
+        
         table.ajax.url('input/?' + $('#search_form').serialize()).load();
 
         //$('#divtable').css("visibility", "visible");
-        //$('#From_CountryCode').attr('disabled', 'disabled');
+        $('.cscz').attr('disabled', 'disabled');
 
         return false;
         // $('#From_CountryCode').removeAttr('disabled');

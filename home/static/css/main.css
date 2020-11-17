@@ -115,3 +115,21 @@ hr.style-one {
   background-color: DodgerBlue !important; 
   color: #ffffff; 
 }
+
+.search_form input[type = "text"].cscz {
+  border-radius: .25rem;
+}
+
+.search_form input[type = "text"],.search_form input[type = "number"] {
+  border: none;
+  border-radius: 0px;
+  border-bottom: 2px solid #80CED8;
+}
+
+.input-group-text {
+  color: #3498db;
+  background: none;
+  border: none;
+  border-radius: 0px;
+  /* border-bottom: 2px solid #3498db; */
+}

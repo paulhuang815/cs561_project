@@ -4,7 +4,7 @@
 
 
 
-    <form id="search_form" method="post">{% csrf_token %}
+    <form id="search_form" method="post" class="search_form">{% csrf_token %}
         {#    <!--{% csrf_token %}-->#}
         <div class="form-inline" style="margin-bottom: 30px;">
             <i class="fa fa-box fa-2x" style="align: middle;"></i>
@@ -122,16 +122,16 @@
                         <label for="CountryCode">Country</label>
                     </div>
                     <div class="col-md-4">
-                        <input class="form-control" name="From_CountryCode" id="From_CountryCode"
-                                placeholder="Enter Country">
+                        <input type="text" class="form-control cscz" name="From_CountryCode" id="From_CountryCode"
+                                placeholder="Enter Country" disabled="true">
                         </input>
                     </div>
                     <div class="col-md-2">
                         <label for="StateProvinceCode">State</label>
                     </div>
                     <div class="col-md-4 autocomplete">
-                        <input class="form-control" name="From_StateProvinceCode" id="From_StateProvinceCode"
-                                placeholder="Enter State">
+                        <input type="text" class="form-control cscz" name="From_StateProvinceCode" id="From_StateProvinceCode"
+                                placeholder="Enter State" disabled="true">
                         </input>
                     </div>
                 </div>
@@ -146,15 +146,15 @@
                         <label for="City">City</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="From_City" name="From_City"
-                               placeholder="Enter city">
+                        <input type="text" class="form-control cscz" id="From_City" name="From_City"
+                               placeholder="Enter city" disabled="true">
                     </div>
                     <div class="col-md-2">
                         <label for="zipcode">Zip Code</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="From_PostalCode" name="From_PostalCode"
-                               placeholder="Enter Zip Code">
+                        <input type="text" class="form-control cscz" id="From_PostalCode" name="From_PostalCode"
+                               placeholder="Enter Zip Code" disabled="true">
                     </div>
                 </div>
             </div>
@@ -190,15 +190,16 @@
                         <label for="CountryCode">Country</label>
                     </div>
                     <div class="col-md-4">
-                        <input class="form-control" name="To_CountryCode" id="To_CountryCode" placeholder="Enter Country">
+                        <input type="text" class="form-control cscz" name="To_CountryCode" id="To_CountryCode" 
+                                placeholder="Enter Country" disabled="true">
                         </input>
                     </div>
                     <div class="col-md-2">
                         <label for="StateProvinceCode">State</label>
                     </div>
                     <div class="col-md-4">
-                        <input class="form-control" name="To_StateProvinceCode" id="To_StateProvinceCode"
-                                placeholder="Enter State">
+                        <input type="text" class="form-control cscz" name="To_StateProvinceCode" id="To_StateProvinceCode"
+                                placeholder="Enter State" disabled="true">
                         </input>
                     </div>
                 </div>
@@ -213,15 +214,16 @@
                         <label for="City">City</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="To_City" name="To_City" placeholder="Enter city">
+                        <input type="text" class="form-control cscz" id="To_City" name="To_City"
+                                placeholder="Enter city" disabled="true">
 
                     </div>
                     <div class="col-md-2">
                         <label for="zipcode">Zip Code</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control" id="To_PostalCode" name="To_PostalCode"
-                               placeholder="Enter Zip Code">
+                        <input type="text" class="form-control cscz" id="To_PostalCode" name="To_PostalCode"
+                               placeholder="Enter Zip Code" disabled="true">
                     </div>
                 </div>
             </div>

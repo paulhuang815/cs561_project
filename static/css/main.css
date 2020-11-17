@@ -1,8 +1,4 @@
 
-<<<<<<< HEAD
-.container {
-
-=======
 .b {
   width: 100%;
 }
@@ -13,7 +9,18 @@
   padding-left: 15px;
   margin-right: 300px;
   margin-left:150px;
->>>>>>> ccc66cb351c458f49758792be44f5f169a774b2a
+}
+
+.ct {
+    position: relative;
+    text-align: center;
+}
+
+.ct .centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .ct {
@@ -107,4 +114,22 @@ hr.style-one {
 .autocomplete-active {
   background-color: DodgerBlue !important; 
   color: #ffffff; 
+}
+
+.search_form input[type = "text"].cscz {
+  border-radius: .25rem;
+}
+
+.search_form input[type = "text"],.search_form input[type = "number"] {
+  border: none;
+  border-radius: 0px;
+  border-bottom: 2px solid #80CED8;
+}
+
+.input-group-text {
+  color: #3498db;
+  background: none;
+  border: none;
+  border-radius: 0px;
+  /* border-bottom: 2px solid #3498db; */
 }
