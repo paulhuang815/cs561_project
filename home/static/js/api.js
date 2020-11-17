@@ -60,9 +60,12 @@ function getKeyByValue(object, value) {
             if (componentForm[addressType]) {
                 const val = component[componentForm[addressType]];
                 fromaddress = fromaddress + '"' + addressType + '":"' + val + '",';
-                // document.getElementById(addressType).value = val;
+                //document.getElementById("From_AddressLine").value = val;
             }
         }
+
+        $('.f_group input').val('');
+        $('.f_group').css('display', 'none');
 
         fromaddress = '{' + fromaddress + '"End":"Endlist"}';
 
@@ -71,33 +74,30 @@ function getKeyByValue(object, value) {
         faj = JSON.parse(fromaddress);
 
         // from
-        if (faj.street_number || faj.route) {
-            var str = '';
-            if (faj.street_number) {
-                str += faj.street_number + ' ';
-            }
-            if (faj.route) {
-                str += faj.route;
-            }
-            $('#From_AddressLine').val(str);
-        }
-        else {
-            //$('#From_AddressLine').val("None");
-        }
         $('#From_CountryCode').val(faj.country);
+
         if (faj.administrative_area_level_1) {
-            $('#From_StateProvinceCode').val(faj.administrative_area_level_1);
+            if (faj.locality) {
+                $('#From_StateProvinceCode').val(faj.administrative_area_level_1);
+            }
+            else {
+                faj.locality = faj.administrative_area_level_1;
+            }
         }
-        else {
-            $('#From_StateProvinceCode').val("None");
-        }
+
         if (faj.locality) {
             $('#From_City').val(faj.locality);
         }
         else {
-            $('#From_City').val("None");
+            $('.F_City').css("display", "");
         }
-        $('#From_PostalCode').val(faj.postal_code);
+
+        if (faj.postal_code) {
+            $('#From_PostalCode').val(faj.postal_code);
+        }
+        else {
+            $('.F_Zip').css("display", "");
+        }
 
         fromaddress = '';
     }
@@ -119,9 +119,12 @@ function getKeyByValue(object, value) {
             if (componentForm[addressType]) {
                 const val = component[componentForm[addressType]];
                 toaddress = toaddress + '"' + addressType + '":"' + val + '",';
-                // document.getElementById(addressType).value = val;
+                //document.getElementById("To_AddressLine").value = val;
             }
         }
+
+        $('.t_group input').val('');
+        $('.t_group').css('display', 'none');
 
         toaddress = '{' + toaddress + '"End":"Endlist"}';
 
@@ -130,33 +133,30 @@ function getKeyByValue(object, value) {
         taj = JSON.parse(toaddress);
 
         //to
-        if (taj.street_number || taj.route) {
-            var str = '';
-            if (taj.street_number) {
-                str += taj.street_number;
-            }
-            if (taj.route) {
-                str += taj.route;
-            }
-            $('#To_AddressLine').val(str);
-        }
-        else {
-            //$('#To_AddressLine').val("None");
-        }
         $('#To_CountryCode').val(taj.country);
+
         if (taj.administrative_area_level_1) {
-            $('#To_StateProvinceCode').val(taj.administrative_area_level_1);
+            if (taj.locality) {
+                $('#To_StateProvinceCode').val(taj.administrative_area_level_1);
+            }
+            else {
+                taj.locality = taj.administrative_area_level_1;
+            }
         }
-        else {
-            $('#To_StateProvinceCode').val("None");
-        }
+
         if (taj.locality) {
             $('#To_City').val(taj.locality);
         }
         else {
-            $('#To_City').val("None");
+            $('.T_City').css("display", "");
         }
-        $('#To_PostalCode').val(taj.postal_code);
+
+        if (taj.postal_code) {
+            $('#To_PostalCode').val(taj.postal_code);
+        }
+        else {
+            $('.T_Zip').css("display", "");
+        }
 
         toaddress = '';
 

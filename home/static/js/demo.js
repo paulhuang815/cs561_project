@@ -1,6 +1,6 @@
 $(document).ready(function () {
     //$('input').attr('autocomplete', 'address');
-
+    //$('.cscz').css('display', 'none');
     //$('#From_AddressLine').attr('autocomplete', 'nope');
 
     var table = $('#datatable').DataTable({
@@ -64,12 +64,12 @@ $(document).ready(function () {
 
     $('#submit').click(function () {
         //alert('e');
-        $('.cscz').removeAttr('disabled');
+        //$('.cscz').removeAttr('disabled');
 
         table.ajax.url('input/?' + $('#search_form').serialize()).load();
 
         //$('#divtable').css("visibility", "visible");
-        $('.cscz').attr('disabled', 'disabled');
+        //$('.cscz').attr('disabled', 'disabled');
 
         return false;
         // $('#From_CountryCode').removeAttr('disabled');
