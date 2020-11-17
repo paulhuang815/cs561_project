@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    //$('input').attr('autocomplete', 'address');
+
+    //$('#From_AddressLine').attr('autocomplete', 'nope');
+
     var table = $('#datatable').DataTable({
         "processing": true,
         "serverSide": false,
@@ -61,7 +65,7 @@ $(document).ready(function () {
     $('#submit').click(function () {
         //alert('e');
         $('.cscz').removeAttr('disabled');
-        
+
         table.ajax.url('input/?' + $('#search_form').serialize()).load();
 
         //$('#divtable').css("visibility", "visible");

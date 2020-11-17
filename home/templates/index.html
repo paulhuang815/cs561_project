@@ -4,7 +4,7 @@
 
 
 
-    <form id="search_form" method="post" class="search_form">{% csrf_token %}
+    <form id="search_form" method="post" class="search_form" autocomplete="off">{% csrf_token %}
         {#    <!--{% csrf_token %}-->#}
         <div class="form-inline" style="margin-bottom: 30px;">
             <i class="fa fa-box fa-2x" style="align: middle;"></i>
@@ -110,7 +110,8 @@
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="From_AddressLine" name="From_AddressLine"
-                               placeholder="Enter your 'From' address" onchange="TestAddress1()" onFocus="geolocate_from()">
+                               placeholder="Enter your 'From' address" onchange="TestAddress1()" onFocus="geolocate_from()"
+                               autocomplete="nothing">
                     </div>
                 </div>
             </div>

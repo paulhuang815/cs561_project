@@ -133,7 +133,7 @@ function getKeyByValue(object, value) {
         if (taj.street_number || taj.route) {
             var str = '';
             if (taj.street_number) {
-                str += taj.street_number + ' ';
+                str += taj.street_number;
             }
             if (taj.route) {
                 str += taj.route;
@@ -205,10 +205,12 @@ function getKeyByValue(object, value) {
     }
 
     $("#From_AddressLine").focus(function() {
+        $('#From_AddressLine').attr('autocomplete', 'nope');
         geolocate_from();
     });
 
     $("#To_AddressLine").focus(function() {
+        $('#To_AddressLine').attr('autocomplete', 'nope');
         geolocate_to();
     });
 
