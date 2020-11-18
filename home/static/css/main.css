@@ -123,7 +123,7 @@ hr.style-one {
 .search_form input[type = "text"],.search_form input[type = "number"] {
   border: none;
   border-radius: 0px;
-  border-bottom: 2px solid #80CED8;
+  border-bottom: 3px solid #80CED8;
 }
 
 .input-group-text {
