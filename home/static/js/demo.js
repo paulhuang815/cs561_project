@@ -18,6 +18,20 @@ $(document).ready(function () {
                 if (result.data.length === 0) {
                     alert('Address is wrong, please check');
                 }
+                $('tbody tr').click(function (element) {
+                    var td = $(element.currentTarget.firstChild).text();
+                    var ul = '';
+                    if (td.indexOf('UPS') > 0) {
+                        ul = "https://www.ups.com/us/en/global.page";
+                    } else if (td.indexOf('Fedex') > 0) {
+                        ul = "https://www.fedex.com/en-us/home.html";
+                    } else if (td.indexOf('USPS') > 0) {
+                        ul = "https://www.usps.com/ship/";
+                    } else if (td.indexOf('Sendle') > 0) {
+                        ul = "https://try.sendle.com/en-us/pricing";
+                    }
+                    window.open(ul);
+                });
             }
         },
         "columns": [
@@ -47,13 +61,13 @@ $(document).ready(function () {
                 "render": function (data) {
                     switch (data) {
                     case "UPS":
-                        return '<a href="https://www.ups.com/us/en/global.page" type="button" class="btn btn-primary btn-sm" target="_blank">Go to</a>';
+                        return '<a href="https://www.ups.com/us/en/global.page" type="button" class="" target="_blank"><i class="fas fa-chevron-right fa-2x"></i></a>';
                     case "Fedex":
-                        return '<a href="https://www.fedex.com/en-us/home.html" type="button" class="btn btn-primary btn-sm" target="_blank">Go to</a>';
+                        return '<a href="https://www.fedex.com/en-us/home.html" type="button" class="" target="_blank"><i class="fas fa-chevron-right fa-2x"></i></a>';
                     case "USPS":
-                        return '<a href="https://www.usps.com/ship/" type="button" class="btn btn-primary btn-sm" target="_blank">Go to</a>';
+                        return '<a href="https://www.usps.com/ship/" type="button" class="" target="_blank"><i class="fas fa-chevron-right fa-2x"></i></a>';
                     case "Sendle":
-                        return '<a href="https://try.sendle.com/en-us/pricing" type="button" class="btn btn-primary btn-sm" target="_blank">Go to</a>';
+                        return '<a href="https://try.sendle.com/en-us/pricing" type="button" class="" target="_blank"><i class="fas fa-chevron-right fa-2x"></i></a>';
                     default:
                         return data;
                     }
@@ -61,6 +75,8 @@ $(document).ready(function () {
             }
         ]
     });
+
+    
 
     $('#submit').click(function () {
         //alert('e');
