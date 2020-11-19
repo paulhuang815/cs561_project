@@ -41,13 +41,13 @@ $(document).ready(function () {
                 "render": function (data) {
                     switch (data) {
                     case "UPS":
-                        return '<img src="static/image/ups.png" style="width:45px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UPS';
+                        return '<img src="static/image/ups.png" style="width:105px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--&nbsp;UPS-->';
                     case "Fedex":
-                        return '<img src="static/image/fedex.png" style="width:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fedex';
+                        return '<img src="static/image/fedex.png" style="width:110px;">&nbsp;&nbsp;&nbsp;&nbsp;<!--&nbsp;Fedex-->';
                     case "USPS":
-                        return '<img src="static/image/usps.png" style="width:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;USPS';
+                        return '<img src="static/image/usps_new.png" style="width:110px;">&nbsp;&nbsp;&nbsp;&nbsp;<!--&nbsp;USPS-->';
                     case "Sendle":
-                        return '<img src="static/image/sendle.png" style="width:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sendle';
+                        return '<img src="static/image/sendle.png" style="width:110px;">&nbsp;&nbsp;&nbsp;&nbsp;<!--&nbsp;Sendle-->';
                     default:
                         return data;
                     }

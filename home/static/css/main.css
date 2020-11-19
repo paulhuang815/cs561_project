@@ -157,6 +157,8 @@ th {
 
 tbody td {
   border: none !important;
+  vertical-align: middle !important;
+  height: 120px;
 }
 
 tbody tr td:nth-of-type(1) {
