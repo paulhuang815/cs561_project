@@ -1,5 +1,7 @@
 import json
 
+from home.shipping_time import ups_time, fedex_time, sendle_time
+
 
 def ups(info):
     import xml.etree.ElementTree as ET
@@ -34,49 +36,48 @@ def ups(info):
 
     # Create rate request dictionary
     # with open(info, 'r', encoding='UTF-8') as f:
-    info_dict = info
-    # print(info_dict)
-    # print(info_dict["Dimension units"])
+    # print(info)
+    # print(info["Dimension units"])
 
     # Conversion unit of Dimension
-    if info_dict["Dimension units"] != "inches":  # CM to Inches
-        info_dict["Height"] = float(info_dict["Height"]) * 0.393700787
-        info_dict["Length"] = float(info_dict["Length"]) * 0.393700787
-        info_dict["Width"] = float(info_dict["Width"]) * 0.393700787
+    if info["Dimension units"] != "inches":  # CM to Inches
+        info["Height"] = round(float(info["Height"]) * 0.393700787, 2)
+        info["Length"] = round(float(info["Length"]) * 0.393700787, 2)
+        info["Width"] = round(float(info["Width"]) * 0.393700787, 2)
 
-    if float(info_dict["Length"]) + 2 * float(info_dict["Height"]) + 2 * float(info_dict["Width"]) > 165:
+    if float(info["Length"]) + 2 * float(info["Height"]) + 2 * float(info["Width"]) > 165:
         print('Package exceeds the maximum size total constraints of 165 inches ' \
               '(length + girth, where girth is 2 x width plus 2 x height)')
         return []
 
     # Conversion unit of Weight
-    if info_dict["Weight unit"] != "pounds":  # KG to pounds
-        info_dict["Weight"] = float(info_dict["Weight"]) * 2.20462262
+    if info["Weight unit"] != "pounds":  # KG to pounds
+        info["Weight"] = round(float(info["Weight"]) * 2.20462262, 2)
 
-    if float(info_dict["Weight"]) > 150.00:
+    if float(info["Weight"]) > 150.00:
         print('The maximum per package weight is 150.00 pounds.')
         return []
-    # print(info_dict)
+    # print(info)
 
     # Create rate request dictionary
     rateRequestDictionary = {
 
         "Package": {
             "Dimensions": {
-                "Height": round(float(info_dict["Height"]), 2),
-                "Length": round(float(info_dict["Length"]), 2),
+                "Height": round(float(info["Height"]), 2),
+                "Length": round(float(info["Length"]), 2),
                 "UnitOfMeasurement": {
                     "Code": "IN",
                     "Description": "inches"
                 },
-                "Width": round(float(info_dict["Width"]), 2)
+                "Width": round(float(info["Width"]), 2)
             },
             "PackageWeight": {
                 "UnitOfMeasurement": {
                     "Code": "Lbs",
                     "Description": "pounds"
                 },
-                "Weight": round(float(info_dict["Weight"]), 2)
+                "Weight": round(float(info["Weight"]), 2)
             },
             "PackagingType": {
                 "Code": "00",  # Do not change this code
@@ -87,9 +88,9 @@ def ups(info):
             "Code": "03",  # when "RequestOption" is "Shop", this code is ignored.
             "Description": "Service Code"
         },
-        "ShipFrom": info_dict["ShipFrom"],
-        "ShipTo": info_dict["ShipTo"],
-        "Shipper": info_dict["ShipFrom"]
+        "ShipFrom": info["ShipFrom"],
+        "ShipTo": info["ShipTo"],
+        "Shipper": info["ShipFrom"]
     }
 
     # Try operation
@@ -125,8 +126,16 @@ def ups(info):
 
         rst = list()
         for i in output_dict['RatedShipment']:
-            rst.append({"Company": "UPS", 'Service': ups_code[i['Service']['Code']],
-                        'Money': i['TotalCharges']['MonetaryValue']})
+            try:
+                shipping_time = ups_time(ups_code[i['Service']['Code']],
+                                         info["ShipFrom"]["Address"]["CountryCode"],
+                                         info["ShipTo"]["Address"]["CountryCode"])
+            except:
+                shipping_time = '-'
+            rst.append({"Company": "UPS",
+                        'Service': ups_code[i['Service']['Code']],
+                        'Money': '$' + ' ' + i['TotalCharges']['MonetaryValue'],
+                        'Time': shipping_time})
 
         # print(rst)
         return rst
@@ -172,7 +181,7 @@ def fedex(info):
     package1_weight = rate.create_wsdl_object_of_type('Weight')
     # Conversion unit of Weight
     if info["Weight unit"] != "pounds":  # KG to pounds
-        info["Weight"] = float(info["Weight"]) * 2.20462262
+        info["Weight"] = round(float(info["Weight"]) * 2.20462262, 2)
 
     if float(info["Weight"]) > 150.00:
         print('The maximum per package weight is 150.00 pounds.')
@@ -194,8 +203,20 @@ def fedex(info):
         rst = list()
         for service in rate.response.RateReplyDetails:
             for rate_detail in service.RatedShipmentDetails:
-                rst.append({"Company": "Fedex", 'Service': str(service.ServiceType),
-                            'Money': str(rate_detail.ShipmentRateDetail.TotalNetFedExCharge.Amount)})
+                # shipping time
+                shipping_time = fedex_time(str(service.ServiceType),
+                                           info["ShipFrom"]["Address"]["CountryCode"],
+                                           info["ShipTo"]["Address"]["CountryCode"])
+                # service name
+                try:
+                    ser_name = str(service.ServiceType).replace('_', ' ')
+                except:
+                    ser_name = str(service.ServiceType)
+
+                rst.append({"Company": "Fedex",
+                            'Service': ser_name,
+                            'Money': '$' + ' ' + str(rate_detail.ShipmentRateDetail.TotalNetFedExCharge.Amount),
+                            'Time': shipping_time})
 
         return rst
 
@@ -213,13 +234,13 @@ def usps(info):
 
     # Conversion unit of Dimension
     if info["Dimension units"] != "inches":  # CM to Inches
-        info["Height"] = float(info["Height"]) * 0.393700787
-        info["Length"] = float(info["Length"]) * 0.393700787
-        info["Width"] = float(info["Width"]) * 0.393700787
+        info["Height"] = round(float(info["Height"]) * 0.393700787, 2)
+        info["Length"] = round(float(info["Length"]) * 0.393700787, 2)
+        info["Width"] = round(float(info["Width"]) * 0.393700787, 2)
 
     # Conversion unit of Weight
     if info["Weight unit"] != "pounds":  # KG to pounds
-        info["Weight"] = float(info["Weight"]) * 2.20462262
+        info["Weight"] = round(float(info["Weight"]) * 2.20462262, 2)
 
     try:
         pack = Package(
@@ -234,8 +255,6 @@ def usps(info):
         validation = usps_api.shipping_rate(pack)
         return validation.rst
     except Exception as e:
-
-
         print('USPS error information:' + str(e))
         return []
 
@@ -246,7 +265,7 @@ def sendle(info):
     if info["ShipFrom"]["Address"]["CountryCode"] == 'US' and info["ShipTo"]["Address"]["CountryCode"] == 'US':
         # Conversion unit of Weight
         if info["Weight unit"] != "pounds":  # KG to pounds
-            info["Weight"] = float(info["Weight"]) * 2.20462262
+            info["Weight"] = round(float(info["Weight"]) * 2.20462262, 2)
 
         if float(info["Weight"]) > 70:
             print('In US, the maximum per package weight is 70 pounds.')
@@ -265,7 +284,7 @@ def sendle(info):
     elif info["ShipFrom"]["Address"]["CountryCode"] == 'AU':
         # Conversion unit of Weight
         if info["Weight unit"] == "pounds":  # pounds to KG
-            info["Weight"] = float(info["Weight"]) / 2.20462262
+            info["Weight"] = round(float(info["Weight"]) / 2.20462262, 2)
 
         if float(info["Weight"]) > 25:
             print('In Austria, the maximum per package weight is 25 kilograms.')
@@ -304,14 +323,23 @@ def sendle(info):
         rst = list()
         for i in r.json():
             # print(i)
-            if info["ShipTo"]["Address"]["CountryCode"] == 'AU':
+            try:
+                shipping_time = sendle_time(i['eta']['date_range'],
+                                            i['eta']['for_pickup_date'])
+            except:
+                shipping_time = '-'
+
+            if info["ShipFrom"]["Address"]["CountryCode"] == 'AU':
                 rst.append({"Company": "Sendle",
                             'Service': str(i['plan_name']),
-                            'Money': str(float(i['quote']['gross']['amount']) * 0.72)})
+                            'Money': '$' + ' ' + str(float(i['quote']['gross']['amount']) * 0.72),
+                            'Time': shipping_time})
+
             elif info["ShipFrom"]["Address"]["CountryCode"] == 'US':
                 rst.append({"Company": "Sendle",
                             'Service': str(i['plan_name']),
-                            'Money': str(i['quote']['gross']['amount'])})
+                            'Money': '$' + ' ' + str(i['quote']['gross']['amount']),
+                            'Time': shipping_time})
 
         return rst
 

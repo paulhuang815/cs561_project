@@ -5,6 +5,8 @@ import xmltodict
 from datetime import datetime, timedelta
 from lxml import etree
 
+from home.shipping_time import usps_time
+
 country_dict = {'AD': 'Andorra', 'AE': 'United Arab Emirates', 'AF': 'Afghanistan', 'AG': 'Antigua and Barbuda',
                 'AI': 'Anguilla', 'AL': 'Albania', 'AM': 'Armenia', 'AO': 'Angola', 'AR': 'Argentina', 'AT': 'Austria',
                 'AU': 'Australia', 'AZ': 'Azerbaijan', 'BB': 'Barbados', 'BD': 'Bangladesh', 'BE': 'Belgium',
@@ -96,8 +98,12 @@ class ShippingRate(object):
                 i['MailService'] = i['MailService'].replace('&lt;sup&gt;&#174;&lt;/sup&gt;', '')
                 i['MailService'] = i['MailService'].replace('&lt;sup&gt;&#8482;&lt;/sup&gt;', '')
                 # print(i['MailService'])
-                self.rst.append({"Company": "USPS", 'Service': str(i['MailService']),
-                                 'Money': str(i['Rate'])})
+
+                shipping_time = usps_time(str(i['SvcDescription']), "US", str(package.country))
+                self.rst.append({"Company": "USPS",
+                                 'Service': str(i['MailService']),
+                                 'Money': '$' + ' ' + str(i['Rate']),
+                                 'Time': shipping_time})
         else:
             result = usps.send_request('intl_rate', xml)
             for i in result['IntlRateV2Response']['Package']['Service']:
@@ -105,8 +111,12 @@ class ShippingRate(object):
                 i['SvcDescription'] = i['SvcDescription'].replace('&lt;sup&gt;&#174;&lt;/sup&gt;', '')
                 i['SvcDescription'] = i['SvcDescription'].replace('&lt;sup&gt;&#8482;&lt;/sup&gt;', '')
                 # print(i['SvcDescription'])
-                self.rst.append({"Company": "USPS", 'Service': str(i['SvcDescription']),
-                                 'Money': str(i['Postage'])})
+
+                shipping_time = usps_time(str(i['SvcDescription']), "US", str(package.country))
+                self.rst.append({"Company": "USPS",
+                                 'Service': str(i['SvcDescription']),
+                                 'Money': '$' + ' ' + str(i['Postage']),
+                                 'Time': shipping_time})
 
 
 class Package(object):
