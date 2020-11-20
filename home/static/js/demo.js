@@ -19,16 +19,23 @@ $(document).ready(function () {
                     alert('Address is wrong, please check');
                 }
                 $('tbody tr').click(function (element) {
-                    var td = $(element.currentTarget.firstChild).text();
+                    var td = $(element.currentTarget.firstChild.lastChild).text();
                     var ul = '';
-                    if (td.indexOf('UPS') > 0) {
+                    switch (td) {
+                    case "UPS":
                         ul = "https://www.ups.com/us/en/global.page";
-                    } else if (td.indexOf('Fedex') > 0) {
+                        break;
+                    case "Fedex":
                         ul = "https://www.fedex.com/en-us/home.html";
-                    } else if (td.indexOf('USPS') > 0) {
+                        break;
+                    case "USPS":
                         ul = "https://www.usps.com/ship/";
-                    } else if (td.indexOf('Sendle') > 0) {
+                        break;
+                    case "Sendle":
                         ul = "https://try.sendle.com/en-us/pricing";
+                        break;
+                    default:
+                        break;
                     }
                     window.open(ul);
                 });
@@ -41,13 +48,13 @@ $(document).ready(function () {
                 "render": function (data) {
                     switch (data) {
                     case "UPS":
-                        return '<img src="static/image/ups.png" style="width:105px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--&nbsp;UPS-->';
+                        return '<img src="static/image/ups.png" style="width:105px;"><div style="display:none">UPS</div>';
                     case "Fedex":
-                        return '<img src="static/image/fedex.png" style="width:110px;">&nbsp;&nbsp;&nbsp;&nbsp;<!--&nbsp;Fedex-->';
+                        return '<img src="static/image/fedex.png" style="width:110px;"><div style="display:none">Fedex</div>';
                     case "USPS":
-                        return '<img src="static/image/usps_new.png" style="width:110px;">&nbsp;&nbsp;&nbsp;&nbsp;<!--&nbsp;USPS-->';
+                        return '<img src="static/image/usps_new.png" style="width:110px;"><div style="display:none">USPS</div>';
                     case "Sendle":
-                        return '<img src="static/image/sendle.png" style="width:110px;">&nbsp;&nbsp;&nbsp;&nbsp;<!--&nbsp;Sendle-->';
+                        return '<img src="static/image/sendle.png" style="width:110px;"><div style="display:none">Sendle</div>';
                     default:
                         return data;
                     }
