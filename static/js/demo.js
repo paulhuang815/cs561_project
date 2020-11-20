@@ -10,7 +10,7 @@ $(document).ready(function () {
         "iDisplayLength": 25,
         "paging": false,
         "deferLoading": 0, //載入時不執行查詢
-        "order": [[2, "asc"]],
+        "order": [[3, "asc"]],
         "info": true,
         "drawCallback": function (setting) {
             var result = setting.json;
@@ -61,6 +61,7 @@ $(document).ready(function () {
                 }
             },
             {"data": "Service", "orderable": true},
+            {"data": "Time", "orderable": true},
             {"data": "Money", "orderable": true},
             {
                 "data": "Company",
