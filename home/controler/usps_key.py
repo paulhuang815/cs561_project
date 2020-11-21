@@ -93,13 +93,15 @@ class ShippingRate(object):
         self.rst = list()
         if package.country == 'US':
             result = usps.send_request('dom_rate', xml)
+            # print(result)
             for i in result['RateV4Response']['Package']['Postage']:
+                # print(i)
                 # print(i['Rate'])
                 i['MailService'] = i['MailService'].replace('&lt;sup&gt;&#174;&lt;/sup&gt;', '')
                 i['MailService'] = i['MailService'].replace('&lt;sup&gt;&#8482;&lt;/sup&gt;', '')
                 # print(i['MailService'])
 
-                shipping_time = usps_time(str(i['SvcDescription']), "US", str(package.country))
+                shipping_time = usps_time(str(i['MailService']), "US", str(package.country))
                 self.rst.append({"Company": "USPS",
                                  'Service': str(i['MailService']),
                                  'Money': '$' + ' ' + str(i['Rate']),
