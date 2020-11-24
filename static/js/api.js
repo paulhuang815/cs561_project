@@ -205,12 +205,12 @@ function getKeyByValue(object, value) {
     }
 
     $("#From_AddressLine").focus(function() {
-        $('#From_AddressLine').attr('autocomplete', 'nope');
+        $('#From_AddressLine').attr('autocomplete', 'new-password');
         geolocate_from();
     });
 
     $("#To_AddressLine").focus(function() {
-        $('#To_AddressLine').attr('autocomplete', 'nope');
+        $('#To_AddressLine').attr('autocomplete', 'new-password');
         geolocate_to();
     });
 
