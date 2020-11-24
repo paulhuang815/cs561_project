@@ -66,19 +66,8 @@ $(document).ready(function () {
             {
                 "data": "Company",
                 "orderable": false,
-                "render": function (data) {
-                    switch (data) {
-                    case "UPS":
-                        return '<a href="https://www.ups.com/us/en/global.page" type="button" class="" target="_blank"><i class="fas fa-chevron-right fa-2x"></i></a>';
-                    case "Fedex":
-                        return '<a href="https://www.fedex.com/en-us/home.html" type="button" class="" target="_blank"><i class="fas fa-chevron-right fa-2x"></i></a>';
-                    case "USPS":
-                        return '<a href="https://www.usps.com/ship/" type="button" class="" target="_blank"><i class="fas fa-chevron-right fa-2x"></i></a>';
-                    case "Sendle":
-                        return '<a href="https://try.sendle.com/en-us/pricing" type="button" class="" target="_blank"><i class="fas fa-chevron-right fa-2x"></i></a>';
-                    default:
-                        return data;
-                    }
+                "render": function () {
+                    return '<i class="fas fa-chevron-right fa-2x" style="color: #007bff;"></i>';
                 }
             }
         ]
