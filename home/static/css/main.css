@@ -3,12 +3,10 @@
   font-size: 1.3rem;
 
 }
-.form-control::placeholder{
+.form-control::placeholder {
   color: #D0D0D0;
-
 }
-.input-group-text{
-  font-size:
+.input-group-text {
   width: 82px;
 }
 /* -------------------unit button-------------------*/
@@ -292,6 +290,14 @@ hr.style-one {
   border-bottom: 3px solid #80CED8;
 }
 
+.input-group {
+  padding-left: 2rem;
+}
+
+.input-group input {
+  text-align: center;
+}
+
 .input-group-text {
   color: #3498db;
   background: none;
@@ -385,22 +391,16 @@ tbody tr td:nth-of-type(5) {
 
 @media (min-width: 701px) and (max-width: 870px) {
 
-  tbody tr td:nth-of-type(2) {
+  tbody tr td:nth-of-type(5) {
     display: none;
   }
-  thead tr th:nth-of-type(2) {
+  thead tr th:nth-of-type(5) {
     display: none;
   }
 }
 
 @media (min-width: 400px) and (max-width: 700px) {
 
-  tbody tr td:nth-of-type(2) {
-    display: none;
-  }
-  thead tr th:nth-of-type(2) {
-    display: none;
-  }
   tbody tr td:nth-of-type(5) {
     display: none;
   }
