@@ -8,17 +8,17 @@
     "Weight": "50",
     "ShipFrom": {
       "Address": {
-        "AddressLine": "366 Robin LN SE",
-        "City": "Marietta",
+        "AddressLine": "3665 Northwest 32nd Avenue, Vancouver, WA, USA",
+        "City": "Vancouver",
         "CountryCode": "US",
-        "PostalCode": "30067",
-        "StateProvinceCode": "GA"
+        "PostalCode": "98660",
+        "StateProvinceCode": "WA"
       }
     },
     "ShipTo": {
       "Address": {
-        "AddressLine": "2614 Sw Western Blvd Apt 9",
-        "City": "CORVALLIS",
+        "AddressLine": "2614 Southwest Western Boulevard, Corvallis, OR, USA",
+        "City": "Corvallis",
         "CountryCode": "US",
         "PostalCode": "97333",
         "StateProvinceCode": "OR"

@@ -8,7 +8,7 @@
 
 }
 .input-group-text{
-  font-size: 1.3rem;
+  font-size:
   width: 82px;
 }
 /* -------------------unit button-------------------*/
@@ -352,4 +352,59 @@ tbody tr td:nth-of-type(4) {
 
 tbody tr td:nth-of-type(5) {
   text-align: center;
+}
+
+
+@media (min-width: 1281px) and (max-width: 1360px) {
+
+  .container.b {
+    margin-left: 100px;
+  }
+}
+
+@media (min-width: 871px) and (max-width: 1280px) {
+
+  .container.b {
+    margin-left: 50px;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 870px) {
+
+  .container.b {
+    margin-left: 0px;
+  }
+  .container.b font {
+    size: 6;
+  }
+  .container.b img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 870px) {
+
+  tbody tr td:nth-of-type(2) {
+    display: none;
+  }
+  thead tr th:nth-of-type(2) {
+    display: none;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 700px) {
+
+  tbody tr td:nth-of-type(2) {
+    display: none;
+  }
+  thead tr th:nth-of-type(2) {
+    display: none;
+  }
+  tbody tr td:nth-of-type(5) {
+    display: none;
+  }
+  thead tr th:nth-of-type(5) {
+    display: none;
+  }
 }
