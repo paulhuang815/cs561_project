@@ -317,14 +317,34 @@ function getKeyByValue(object, value) {
 //           closeAllLists(e.target);
 //       });
 //   }
+  function ChangeSizeUnit(){
+      var inCheckbox = document.getElementById('t1').checked;
+      var unit = inCheckbox ? 'inches' : 'cm';
+      var getUnits = document.getElementsByClassName('input-group-text');
+      // for(var unit of unit_var) {
+      //   unit.innerHTML = "cm"
+      // }
+      getUnits[0].innerHTML = unit;
+      getUnits[1].innerHTML = unit;
+      getUnits[2].innerHTML = unit;
+  }
 
+  function ChangeWeightUnit(){
+      var inCheckbox = document.getElementById('t3').checked;
+      var unit = inCheckbox ? 'pounds' : 'kg';
+      var getUnits = document.getElementsByClassName('input-group-text');
+
+      getUnits[3].innerHTML = unit;
+  }
 
   function TestSize(){
       var height = document.getElementById('Height').value;
       var Length = document.getElementById('Length').value;
       var Width = document.getElementById('Width').value;
       var reg = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/;
-      var unit1 = document.getElementById('Dimension_units').value;
+      // var unit1 = document.getElementById('Dimension_units').value;
+      var unit = document.getElementById('t1').checked;
+      var unit1 = unit ? 'in' : 'cm';
 
       if( height == '' || Length == '' || Width == ''){
           document.getElementById('waring1p').innerHTML = 'Package dimensions must be at least 1 in for Length, 1 in for Width, and 1 in for Height. Please enter an amount for each of the dimensions fields.';
@@ -372,11 +392,13 @@ function getKeyByValue(object, value) {
   function TestWeight(){
 
       var weight = document.getElementById('Weight').value;
-      var unit23 = document.getElementById('Weight_unit').value;
+      // var unit23 = document.getElementById('Weight_unit').value;
       var reg = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/;
+      var unit = document.getElementById('t3').checked;
+      var unit1 = unit ? 'lb' : 'kg';
       //alert();
 
-      if (unit23 == 'kilograms') {
+      if (unit1 == 'kg') {
           weight = weight * 2.20462262;
       }
 

@@ -13,7 +13,33 @@
 
         <div class="form-group">
             <div class="container">
-                <div class="row">
+                <div class="row" display= "flex">
+                    <div class="col-md-1">
+                        <label for="Units">Units</label>
+                    </div>
+                    <!-- <div class="col-md-3">
+                        <select class="form-control" name="Dimension_units" id="Dimension_units"
+                                placeholder="choose one" onchange="TestSize()">
+                            <option value="inches">inches</option>
+                            <option value="cm">cm</option>
+                        </select>
+                    </div> -->
+                    <div class="tabber col-md-3" display= "flex">
+                        <label for="t1">in</label>
+                        <input id="t1" name="Dimension_units" type="radio" checked onchange="ChangeSizeUnit()" value="inches">
+                        <label for="t2">cm</label>
+                        <input id="t2" name="Dimension_units" type="radio" onchange="ChangeSizeUnit()" value="cm">
+                        <div class="blob"></div>
+                        <div name="unit_border" style="border: 0.2rem cornflowerblue;border-style: solid; border-radius: 1.5rem; width: 9.4rem;height: 1rem; padding-top: 2.6rem; margin-left: -4.4rem;z-index: -2;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="container">
+                <div class="row" display= "flex">
                     <div class="col-md-1">
                         <label for="length">Length</label>
                     </div>
@@ -48,22 +74,7 @@
 
             </div>
         </div>
-        <div class="form-group">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-1">
-                        <label for="Units">Units</label>
-                    </div>
-                    <div class="col-md-3">
-                        <select class="form-control" name="Dimension_units" id="Dimension_units"
-                                placeholder="choose one" onchange="TestSize()">
-                            <option value="inches">inches</option>
-                            <option value="cm">cm</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <div style="margin-bottom: 30px;display: none;" id="waring1">
             <p id ="waring1p">Package exceeds the maximum size total constraints of 165 inches <br> hint: (length + girth, where girth is 2 x width plus 2 x height) </p>
         </div>
@@ -74,7 +85,26 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-1">
-                        <label for="weight">Weight</label>
+                        <label for="Units">Units</label>
+                    </div>
+                    <div class="tabber col-md-3" display= "flex">
+                        <label for="t3">lb</label>
+                        <input id="t3" name="Weight_unit" type="radio" checked onchange="ChangeWeightUnit()" value="pounds">
+                        <label for="t4">kg</label>
+                        <input id="t4" name="Weight_unit" type="radio" onchange="ChangeWeightUnit()" value="kilograms">
+                        <div class="blob" style="margin-left:-9.2rem"></div>
+                        <div name="unit_border" style="border: 0.2rem cornflowerblue;border-style: solid; border-radius: 1.5rem; width: 9.4rem;height: 1rem; padding-top: 2.6rem; margin-left: -4.4rem;z-index: -2;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1">
+                        <label for="Weight">Weight</label>
                     </div>
                     <div class="col-md-3 input-group">
                         <input type="text" class="form-control" id="Weight" name="Weight"
@@ -83,22 +113,12 @@
                             <span class="input-group-text weight">pounds</span>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <!-- <div class="col-md-2">
                         <select class="form-control" name="Weight_unit" id="Weight_unit" placeholder="choose one" onchange="TestWeight()">
                             <option value="pounds">pounds</option>
                             <option value="kilograms">kilograms</option>
                         </select>
-                    </div>
-
-                    {#                    <div class="col-md-1">#}
-                    {#                        <label for="Units">Units</label>#}
-                    {#                    </div>#}
-                    {#                    <div class="col-md-3">#}
-                    {#                        <select class="form-control" name="Weight unit" id="Weight unit" placeholder="choose one">#}
-                    {#                            <option value="pounds">pounds</option>#}
-                    {#                            <option value="kilograms">kilograms</option>#}
-                    {#                        </select>#}
-                    {#                    </div>#}
+                    </div> -->
                 </div>
             </div>
         </div>
