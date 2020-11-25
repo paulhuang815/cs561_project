@@ -20,49 +20,7 @@
         }
         p {color:red}
 
-    #msg{
-        width:266px;
-        position: fixed;
-        z-index:999;
-        top: 49%;
-        margin-top:-80px;
-        left:50%;
-        margin-left:-133px;
-        background:#fff;
-        box-shadow:5px 5px 8px #999;
-        font-size:17px;
-        color:#666;
-        border:1px solid #f8f8f8;
-        text-align: center;
-        line-height: 2rem;
-        display:inline-block;
-        padding-bottom:20px;
-        border-radius:2px;
-    }
-    #msg_top{
-        background:#f8f8f8;
-        padding:5px 15px 5px 20px;
-        text-align:left;
-    }
-    #msg_top span{
-        font-size:22px;
-        float:right;
-        cursor:pointer;
-    }
-    #msg_cont{
-        padding:15px 20px 20px;
-        text-align:left;
-    }
-    #msg_clear{
-        display:inline-block;
-        color:#fff;
-        padding:1px 15px;
-        background:#8fc31f;
-        border-radius:2px;
-        float:right;
-        margin-right:15px;
-        cursor:pointer;
-    }
+    
 
     </style>
     <meta charset="UTF-8">
@@ -85,10 +43,10 @@
     {#    <button class="btn btn-lg col-3 heading-button">Map</button>#}
     {#    <button class="btn btn-lg col-3 heading-button" onclick="location.href='{% url 'home-weather' %}'">Weather</button>#}
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: whitesmoke;">
-        <div class="d-flex flex-grow-1" style="margin-left:150px;">
+        <div class="d-flex flex-grow-1" style="margin-left:5%;">
             {#            <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>#}
-            <a class="navbar-brand d-none d-lg-inline-block" href="">
-                <img src="/static/image/icon_n.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <a class="navbar-brand d-none d-lg-inline-block" href="" style="font-size:2rem;">
+                <img src="/static/image/icon_n.png" width="50" height="50" class="d-inline-block align-top" alt="">
                 Shipping Cheap
             </a>
             {#            <a class="navbar-brand-two mx-auto d-lg-none d-inline-block" href="#">#}
@@ -106,7 +64,7 @@
                     <a href="#" class="nav-link m-2 menu-item nav-active">Our Goal</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link m-2 menu-item">About us</a>
+                    <a href="#" class="nav-link m-2 menu-item" onclick="skipAboutUs()">About us</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link m-2 menu-item">Contact</a>

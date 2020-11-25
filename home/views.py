@@ -110,7 +110,7 @@ def input(request):  # This function is get data from web and call api then retu
 
     # change the web data to json.
     inputdata = inputtojson(inputdata)
-
+    
     # call the ups api and get response data.
     result = shipping_api(inputdata)
 
@@ -119,12 +119,14 @@ def input(request):  # This function is get data from web and call api then retu
     #     {
     #         "Company": "UPS",
     #         "Service": "Saver",
-    #         "Money": "1552.60",
+    #         "Money": "$ 1552.60",
+    #         "Time" : "1 Day",
     #     },
     #     {
     #         "Company": "Fedex",
     #         "Service": "Worldwide Expedited",
-    #         "Money": "932.72",
+    #         "Money": "$ 932.72",
+    #         "Time" : "2 Day",
     #     },
     # ]
     # }

@@ -9,9 +9,12 @@ $(document).ready(function () {
 
     window.alert =alert;
     function alert(e){
-        $("body").append('<div id="msg"><div id="msg_top">信息<span class="msg_close">×</span></div><div id="msg_cont">'+e+'</div><div class="msg_close" id="msg_clear">关闭</div></div>');
+        $("body").append('<div class="zhezhao" id="zhezhao"></div><div id="msg"><div id="msg_top">warning<span class="msg_close">×</span></div><div id="msg_cont">'+e+'</div><div class="msg_close" id="msg_clear">close</div></div>');
+        document.body.style.overflow = "hidden"
         $(".msg_close").click(function (){
             $("#msg").remove();
+            $("#zhezhao").remove();
+            document.body.style.overflow = "visible"
         });
     }
     //$('input').attr('autocomplete', 'address');
@@ -25,7 +28,7 @@ $(document).ready(function () {
         "iDisplayLength": 25,
         "paging": false,
         "deferLoading": 0, //載入時不執行查詢
-        "order": [[2, "asc"]],
+        "order": [[3, "asc"]],
         "info": true,
         "drawCallback": function (setting) {
             var result = setting.json;
@@ -41,6 +44,27 @@ $(document).ready(function () {
                     $('html,body').animate({
                         scrollTop: $("#submit").offset().top},'slow');
                 }
+                $('tbody tr').click(function (element) {
+                    var td = $(element.currentTarget.firstChild.lastChild).text();
+                    var ul = '';
+                    switch (td) {
+                    case "UPS":
+                        ul = "https://www.ups.com/us/en/global.page";
+                        break;
+                    case "Fedex":
+                        ul = "https://www.fedex.com/en-us/home.html";
+                        break;
+                    case "USPS":
+                        ul = "https://www.usps.com/ship/";
+                        break;
+                    case "Sendle":
+                        ul = "https://try.sendle.com/en-us/pricing";
+                        break;
+                    default:
+                        break;
+                    }
+                    window.open(ul);
+                });
             }
             
         },
@@ -51,45 +75,36 @@ $(document).ready(function () {
                 "render": function (data) {
                     switch (data) {
                     case "UPS":
-                        return '<img src="static/image/ups.png" style="width:45px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UPS';
+                        return '<img src="static/image/ups.png" style="width:105px;"><div style="display:none">UPS</div>';
                     case "Fedex":
-                        return '<img src="static/image/fedex.png" style="width:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fedex';
+                        return '<img src="static/image/fedex.png" style="width:110px;"><div style="display:none">Fedex</div>';
                     case "USPS":
-                        return '<img src="static/image/usps.png" style="width:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;USPS';
+                        return '<img src="static/image/usps_new.png" style="width:110px;"><div style="display:none">USPS</div>';
                     case "Sendle":
-                        return '<img src="static/image/sendle.png" style="width:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sendle';
+                        return '<img src="static/image/sendle.png" style="width:110px;"><div style="display:none">Sendle</div>';
                     default:
                         return data;
                     }
                 }
             },
             {"data": "Service", "orderable": true},
+            {"data": "Time", "orderable": true},
             {"data": "Money", "orderable": true},
             {
                 "data": "Company",
                 "orderable": false,
-                "render": function (data) {
-                    switch (data) {
-                    case "UPS":
-                        return '<a href="https://www.ups.com/us/en/global.page" type="button" class="btn btn-primary btn-sm" target="_blank">Go to</a>';
-                    case "Fedex":
-                        return '<a href="https://www.fedex.com/en-us/home.html" type="button" class="btn btn-primary btn-sm" target="_blank">Go to</a>';
-                    case "USPS":
-                        return '<a href="https://www.usps.com/ship/" type="button" class="btn btn-primary btn-sm" target="_blank">Go to</a>';
-                    case "Sendle":
-                        return '<a href="https://try.sendle.com/en-us/pricing" type="button" class="btn btn-primary btn-sm" target="_blank">Go to</a>';
-                    default:
-                        return data;
-                    }
+                "render": function () {
+                    return '<i class="fas fa-chevron-right fa-2x" style="color: #007bff;"></i>';
                 }
             }
         ]
     });
 
+
     $('#submit').click(function () {
         //alert('e');
         //$('.cscz').removeAttr('disabled');
-
+        table.clear();
         table.ajax.url('input/?' + $('#search_form').serialize()).load();
 
         //$('#divtable').css("visibility", "visible");

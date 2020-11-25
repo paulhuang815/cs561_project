@@ -205,12 +205,12 @@ function getKeyByValue(object, value) {
     }
 
     $("#From_AddressLine").focus(function() {
-        $('#From_AddressLine').attr('autocomplete', 'nope');
+        $('#From_AddressLine').attr('autocomplete', 'new-password');
         geolocate_from();
     });
 
     $("#To_AddressLine").focus(function() {
-        $('#To_AddressLine').attr('autocomplete', 'nope');
+        $('#To_AddressLine').attr('autocomplete', 'new-password');
         geolocate_to();
     });
 
@@ -317,14 +317,35 @@ function getKeyByValue(object, value) {
 //           closeAllLists(e.target);
 //       });
 //   }
+  function ChangeSizeUnit(){
+      var inCheckbox = document.getElementById('t1').checked;
+      var unit = inCheckbox ? 'inches' : 'cm';
+      var getUnits = document.getElementsByClassName('input-group-text');
+      // for(var unit of unit_var) {
+      //   unit.innerHTML = "cm"
+      // }
+      getUnits[0].innerHTML = unit;
+      getUnits[1].innerHTML = unit;
+      getUnits[2].innerHTML = unit;
+  }
 
+  function ChangeWeightUnit(){
+      var inCheckbox = document.getElementById('t3').checked;
+      var unit = inCheckbox ? 'pounds' : 'kg';
+      var getUnits = document.getElementsByClassName('input-group-text');
+
+      getUnits[3].innerHTML = unit;
+  }
 
   function TestSize(){
+      
       var height = document.getElementById('Height').value;
       var Length = document.getElementById('Length').value;
       var Width = document.getElementById('Width').value;
       var reg = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/;
-      var unit1 = document.getElementById('Dimension_units').value;
+      // var unit1 = document.getElementById('Dimension_units').value;
+      var unit = document.getElementById('t1').checked;
+      var unit1 = unit ? 'in' : 'cm';
 
       if( height == '' || Length == '' || Width == ''){
           document.getElementById('waring1p').innerHTML = 'Package dimensions must be at least 1 in for Length, 1 in for Width, and 1 in for Height. Please enter an amount for each of the dimensions fields.';
@@ -364,9 +385,6 @@ function getKeyByValue(object, value) {
           document.getElementById('waring1').style.display ="none";
           document.getElementById('submit').disabled = 'none';
           sizePass = true;
-          
-          alert('124');
-          
           FinalTest();
       }
 
@@ -375,11 +393,13 @@ function getKeyByValue(object, value) {
   function TestWeight(){
 
       var weight = document.getElementById('Weight').value;
-      var unit23 = document.getElementById('Weight_unit').value;
+      // var unit23 = document.getElementById('Weight_unit').value;
       var reg = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/;
+      var unit = document.getElementById('t3').checked;
+      var unit1 = unit ? 'lb' : 'kg';
       //alert();
 
-      if (unit23 == 'kilograms') {
+      if (unit1 == 'kg') {
           weight = weight * 2.20462262;
       }
 
@@ -466,51 +486,12 @@ function getKeyByValue(object, value) {
 
   }
 
-window.alert = alert;
-        function alert(data) {
-            var a = document.createElement("div"),
-                p = document.createElement("p"),
-                btn = document.createElement("div"),
-                textNode = document.createTextNode(data ? data : ""),
-                btnText = document.createTextNode("确定");
-            // 控制样式
-            css(a, {
-                "position" : "fixed",
-                "left" : "0",
-                "right" : "0",
-                "top" : "20%",
-                "width" : "100px",
-                "margin" : "0 auto",
-                "background-color" : "#f00",
-                "font-size" : "20px",
-                "text-align" : "center"
-            });
-            css(btn, {
-                "background" : "blue",
-            })
-            // 内部结构套入
-            p.appendChild(textNode);
-            btn.appendChild(btnText);
-            a.appendChild(p);
-            a.appendChild(btn);
-            // 整体显示到页面内
-            document.getElementsByTagName("body")[0].appendChild(a);
- 
-            // 确定绑定点击事件删除标签
-            btn.onclick = function() {
-                a.parentNode.removeChild(a);
-            }
-        }
-        function css(targetObj, cssObj) {
-            var str = targetObj.getAttribute("style") ? targetObj.getAttribute("style") : "";
-            for(var i in cssObj) {
-                str += i + ":" + cssObj[i] + ";";
-            }
-            targetObj.style.cssText = str;
-        }
-
   function skip(){
     $('html,body').animate({
         scrollTop: $("#submit").offset().top},'slow');
   }
 
+  function skipAboutUs(){
+    $('html,body').animate({
+        scrollTop: $("#AboutUs").offset().top},'slow');
+  }

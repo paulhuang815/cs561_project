@@ -102,8 +102,6 @@
         "StateProvinceCode": "BJ"
       }
     }
-<<<<<<< HEAD
-=======
   },
   "5": {
     "Dimension units": "inches",
@@ -130,7 +128,6 @@
         "StateProvinceCode": "OR"
       }
     }
->>>>>>> ccc66cb351c458f49758792be44f5f169a774b2a
   }
 }
 
