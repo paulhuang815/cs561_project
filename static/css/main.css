@@ -408,3 +408,14 @@ tbody tr td:nth-of-type(5) {
     display: none;
   }
 }
+
+input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{
+  -webkit-appearance:none !important;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input[type="number"]{
+  -moz-appearance:none !important;
+}
