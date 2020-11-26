@@ -1,10 +1,4 @@
 
- 
-
-
-
-
-
 $(document).ready(function () {
 
     function alert(e) {
@@ -16,7 +10,7 @@ $(document).ready(function () {
             document.body.style.overflow = "visible";
         });
     }
-    //window.alert = alert;
+    window.alert = alert;
     //$('input').attr('autocomplete', 'address');
     //$('.cscz').css('display', 'none');
     //$('#From_AddressLine').attr('autocomplete', 'nope');
