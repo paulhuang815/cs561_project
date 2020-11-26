@@ -338,6 +338,7 @@ function getKeyByValue(object, value) {
   }
 
   function TestSize(){
+      
       var height = document.getElementById('Height').value;
       var Length = document.getElementById('Length').value;
       var Width = document.getElementById('Width').value;
@@ -485,3 +486,12 @@ function getKeyByValue(object, value) {
 
   }
 
+  function skip(){
+    $('html,body').animate({
+        scrollTop: $("#submit").offset().top},'slow');
+  }
+
+  function skipAboutUs(){
+    $('html,body').animate({
+        scrollTop: $("#AboutUs").offset().top},'slow');
+  }

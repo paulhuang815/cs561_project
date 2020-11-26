@@ -1,4 +1,22 @@
+
+ 
+
+
+
+
+
 $(document).ready(function () {
+
+    window.alert =alert;
+    function alert(e){
+        $("body").append('<div class="zhezhao" id="zhezhao"></div><div id="msg"><div id="msg_top">warning<span class="msg_close">×</span></div><div id="msg_cont">'+e+'</div><div class="msg_close" id="msg_clear">close</div></div>');
+        document.body.style.overflow = "hidden"
+        $(".msg_close").click(function (){
+            $("#msg").remove();
+            $("#zhezhao").remove();
+            document.body.style.overflow = "visible"
+        });
+    }
     //$('input').attr('autocomplete', 'address');
     //$('.cscz').css('display', 'none');
     //$('#From_AddressLine').attr('autocomplete', 'nope');
@@ -14,9 +32,17 @@ $(document).ready(function () {
         "info": true,
         "drawCallback": function (setting) {
             var result = setting.json;
+            
             if (result !== undefined) {
                 if (result.data.length === 0) {
                     alert('Address is wrong, please check');
+                    window.location.hash = "#book";
+                    $('html,body').animate({
+                        scrollTop: $("#ShippingFrom").offset().top},'slow');
+                }
+                else {
+                    $('html,body').animate({
+                        scrollTop: $("#submit").offset().top},'slow');
                 }
                 $('tbody tr').click(function (element) {
                     var td = $(element.currentTarget.firstChild.lastChild).text();
@@ -40,6 +66,7 @@ $(document).ready(function () {
                     window.open(ul);
                 });
             }
+            
         },
         "columns": [
             {
