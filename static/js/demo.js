@@ -77,7 +77,7 @@ $(document).ready(function () {
     $('#submit').click(function () {
         //alert('e');
         //$('.cscz').removeAttr('disabled');
-        table.clear();
+        $('#datatable').dataTable().fnClearTable();
         table.ajax.url('input/?' + $('#search_form').serialize()).load();
 
         //$('#divtable').css("visibility", "visible");
