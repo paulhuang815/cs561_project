@@ -195,18 +195,28 @@ def fedex(info):
     package1.GroupPackageCount = 1
     rate.add_package(package1)
 
+    # shipping time
+    from fedex.services.availability_commitment_service import FedexAvailabilityCommitmentRequest
+    avc_request = FedexAvailabilityCommitmentRequest(CONFIG_OBJ)
+    avc_request.Origin.PostalCode = info["ShipFrom"]["Address"]["PostalCode"]
+    avc_request.Origin.CountryCode = info["ShipFrom"]["Address"]["CountryCode"]
+    avc_request.Destination.PostalCode = info["ShipTo"]["Address"]["PostalCode"]
+    avc_request.Destination.CountryCode = info["ShipTo"]["Address"]["CountryCode"]
+
     # Try operation
     try:
         # send request
         rate.send_request()
+        avc_request.send_request()
+        # print(type(avc_request.response.Options))
+        # for i in avc_request.response.Options:
+        #     print(dict(i))
 
         rst = list()
         for service in rate.response.RateReplyDetails:
             for rate_detail in service.RatedShipmentDetails:
                 # shipping time
-                shipping_time = fedex_time(str(service.ServiceType),
-                                           info["ShipFrom"]["Address"]["CountryCode"],
-                                           info["ShipTo"]["Address"]["CountryCode"])
+                shipping_time = fedex_time(str(service.ServiceType), avc_request.response.Options)
                 # service name
                 try:
                     ser_name = str(service.ServiceType).replace('_', ' ')
