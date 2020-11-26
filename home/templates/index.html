@@ -1,7 +1,10 @@
 {% extends "master.html" %}
 
 {% block content %}
-
+    <div class="form-group">
+        <h1><p style="color: crimson">Type in all your package dimensions and addresses</p></h1>
+        <p style="color: grey">To see all available shipping services</p>
+    </div>
 
 
     <form id="search_form" method="post" class="search_form" autocomplete="off">{% csrf_token %}
@@ -16,7 +19,7 @@
             <div class="container">
                 <div class="row" display= "flex">
                     <div class="col-md-1">
-                        <label for="Units">Units</label>
+                        <h3><p>Units</p></h3>
                     </div>
                     <!-- <div class="col-md-3">
                         <select class="form-control" name="Dimension_units" id="Dimension_units"
@@ -42,7 +45,8 @@
             <div class="container">
                 <div class="row" display= "flex">
                     <div class="col-md-1">
-                        <label for="length">Length</label>
+{#                        <h3><label for="length">Length</label></h3>#}
+                        <h3><p>Length</p></h3>
                     </div>
                     <div class="col-md-3 input-group">
                         <input type="number" class="form-control" id="Length" name="Length"
@@ -52,7 +56,8 @@
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <label for="width">Width</label>
+{#                        <h3><label for="width">Width</label></h3>#}
+                        <h3><p>Width</p></h3>
                     </div>
                     <div class="col-md-3 input-group">
                         <input type="number" class="form-control" id="Width" name="Width"
@@ -62,7 +67,8 @@
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <label for="height">Height</label>
+{#                        <h3><label for="height">Height</label></h3>#}
+                        <h3><p>Height</p></h3>
                     </div>
                     <div class="col-md-3 input-group">
                         <input type="number" class="form-control" id="Height" name="Height"
@@ -75,10 +81,12 @@
 
             </div>
         </div>
-        
-        <div style="margin-bottom: 30px;display: none;" id="waring1">
+        <div class="alert alert-danger" role="alert" style="display: none;" id="waring1">
             <p id ="waring1p">Package exceeds the maximum size total constraints of 165 inches <br> hint: (length + girth, where girth is 2 x width plus 2 x height) </p>
         </div>
+{#        <div style="margin-bottom: 30px;display: none;" id="waring1">#}
+{#            <p id ="waring1p">Package exceeds the maximum size total constraints of 165 inches <br> hint: (length + girth, where girth is 2 x width plus 2 x height) </p>#}
+{#        </div>#}
 
         <hr>
 
@@ -86,7 +94,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-1">
-                        <label for="Units">Units</label>
+{#                        <h3><label for="Units">Units</label></h3>#}
+                        <h3><p>Units</p></h3>
                     </div>
                     <div class="tabber col-md-3" display= "flex">
                         <label for="t3">lb</label>
@@ -105,7 +114,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-1">
-                        <label for="Weight">Weight</label>
+{#                        <h3><label for="Weight">Weight</label></h3>#}
+                        <h3><p>Weight</p></h3>
                     </div>
                     <div class="col-md-3 input-group">
                         <input type="number" class="form-control" id="Weight" name="Weight"
@@ -123,7 +133,10 @@
                 </div>
             </div>
         </div>
-        <div style="margin-bottom: 30px;display: none;" id="waring2">
+{#        <div style="margin-bottom: 30px;display: none;" id="waring2">#}
+{#            <p id ="waring2p">The maximum per package weight is 150.00 pounds. </p>#}
+{#        </div>#}
+        <div class="alert alert-danger" role="alert" style="display: none;" id="waring2">
             <p id ="waring2p">The maximum per package weight is 150.00 pounds. </p>
         </div>
 
@@ -137,7 +150,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2">
-                        <label for="Address">Address</label>
+{#                        <h3><label for="Address">Address</label></h3>#}
+                        <h3><p>Address</p></h3>
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="From_AddressLine" name="From_AddressLine"
@@ -182,7 +196,8 @@
                             placeholder="Enter city" autocomplete="nope">
                     </div>
                     <div class="col-md-2 F_Zip cscz f_group" style="display:none">
-                        <label for="zipcode">Zip Code</label>
+{#                        <h3><label for="zipcode">Zip Code</label></h3>#}
+                        <h3><p>Zip Code</p></h3>
                     </div>
                     <div class="col-md-4 F_Zip cscz f_group" style="display:none">
                         <input type="text" class="form-control" id="From_PostalCode" name="From_PostalCode"
@@ -192,7 +207,11 @@
             </div>
         </div>
 
-        <div style="margin-bottom: 30px;display: none;" id="waring3">
+{#        <div style="margin-bottom: 30px;display: none;" id="waring3">#}
+{#            <p id ="waring3p">The maximum per package weight is 150.00 pounds. </p>#}
+{#        </div>#}
+
+        <div class="alert alert-danger" role="alert" style="display: none;" id="waring3">
             <p id ="waring3p">The maximum per package weight is 150.00 pounds. </p>
         </div>
 
@@ -206,7 +225,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2">
-                        <label for="Address">Address</label>
+{#                        <h3><label for="Address">Address</label></h3>#}
+                        <h3><p>Address</p></h3>
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="To_AddressLine" name="To_AddressLine"
@@ -250,7 +270,8 @@
                                 placeholder="Enter city" autocomplete="nope">
                     </div>
                     <div class="col-md-2 T_Zip cscz t_group" style="display:none">
-                        <label for="zipcode">Zip Code</label>
+{#                        <h3><label for="zipcode">Zip Code</label></h3>#}
+                        <h3><p>Zip Code</p></h3>
                     </div>
                     <div class="col-md-4 T_Zip cscz t_group" style="display:none">
                         <input type="text" class="form-control" id="To_PostalCode" name="To_PostalCode"
@@ -260,9 +281,13 @@
             </div>
         </div>
 
-        <div style="margin-bottom: 30px;display: none;" id="waring4">
+{#        <div style="margin-bottom: 30px;display: none;" id="waring4">#}
+{#            <p id ="waring4p">The maximum per package weight is 150.00 pounds. </p>#}
+{#        </div>#}
+        <div class="alert alert-danger" role="alert" style="display: none;" id="waring4">
             <p id ="waring4p">The maximum per package weight is 150.00 pounds. </p>
         </div>
+
 
         <div class="form-group">
             <div class="text-center">
