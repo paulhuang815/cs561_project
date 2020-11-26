@@ -14,11 +14,12 @@
 
         .cusBackground {
             height: 500px;
-            background-color: lightblue;
+            background-color: lightblue; 
             width: 100%;
             left: 0;
         }
-        p {color:red}
+    
+
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,10 +41,10 @@
     {#    <button class="btn btn-lg col-3 heading-button">Map</button>#}
     {#    <button class="btn btn-lg col-3 heading-button" onclick="location.href='{% url 'home-weather' %}'">Weather</button>#}
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: whitesmoke;">
-        <div class="d-flex flex-grow-1" style="margin-left:150px;">
+        <div class="d-flex flex-grow-1" style="margin-left:5%;">
             {#            <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>#}
-            <a class="navbar-brand d-none d-lg-inline-block" href="">
-                <img src="/static/image/icon_n.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <a class="navbar-brand d-none d-lg-inline-block" href="" style="font-size:2rem;">
+                <img src="/static/image/icon_n.png" width="50" height="50" class="d-inline-block align-top" alt="">
                 Shipping Cheap
             </a>
             {#            <a class="navbar-brand-two mx-auto d-lg-none d-inline-block" href="#">#}
@@ -61,7 +62,7 @@
                     <a href="#" class="nav-link m-2 menu-item nav-active">Our Goal</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link m-2 menu-item">About us</a>
+                    <a href="#" class="nav-link m-2 menu-item" onclick="skipAboutUs()">About us</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link m-2 menu-item">Contact</a>
@@ -120,7 +121,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-<script src="../static/js/demo.js"></script>
-<script src="../static/js/api.js"></script>
+        {% load static %}
+<script type="text/javascript" src="{% static "js/demo.js" %}"></script>
+<script type="text/javascript" src="{% static "js/api.js" %}"></script>
+
 </body>
 </html>
