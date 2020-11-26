@@ -31,7 +31,7 @@ $(document).ready(function () {
                 if (result.data.length === 0) {
                     alert('Address is wrong, please check');
                     window.location.hash = "";
-                    $('html,body').animate({scrollTop: $("#ShippingFrom").offset().top}, 'slow');
+                    $('html,body').animate({scrollTop: $("#Address_line").offset().top}, 'slow');
                 } else {
                     $('html,body').animate({scrollTop: $("#submit").offset().top}, 'slow');
                 }
