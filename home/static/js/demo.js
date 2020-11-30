@@ -103,33 +103,22 @@ $(document).ready(function () {
         TestAddress1();
         TestAddress2();
 
-        if( sizePass == false){
+        if (sizePass === false) {
             alert("The size have problem");
-            $('html,body').animate({
-                scrollTop: $("#itemSize").offset().top},'slow');
-          }
-          else if(weightPass == false ){
+            $('html,body').animate({scrollTop: $("#itemSize").offset().top}, 'slow');
+        } else if (weightPass === false) {
             alert("The weight have problem");
-            $('html,body').animate({
-                scrollTop: $("#itemWeight").offset().top},'slow');
-          }
-        else if( AddressPass1 == false){
+            $('html,body').animate({scrollTop: $("#itemWeight").offset().top}, 'slow');
+        } else if ( AddressPass1 === false) {
             alert("The shipping from address have problem");
-            $('html,body').animate({
-                scrollTop: $("#ShippingFrom").offset().top},'slow');
-        }
-        else if(AddressPass2 == false){
+            $('html,body').animate({scrollTop: $("#ShippingFrom").offset().top}, 'slow');
+        } else if( AddressPass2 === false) {
             alert("The shipping from address have problem");
-            $('html,body').animate({
-                scrollTop: $("#ShippingTo").offset().top},'slow');
-        }
-        else{
+            $('html,body').animate({scrollTop: $("#ShippingTo").offset().top}, 'slow');
+        } else {
             table.ajax.url('input/?' + $('#search_form').serialize()).load();
-            $('html,body').animate({
-                scrollTop: $("#ResultArea").offset().top},'slow');
+            $('html,body').animate({scrollTop: $("#ResultArea").offset().top}, 'slow');
         }
-        
-        
 
         //$('#divtable').css("visibility", "visible");
         //$('.cscz').attr('disabled', 'disabled');
