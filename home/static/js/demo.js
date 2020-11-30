@@ -117,7 +117,7 @@ $(document).ready(function () {
             alert("The shipping from address have problem");
             $('html,body').animate({scrollTop: $("#ShippingFrom").offset().top}, 'slow');
         } else if( AddressPass2 === false) {
-            alert("The shipping from address have problem");
+            alert("The shipping to address have problem");
             $('html,body').animate({scrollTop: $("#ShippingTo").offset().top}, 'slow');
         } else {
             table.ajax.url('input/?' + $('#search_form').serialize()).load();

@@ -9,15 +9,15 @@ var checksize3 = false;
 function TestSize(){
       
     
-      var height = document.getElementById('Height').value;
-      var Length = document.getElementById('Length').value;
-      var Width = document.getElementById('Width').value;
-      var reg = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/;
-      // var unit1 = document.getElementById('Dimension_units').value;
-      var unit = document.getElementById('t1').checked;
-      var unit1 = unit ? 'in' : 'cm';
+    var height = document.getElementById('Height').value;
+    var Length = document.getElementById('Length').value;
+    var Width = document.getElementById('Width').value;
+    var reg = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/;
+    // var unit1 = document.getElementById('Dimension_units').value;
+    var unit = document.getElementById('t1').checked;
+    var unit1 = unit ? 'in' : 'cm';
 
-      if(checksize1 && checksize2 && checksize3){
+    if(checksize1 && checksize2 && checksize3){
         if( height == '' || Length == '' || Width == ''){
             document.getElementById('waring1p').innerHTML = 'Package dimensions must be at least 1 in for Length, 1 in for Width, and 1 in for Height. Please enter an amount for each of the dimensions fields.';
             //document.getElementById('submit').disabled = 'true';
@@ -58,56 +58,56 @@ function TestSize(){
             //document.getElementById('submit').disabled = 'none';
             sizePass = true;
         }
-      }
+    }
       
 
   }
 
   function TestWeight(){
 
-      var weight = document.getElementById('Weight').value;
-      // var unit23 = document.getElementById('Weight_unit').value;
-      var reg = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/;
-      var unit = document.getElementById('t3').checked;
-      var unit1 = unit ? 'lb' : 'kg';
-      //alert();
+    var weight = document.getElementById('Weight').value;
+    // var unit23 = document.getElementById('Weight_unit').value;
+    var reg = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/;
+    var unit = document.getElementById('t3').checked;
+    var unit1 = unit ? 'lb' : 'kg';
+    //alert();
 
-      if (unit1 == 'kg') {
-          weight = weight * 2.20462262;
-      }
+    if (unit1 == 'kg') {
+        weight = weight * 2.20462262;
+    }
 
-      if(weight == ''){
-           document.getElementById('waring2p').innerHTML = 'Weight is required.';
-           //document.getElementById('submit').disabled = 'true';
-           document.getElementById('waring2').style.display ="block";
-      }
-      else if( !reg.test(weight) || weight <= 0 ){
-          document.getElementById('waring2p').innerHTML = 'Only numeric values are allowed. Weight should be more than 0.';
-          //document.getElementById('submit').disabled = 'true';
-          document.getElementById('waring2').style.display ="block";
-      }
-      else if (weight >= 150){
-          document.getElementById('waring2p').innerHTML = 'Max. weight 150 pounds / 68 kilograms';
-         // document.getElementById('submit').disabled = 'true';
-          document.getElementById('waring2').style.display ="block";
-      }
-      else {
+    if(weight == ''){
+        document.getElementById('waring2p').innerHTML = 'Weight is required.';
+        //document.getElementById('submit').disabled = 'true';
+        document.getElementById('waring2').style.display ="block";
+    }
+    else if( !reg.test(weight) || weight <= 0 ){
+        document.getElementById('waring2p').innerHTML = 'Only numeric values are allowed. Weight should be more than 0.';
+        //document.getElementById('submit').disabled = 'true';
+        document.getElementById('waring2').style.display ="block";
+    }
+    else if (weight >= 150){
+        document.getElementById('waring2p').innerHTML = 'Max. weight 150 pounds / 68 kilograms';
+        // document.getElementById('submit').disabled = 'true';
+        document.getElementById('waring2').style.display ="block";
+    }
+    else {
 
-          document.getElementById('waring2').style.display ="none";
-          weightPass = true;
-      }
+        document.getElementById('waring2').style.display ="none";
+        weightPass = true;
+    }
 
   }
 
   function TestAddress1(){
 
-      var space1 = document.getElementById('From_AddressLine').value;
-      var space2 = document.getElementById('From_City').value;
-      var space3 = document.getElementById('From_CountryCode').value;
-      var space4 = document.getElementById('From_PostalCode').value;
-      var space5 = document.getElementById('From_StateProvinceCode').value;
+    var space1 = document.getElementById('From_AddressLine').value;
+    var space2 = document.getElementById('From_City').value;
+    var space3 = document.getElementById('From_CountryCode').value;
+    var space4 = document.getElementById('From_PostalCode').value;
+    var space5 = document.getElementById('From_StateProvinceCode').value;
 
-      if(space1 == ''){
+    if(space1 == ''){
         document.getElementById('waring3p').innerHTML = "Please enter 'Shipping From' address.";
         document.getElementById('waring3p').style.display = "block";
         AddressPass1 = false;
@@ -187,6 +187,20 @@ function TestAddress2() {
     //     AddressPass2 = true;
     //     FinalTest();
     // }
+}
+
+function ClearFromZipcode(){
+    document.getElementById('From_City').value = "";
+    document.getElementById("From_PostalCode").value = "";
+    document.getElementById('From_StateProvinceCode').value = "";
+    document.getElementById('From_CountryCode').value = "";
+}
+
+function ClearToZipcode(){
+    document.getElementById('To_City').value = "";
+    document.getElementById("To_PostalCode").value = "";
+    document.getElementById('To_StateProvinceCode').value = "";
+    document.getElementById('To_CountryCode').value = "";
 }
 
 // function skipAddress(){
