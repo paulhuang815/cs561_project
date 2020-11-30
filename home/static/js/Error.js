@@ -2,6 +2,9 @@ var sizePass = false;
 var weightPass = false;
 var AddressPass1 = false;
 var AddressPass2 = false;
+var checksize1 = false;
+var checksize2 = false;
+var checksize3 = false;
 
 function TestSize(){
       
@@ -14,44 +17,49 @@ function TestSize(){
       var unit = document.getElementById('t1').checked;
       var unit1 = unit ? 'in' : 'cm';
 
-      if( height == '' || Length == '' || Width == ''){
-          document.getElementById('waring1p').innerHTML = 'Package dimensions must be at least 1 in for Length, 1 in for Width, and 1 in for Height. Please enter an amount for each of the dimensions fields.';
-          //document.getElementById('submit').disabled = 'true';
-          document.getElementById('waring1').style.display ="block";
-          return;
+      if(checksize1 && checksize2 && checksize3){
+        if( height == '' || Length == '' || Width == ''){
+            document.getElementById('waring1p').innerHTML = 'Package dimensions must be at least 1 in for Length, 1 in for Width, and 1 in for Height. Please enter an amount for each of the dimensions fields.';
+            //document.getElementById('submit').disabled = 'true';
+            document.getElementById('waring1').style.display ="block";
+            document.getElementById('Length').style.border.fontcolor = "red";
+            return;
+        }
+        else if( !reg.test(height) || !reg.test(Length) || !reg.test(Width)){
+            document.getElementById('waring1p').innerHTML = 'The size should be number';
+           // document.getElementById('submit').disabled = 'true';
+            document.getElementById('waring1').style.display ="block";
+            return;
+        }
+        
+        height = Number(height);
+        Length = Number(Length);
+        Width = Number(Width);
+  
+        if(unit1 == 'cm') {
+            height = height * 0.393700787;
+            Length = Length * 0.393700787;
+            Width = Width * 0.393700787;
+        }
+        if(height<=0 || Length<=0 || Width<=0){
+            document.getElementById('waring1').style.display ="block";
+            //document.getElementById('submit').disabled = 'true';
+            document.getElementById('waring1p').innerHTML= "The height/Weight/Width should be bigger than 0";
+        }
+        else if (2*height+Length+2*Width > 165){
+  
+  
+            document.getElementById('waring1').style.display ="block";
+            //document.getElementById('submit').disabled = 'true';
+            document.getElementById('waring1p').innerHTML= "Package exceeds the maximum size total constraints of 165 inches / 419.1 cm <br> hint: (length + girth, where girth is 2 x width plus 2 x height)";
+        }
+        else {
+            document.getElementById('waring1').style.display ="none";
+            //document.getElementById('submit').disabled = 'none';
+            sizePass = true;
+        }
       }
-      else if( !reg.test(height) || !reg.test(Length) || !reg.test(Width)){
-          document.getElementById('waring1p').innerHTML = 'The size should be number';
-         // document.getElementById('submit').disabled = 'true';
-          document.getElementById('waring1').style.display ="block";
-          return;
-      }
-      height = Number(height);
-      Length = Number(Length);
-      Width = Number(Width);
-
-      if(unit1 == 'cm') {
-          height = height * 0.393700787;
-          Length = Length * 0.393700787;
-          Width = Width * 0.393700787;
-      }
-      if(height<=0 || Length<=0 || Width<=0){
-          document.getElementById('waring1').style.display ="block";
-          //document.getElementById('submit').disabled = 'true';
-          document.getElementById('waring1p').innerHTML= "The height/Weight/Width should be bigger than 0";
-      }
-      else if (2*height+Length+2*Width > 165){
-
-
-          document.getElementById('waring1').style.display ="block";
-          //document.getElementById('submit').disabled = 'true';
-          document.getElementById('waring1p').innerHTML= "Package exceeds the maximum size total constraints of 165 inches / 419.1 cm <br> hint: (length + girth, where girth is 2 x width plus 2 x height)";
-      }
-      else {
-          document.getElementById('waring1').style.display ="none";
-          //document.getElementById('submit').disabled = 'none';
-          sizePass = true;
-      }
+      
 
   }
 

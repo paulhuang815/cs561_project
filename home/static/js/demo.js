@@ -102,6 +102,10 @@ $(document).ready(function () {
         TestWeight();
         TestAddress1();
         TestAddress2();
+        checksize1 = true;
+        checksize2 = true;
+        checksize3 = true;
+
 
         if( sizePass == false){
             alert("The size have problem");

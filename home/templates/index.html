@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-md-3 input-group">
                         <input type="number" class="form-control" id="Length" name="Length"
-                               placeholder="Enter Length" oninput="TestSize()">
+                               placeholder="Enter Length" oninput="checksize1 = true;TestSize();" onblur="checksize1 = true;TestSize();">
                         <div class="input-group-append">
                             <span class="input-group-text item">inches</span>
                         </div>
@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-md-3 input-group">
                         <input type="number" class="form-control" id="Width" name="Width"
-                               placeholder="Enter Width" oninput="TestSize()">
+                               placeholder="Enter Width" oninput="checksize2 = true;TestSize();" onblur="checksize2 = true;TestSize();">
                         <div class="input-group-append">
                             <span class="input-group-text item">inches</span>
                         </div>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="col-md-3 input-group">
                         <input type="number" class="form-control" id="Height" name="Height"
-                               placeholder="Enter Height" oninput="TestSize()">
+                               placeholder="Enter Height" oninput="checksize3 = true;TestSize();" onblur="checksize3 = true;TestSize();">
                         <div class="input-group-append">
                             <span class="input-group-text item">inches</span>
                         </div>
@@ -101,7 +101,7 @@
                         <label for="t3">lb</label>
                         <input id="t3" name="Weight_unit" type="radio" checked onchange="ChangeWeightUnit()" value="pounds">
                         <label for="t4">kg</label>
-                        <input id="t4" name="Weight_unit" type="radio" onchange="ChangeWeightUnit()" value="kilograms">
+                        <input id="t4" name="Weight_unit" type="radio" onchange="ChangeWeightUnit()"  value="kilograms">
                         <div class="blob" style="margin-left:-9.2rem; margin-top:0.19rem"></div>
                         <div name="unit_border" style="border: 0.2rem cornflowerblue;border-style: solid; border-radius: 1.5rem; width: 9.4rem;height: 1rem; padding-top: 2.6rem; margin-left: -4.4rem;z-index: -2;">
                         </div>
@@ -119,7 +119,7 @@
                     </div>
                     <div class="col-md-3 input-group">
                         <input type="number" class="form-control" id="Weight" name="Weight"
-                               placeholder="Enter Weight" oninput="TestWeight()">
+                               placeholder="Enter Weight" oninput="TestWeight()" >
                         <div class="input-group-append">
                             <span class="input-group-text weight">pounds</span>
                         </div>
@@ -209,9 +209,9 @@
             </div>
         </div>
 
-        <div class="alert alert-danger" role="alert" id="waring3">
-            <p style = "display: none;" id ="waring3p">The maximum per package weight is 150.00 pounds. </p>
-            <p style = "display: none;" id ="waring3p2">The maximum per package weight is 150.00 pounds. </p>
+        <div role="alert" id="waring3">
+            <p class="alert alert-danger" style = "display: none;" id ="waring3p">The maximum per package weight is 150.00 pounds. </p>
+            <p class="alert alert-danger" style = "display: none;" id ="waring3p2">The maximum per package weight is 150.00 pounds. </p>
         </div>
 
         <hr>
@@ -280,9 +280,9 @@
             </div>
         </div>
 
-        <div class="alert alert-danger" role="alert" id="waring4">
-            <p style = "display: none;" id ="waring4p">The maximum per package weight is 150.00 pounds. </p>
-            <p style = "display: none;" id ="waring4p2">The maximum per package weight is 150.00 pounds. </p>
+        <div  role="alert" id="waring4">
+            <p class="alert alert-danger" style = "display: none;" id ="waring4p">The maximum per package weight is 150.00 pounds. </p>
+            <p class="alert alert-danger" style = "display: none;" id ="waring4p2">The maximum per package weight is 150.00 pounds. </p>
         </div>
 
 
