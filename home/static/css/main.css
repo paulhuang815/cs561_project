@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
 .form-control{
   font-size: 1.3rem;
@@ -11,7 +12,7 @@
 }
 /* -------------------unit button-------------------*/
 body {
-  font-family: "Concert One", cursive;
+  font-family: "Open Sans", cursive;
   font-size:1.8rem;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -22,6 +23,7 @@ svg {
 }
 
 .tabber{
+  font-family: "Concert One", cursive;
   position: relative;
   display: flex;
   align-items: stretch;
