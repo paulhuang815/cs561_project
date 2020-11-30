@@ -45,7 +45,7 @@ class ApiTest(TestCase):
 
         print('----------Start Fedex Api Test----------')
 
-        with open("./home/info.json", 'r', encoding='UTF-8') as f:
+        with open("./home/test.json", 'r', encoding='UTF-8') as f:
             info_dict = json.load(f)
 
         for i in info_dict.values():

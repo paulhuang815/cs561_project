@@ -173,7 +173,7 @@ function getKeyByValue(object, value) {
         else {
             $('.T_Zip').css("display", "");
             document.getElementById('waring4p2').innerHTML = "Can't find zipcode. Please input";
-            document.getElementById('waring4p').style.display = "block";
+            document.getElementById('waring4p2').style.display = "block";
             AddressPass2 = false;
         }
 

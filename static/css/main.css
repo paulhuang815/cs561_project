@@ -11,7 +11,7 @@
 }
 /* -------------------unit button-------------------*/
 body {
-  font-family: "Concert One", cursive;
+  font-family: "Open Sans", cursive;
   font-size:1.8rem;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -303,6 +303,7 @@ hr.style-one {
   background: none;
   border: none;
   border-radius: 0px;
+  font-size:1.3rem;
   /* border-bottom: 2px solid #3498db; */
 }
 
@@ -420,7 +421,9 @@ input[type="number"]{
   -moz-appearance:none !important;
 }
 
-
+.dataTables_processing {
+  top: 100px !important;
+}
 
 #msg{
   width:266px;

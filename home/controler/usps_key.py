@@ -101,7 +101,7 @@ class ShippingRate(object):
                 i['MailService'] = i['MailService'].replace('&lt;sup&gt;&#8482;&lt;/sup&gt;', '')
                 # print(i['MailService'])
 
-                shipping_time = usps_time(str(i['MailService']), "US", str(package.country))
+                shipping_time = usps_time(str(i['MailService']), "US", 'US')
                 self.rst.append({"Company": "USPS",
                                  'Service': str(i['MailService']),
                                  'Money': '$' + ' ' + str(i['Rate']),
