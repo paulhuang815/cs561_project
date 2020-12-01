@@ -7,6 +7,11 @@
 .form-control::placeholder {
   color: #D0D0D0;
 }
+
+.form-control:focus{
+  box-shadow: 0 0 0 0.2rem rgba(128,206,216, 0.2);
+}
+
 .input-group-text {
   width: 82px;
 }
