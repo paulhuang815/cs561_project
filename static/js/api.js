@@ -87,7 +87,7 @@ function fillInAddress_from() {
     }
     else {
         $('.F_City').css("display", "");
-        document.getElementById('waring3p').innerHTML = "Can't find city name. Please input";
+        document.getElementById('waring3p').innerHTML = "Can't find city name. Please input.";
         document.getElementById('waring3p').style.display = "block";
         AddressPass2 = false;
     }
@@ -99,7 +99,7 @@ function fillInAddress_from() {
     }
     else {
         $('.F_Zip').css("display", "");
-        document.getElementById('waring3p2').innerHTML = "Can't find zipcode. Please input";
+        document.getElementById('waring3p2').innerHTML = "Can't find zipcode. Please input.";
         document.getElementById('waring3p2').style.display = "block";
         AddressPass2 = false;
     }
@@ -159,7 +159,7 @@ function fillInAddress_to() {
     }
     else {
         $('.T_City').css("display", "");
-        document.getElementById('waring4p').innerHTML = "Can't find city name. Please input";
+        document.getElementById('waring4p').innerHTML = "Can't find city name. Please input.";
         document.getElementById('waring4p').style.display = "block";
         AddressPass2 = false;
     }
@@ -171,7 +171,7 @@ function fillInAddress_to() {
     }
     else {
         $('.T_Zip').css("display", "");
-        document.getElementById('waring4p2').innerHTML = "Can't find zipcode. Please input";
+        document.getElementById('waring4p2').innerHTML = "Can't find zipcode. Please input.";
         document.getElementById('waring4p2').style.display = "block";
         AddressPass2 = false;
     }

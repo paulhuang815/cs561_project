@@ -46,7 +46,7 @@ function TestSize(){
         if(height<=0 || Length<=0 || Width<=0){
             document.getElementById('waring1').style.display ="block";
             //document.getElementById('submit').disabled = 'true';
-            document.getElementById('waring1p').innerHTML= "The height/Weight/Width should be bigger than 0";
+            document.getElementById('waring1p').innerHTML= "The height/Weight/Width should be bigger than 0.";
             sizePass = false;
         }
         else if (2*height+Length+2*Width > 165){
@@ -54,7 +54,7 @@ function TestSize(){
   
             document.getElementById('waring1').style.display ="block";
             //document.getElementById('submit').disabled = 'true';
-            document.getElementById('waring1p').innerHTML= "Package exceeds the maximum size total constraints of 165 inches / 419.1 cm <br> hint: (length + girth, where girth is 2 x width plus 2 x height)";
+            document.getElementById('waring1p').innerHTML= "Package exceeds the maximum size total constraints of 165 inches / 419.1 cm. <br> hint: (length + girth, where girth is 2 x width plus 2 x height)";
             sizePass = false;
         }
         else {
@@ -128,7 +128,7 @@ function TestSize(){
         document.getElementById('waring3p').style.display = "block";
         AddressPass2 = false;
     } else if (space4 === "" ) {
-        document.getElementById('waring3p2').innerHTML = "Can't find zipcode. Please input";
+        document.getElementById('waring3p2').innerHTML = "Can't find zipcode. Please input.";
         document.getElementById('waring3p2').style.display = "block";
         AddressPass2 = false;
     } else {
@@ -164,17 +164,17 @@ function TestAddress2() {
         document.getElementById('waring4p').style.display = "block";
         AddressPass2 = false;
     } else if (space5 === "") {
-        document.getElementById('waring4p').innerHTML = "Please use auto complete";
+        document.getElementById('waring4p').innerHTML = "Please choose vaild address from list.";
         document.getElementById('waring4p').style.display = "block";
         AddressPass2 = false;
         // $('html,body').animate({
         //     scrollTop: $("#ShippingTo").offset().top},'slow');
     } else if (space7 === "") {
-        document.getElementById('waring4p').innerHTML = "Can't find city name. Please input";
+        document.getElementById('waring4p').innerHTML = "Can't find city name. Please input.";
         document.getElementById('waring4p').style.display = "block";
         AddressPass2 = false;
     } else if (space8 === "") {
-        document.getElementById('waring4p2').innerHTML = "Can't find zipcode. Please input";
+        document.getElementById('waring4p2').innerHTML = "Can't find zipcode. Please input.";
         document.getElementById('waring4p2').style.display = "block";
         AddressPass2 = false;
     } else {
