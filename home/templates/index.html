@@ -49,7 +49,7 @@
                         <h3><p>Length</p></h3>
                     </div>
                     <div class="col-md-3 input-group">
-                        <input type="number" class="form-control" id="Length" name="Length"
+                        <input type="number" class="form-control TypeNumber" id="Length" name="Length"
                                placeholder="Enter Length" oninput="checksize1 = true;TestSize();" onblur="checksize1 = true;TestSize();">
                         <div class="input-group-append">
                             <span class="input-group-text item">inches</span>
@@ -60,7 +60,7 @@
                         <h3><p>Width</p></h3>
                     </div>
                     <div class="col-md-3 input-group">
-                        <input type="number" class="form-control" id="Width" name="Width"
+                        <input type="number" class="form-control TypeNumber" id="Width" name="Width"
                                placeholder="Enter Width" oninput="checksize2 = true;TestSize();" onblur="checksize2 = true;TestSize();">
                         <div class="input-group-append">
                             <span class="input-group-text item">inches</span>
@@ -71,7 +71,7 @@
                         <h3><p>Height</p></h3>
                     </div>
                     <div class="col-md-3 input-group">
-                        <input type="number" class="form-control" id="Height" name="Height"
+                        <input type="number" class="form-control TypeNumber" id="Height" name="Height"
                                placeholder="Enter Height" oninput="checksize3 = true;TestSize();" onblur="checksize3 = true;TestSize();">
                         <div class="input-group-append">
                             <span class="input-group-text item">inches</span>
@@ -88,12 +88,12 @@
 {#            <p id ="waring1p">Package exceeds the maximum size total constraints of 165 inches <br> hint: (length + girth, where girth is 2 x width plus 2 x height) </p>#}
 {#        </div>#}
 
-        <hr>
+        <hr id = "itemWeight">
 
         <div class="form-group">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-1" id = "itemWeight">
+                    <div class="col-md-1" >
 {#                        <h3  ><label for="Units">Units</label></h3>#}
                         <h3><p>Units</p></h3>
                     </div>
@@ -118,7 +118,7 @@
                         <h3><p>Weight</p></h3>
                     </div>
                     <div class="col-md-3 input-group">
-                        <input type="number" class="form-control" id="Weight" name="Weight"
+                        <input type="number" class="form-control TypeNumber" id="Weight" name="Weight"
                                placeholder="Enter Weight" oninput="TestWeight()" >
                         <div class="input-group-append">
                             <span class="input-group-text weight">pounds</span>
@@ -157,7 +157,7 @@
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="From_AddressLine" name="From_AddressLine"
-                               placeholder="Enter your 'From' address" oninput="ClearFromZipcode();TestAddress1();" onFocus="geolocate_from()"
+                               placeholder="Enter your 'From' address" oninput="ClearFromZipcode();" onblur = "TestAddress1();" onFocus="geolocate_from()"
                                autocomplete="nothing">
                     </div>
                 </div>
@@ -229,7 +229,7 @@
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="To_AddressLine" name="To_AddressLine"
-                               placeholder="Enter your 'To' address" onFocus="geolocate_to()" oninput = "ClearToZipcode();TestAddress2();">
+                               placeholder="Enter your 'To' address" onFocus="geolocate_to()" onblur = "TestAddress2();" oninput = "ClearToZipcode();">
                     </div>
                 </div>
             </div>
