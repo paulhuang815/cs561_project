@@ -288,5 +288,9 @@ function skipAboutUs() {
 }
 
 function skip() {
-    $('html,body').animate({scrollTop: $("#Smalltitle").offset().top}, 'slow');
+    $('html,body').animate({scrollTop: $("#Smalltitle").offset().top - 110 + "px"}, 'slow');
+}
+
+function skipContact() {
+    $('html,body').animate({scrollTop: $("#contact").offset().top}, 'slow');
 }
