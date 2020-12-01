@@ -54,7 +54,7 @@ $(document).ready(function () {
     //   });
 
     function alert(e) {
-        $("body").append('<div class="zhezhao" id="zhezhao"></div><div id="msg"><div id="msg_top">warning<span class="msg_close">×</span></div><div id="msg_cont">' + e + '</div><div class="msg_close" id="msg_clear">close</div></div>');
+        $("body").append('<div class="zhezhao" id="zhezhao"></div><div id="msg"><div id="msg_top">Warning<span class="msg_close">×</span></div><div id="msg_cont">' + e + '</div><div class="msg_close" id="msg_clear">Close</div></div>');
         document.body.style.overflow = "hidden";
         $(".msg_close").click(function () {
             $("#msg").remove();
@@ -159,17 +159,17 @@ $(document).ready(function () {
         checksize3 = true;
 
 
-        if (sizePass === false) {
-            alert("The size have problem");
+        if (sizePass == false) {
+            //alert("The size have problem.");
             $('html,body').animate({scrollTop: $("#itemSize").offset().top}, 'slow');
-        } else if (weightPass === false) {
-            alert("The weight have problem");
+        } else if (weightPass == false) {
+            //alert("The weight have problem.");
             $('html,body').animate({scrollTop: $("#itemWeight").offset().top}, 'slow');
-        } else if ( AddressPass1 === false) {
-            alert("The shipping from address have problem");
+        } else if ( AddressPass1 == false) {
+            //alert("The shipping from address have problem.");
             $('html,body').animate({scrollTop: $("#ShippingFrom").offset().top}, 'slow');
-        } else if( AddressPass2 === false) {
-            alert("The shipping from address have problem");
+        } else if( AddressPass2 == false) {
+            //alert("The shipping to address have problem.");
             $('html,body').animate({scrollTop: $("#ShippingTo").offset().top}, 'slow');
         } else {
             table.ajax.url('input/?' + $('#search_form').serialize()).load();

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
 .form-control{
   font-size: 1.3rem;
@@ -11,7 +12,7 @@
 }
 /* -------------------unit button-------------------*/
 body {
-  font-family: "Open Sans", cursive;
+  font-family: "Cabin", cursive;
   font-size:1.8rem;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -22,6 +23,7 @@ svg {
 }
 
 .tabber{
+  font-family: "Concert One", cursive;
   position: relative;
   display: flex;
   align-items: stretch;
@@ -455,13 +457,12 @@ input[type="number"]{
   font-size:22px;
   float:right;
   cursor:pointer;
-}
-#msg_top span{
-  color:#666;
+  color:gray;
 }
 #msg_cont{
   padding:15px 20px 20px;
   text-align:left;
+  
 }
 #msg_clear{
   display:inline-block;

@@ -93,8 +93,8 @@
         <div class="form-group">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-1">
-{#                        <h3><label for="Units">Units</label></h3>#}
+                    <div class="col-md-1" id = "itemWeight">
+{#                        <h3  ><label for="Units">Units</label></h3>#}
                         <h3><p>Units</p></h3>
                     </div>
                     <div class="tabber col-md-3" display= "flex">
@@ -157,7 +157,7 @@
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="From_AddressLine" name="From_AddressLine"
-                               placeholder="Enter your 'From' address" oninput="TestAddress1()" onFocus="geolocate_from()"
+                               placeholder="Enter your 'From' address" oninput="ClearFromZipcode();TestAddress1();" onFocus="geolocate_from()"
                                autocomplete="nothing">
                     </div>
                 </div>
@@ -229,7 +229,7 @@
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="To_AddressLine" name="To_AddressLine"
-                               placeholder="Enter your 'To' address" onFocus="geolocate_to()" oninput = "TestAddress2()">
+                               placeholder="Enter your 'To' address" onFocus="geolocate_to()" oninput = "ClearToZipcode();TestAddress2();">
                     </div>
                 </div>
             </div>
