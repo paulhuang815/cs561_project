@@ -1,11 +1,12 @@
 {% extends "master.html" %}
 
 {% block content %}
-    <div class="form-group">
-        <h1><p style="color: crimson">Type in all your package dimensions and addresses</p></h1>
-        <p style="color: grey">To see all available shipping services</p>
-    </div>
 
+    <div class="form-group" >
+        <h1><p style="color: crimson">Type in all your package dimensions and addresses</p></h1>
+        <p id="Smalltitle" style="color: grey" >To see all available shipping services</p>
+    </div>
+<div> <p style="font-size: 10px;"><br></p></div>
 
     <form id="search_form" method="post" class="search_form" autocomplete="off">{% csrf_token %}
         {#    <!--{% csrf_token %}-->#}
@@ -157,7 +158,7 @@
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="From_AddressLine" name="From_AddressLine"
-                               placeholder="Enter your 'From' address" oninput="ClearFromZipcode();" onblur = "TestAddress1();" onFocus="geolocate_from()"
+                               placeholder="Enter your 'From' address" oninput="ClearFromZipcode();" onFocus="geolocate_from()"
                                autocomplete="nothing">
                     </div>
                 </div>
@@ -229,7 +230,7 @@
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="To_AddressLine" name="To_AddressLine"
-                               placeholder="Enter your 'To' address" onFocus="geolocate_to()" onblur = "TestAddress2();" oninput = "ClearToZipcode();">
+                               placeholder="Enter your 'To' address" onFocus="geolocate_to()" oninput = "ClearToZipcode();">
                     </div>
                 </div>
             </div>

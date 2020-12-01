@@ -85,7 +85,7 @@ $(document).ready(function () {
                     window.location.hash = "";
                     $('html,body').animate({scrollTop: $("#Address_line").offset().top}, 'slow');
                 } else {
-                    $('html,body').animate({scrollTop: $("#submit").offset().top}, 'slow');
+                    //$('html,body').animate({scrollTop: $("#submit").offset().top}, 'slow');
                 }
                 $('tbody tr').click(function (element) {
                     var td = $(element.currentTarget.firstChild.lastChild).text();
@@ -147,33 +147,34 @@ $(document).ready(function () {
     $('#submit').click(function () {
         //alert('e');
         //$('.cscz').removeAttr('disabled');
-        //$('#datatable').dataTable().fnClearTable();
-        table.clear();
+        $('#datatable').dataTable().fnClearTable();
+        //table.clear();
 
+        checksize1 = true;
+        checksize2 = true;
+        checksize3 = true;
         TestSize();
         TestWeight();
         TestAddress1();
         TestAddress2();
-        checksize1 = true;
-        checksize2 = true;
-        checksize3 = true;
+        
 
 
         if (sizePass == false) {
             //alert("The size have problem.");
-            $('html,body').animate({scrollTop: $("#itemSize").offset().top}, 'slow');
+            $('html,body').animate({scrollTop: $("#itemSize").offset().top - 100 + "px"}, 'slow');
         } else if (weightPass == false) {
             //alert("The weight have problem.");
-            $('html,body').animate({scrollTop: $("#itemWeight").offset().top}, 'slow');
+            $('html,body').animate({scrollTop: $("#itemSize").offset().top - 100 + "px"}, 'slow');
         } else if ( AddressPass1 == false) {
             //alert("The shipping from address have problem.");
-            $('html,body').animate({scrollTop: $("#ShippingFrom").offset().top}, 'slow');
+            $('html,body').animate({scrollTop: $("#ShippingFrom").offset().top - 110 + "px"}, 'slow');
         } else if( AddressPass2 == false) {
             //alert("The shipping to address have problem.");
-            $('html,body').animate({scrollTop: $("#ShippingTo").offset().top}, 'slow');
+            $('html,body').animate({scrollTop: $("#ShippingFrom").offset().top - 110 + "px"}, 'slow');
         } else {
             table.ajax.url('input/?' + $('#search_form').serialize()).load();
-            $('html,body').animate({scrollTop: $("#ResultArea").offset().top}, 'slow');
+            $('html,body').animate({scrollTop: $("#ResultArea").offset().top - 100 + "px"}, 'slow');
         }
 
         //$('#divtable').css("visibility", "visible");

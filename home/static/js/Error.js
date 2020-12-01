@@ -152,14 +152,17 @@ function TestSize(){
 
   }
 
+  
   function TestAddress1(){
     
+    //sleep(2000);
     var space1 = document.getElementById('From_AddressLine').value;
     var space2 = document.getElementById('From_City').value;
     var space3 = document.getElementById('From_CountryCode').value;
     var space4 = document.getElementById('From_PostalCode').value;
     var space5 = document.getElementById('From_StateProvinceCode').value;
 
+    
     if(space1 == ''){
         document.getElementById('waring3p').innerHTML = "Please enter 'Shipping From' address.";
         document.getElementById('waring3p').style.display = "block";
@@ -167,7 +170,7 @@ function TestSize(){
     } else if (space3 === "") {
         document.getElementById('waring3p').innerHTML = "Please choose vaild address from list.";
         document.getElementById('waring3p').style.display = "block";
-        // AddressPass1 = false;
+        AddressPass1 = false;
         // $('html,body').animate({scrollTop: $("#ShippingFrom").offset().top}, 'slow');
     } else if (space2 === "") {
         document.getElementById('waring3p').innerHTML = "Can't find city name. Please input.";
@@ -282,4 +285,8 @@ function ClearToZipcode(){
 
 function skipAboutUs() {
     $('html,body').animate({scrollTop: $("#AboutUs").offset().top}, 'slow');
+}
+
+function skip() {
+    $('html,body').animate({scrollTop: $("#Smalltitle").offset().top}, 'slow');
 }
