@@ -10073,34 +10073,101 @@ hr.light {
   }
 }
 
-header.masthead {
+.slidepoint1{
+  background: url("../../static/image/UPS_logo_b.png") !important;
+  width: 55px !important; 
+  height: 55px !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  background-size: cover !important;
+  margin: 0px 10px !important;
+}
+.slidepoint2{
+  background: url("../../static/image/Fedex_logo_b.png") !important;
+  width: 55px !important; 
+  height: 55px !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  background-size: cover !important;
+  margin: 0px 10px !important;
+}
+.slidepoint3{
+  background: url("../../static/image/USPS_logo_b.png") !important;
+  width: 55px !important; 
+  height: 55px !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  background-size: cover !important;
+  margin: 0px 10px !important;
+}
+.slidepoint4{
+  background: url("../../static/image/Sendle_logo_b.png") !important;
+  width: 55px !important; 
+  height: 55px !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  background-size: cover !important;
+  margin: 0px 10px !important;
+}
+.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(77, 69, 64, 0.8) 0%, rgba(77, 69, 64, 0.8) 100%), url("../image/upsplane_2.jpg");
+}
+.banner_img1{
+  /*ups*/
+  background: linear-gradient(to bottom, rgba(77, 69, 64, 0.8) 0%, rgba(77, 69, 64, 0.8) 100%), url("../image/upsplane.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
-header.masthead h1 {
+.banner_img2{
+  /*fedex*/
+  background: linear-gradient(to bottom, rgba(77, 69, 64, 0.8) 0%, rgba(77, 69, 64, 0.8) 100%), url("../image/fedexplane.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+.banner_img3{
+  /*usps*/
+  background: linear-gradient(to bottom, rgba(77, 69, 64, 0.8) 0%, rgba(77, 69, 64, 0.8) 100%), url("../image/uspsplane.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+.banner_img4{
+  /*sendle*/
+  background: linear-gradient(to bottom, rgba(77, 69, 64, 0.8) 0%, rgba(77, 69, 64, 0.8) 100%), url("../image/sendleplane.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+.masthead h1 {
   font-size: 2.25rem;
 }
 @media (min-width: 992px) {
-  header.masthead {
+  .masthead {
     height: 100vh;
     min-height: 40rem;
     padding-top: 4.5rem;
     padding-bottom: 0;
   }
-  header.masthead p {
+  .masthead p {
     font-size: 1.15rem;
   }
-  header.masthead h1 {
+  .masthead h1 {
     font-size: 3rem;
   }
 }
 @media (min-width: 1200px) {
-  header.masthead h1 {
+  .masthead h1 {
     font-size: 3.5rem;
   }
 }
