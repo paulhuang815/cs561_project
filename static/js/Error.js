@@ -23,12 +23,14 @@ function TestSize(){
             //document.getElementById('submit').disabled = 'true';
             document.getElementById('waring1').style.display ="block";
             document.getElementById('Length').style.border.fontcolor = "red";
+            sizePass = false;
             return;
         }
         else if( !reg.test(height) || !reg.test(Length) || !reg.test(Width)){
             document.getElementById('waring1p').innerHTML = 'The size should be number';
            // document.getElementById('submit').disabled = 'true';
             document.getElementById('waring1').style.display ="block";
+            sizePass = false;
             return;
         }
         
@@ -45,6 +47,7 @@ function TestSize(){
             document.getElementById('waring1').style.display ="block";
             //document.getElementById('submit').disabled = 'true';
             document.getElementById('waring1p').innerHTML= "The height/Weight/Width should be bigger than 0";
+            sizePass = false;
         }
         else if (2*height+Length+2*Width > 165){
   
@@ -52,6 +55,7 @@ function TestSize(){
             document.getElementById('waring1').style.display ="block";
             //document.getElementById('submit').disabled = 'true';
             document.getElementById('waring1p').innerHTML= "Package exceeds the maximum size total constraints of 165 inches / 419.1 cm <br> hint: (length + girth, where girth is 2 x width plus 2 x height)";
+            sizePass = false;
         }
         else {
             document.getElementById('waring1').style.display ="none";
@@ -80,16 +84,19 @@ function TestSize(){
         document.getElementById('waring2p').innerHTML = 'Weight is required.';
         //document.getElementById('submit').disabled = 'true';
         document.getElementById('waring2').style.display ="block";
+        weightPass = false;
     }
     else if( !reg.test(weight) || weight <= 0 ){
         document.getElementById('waring2p').innerHTML = 'Only numeric values are allowed. Weight should be more than 0.';
         //document.getElementById('submit').disabled = 'true';
         document.getElementById('waring2').style.display ="block";
+        weightPass = false;
     }
     else if (weight >= 150){
         document.getElementById('waring2p').innerHTML = 'Max. weight 150 pounds / 68 kilograms';
         // document.getElementById('submit').disabled = 'true';
         document.getElementById('waring2').style.display ="block";
+        weightPass = false;
     }
     else {
 

@@ -107,16 +107,16 @@ $(document).ready(function () {
         checksize3 = true;
 
 
-        if (sizePass === false) {
+        if (sizePass == false) {
             alert("The size have problem");
             $('html,body').animate({scrollTop: $("#itemSize").offset().top}, 'slow');
-        } else if (weightPass === false) {
+        } else if (weightPass == false) {
             alert("The weight have problem");
             $('html,body').animate({scrollTop: $("#itemWeight").offset().top}, 'slow');
-        } else if ( AddressPass1 === false) {
+        } else if ( AddressPass1 == false) {
             alert("The shipping from address have problem");
             $('html,body').animate({scrollTop: $("#ShippingFrom").offset().top}, 'slow');
-        } else if( AddressPass2 === false) {
+        } else if( AddressPass2 == false) {
             alert("The shipping to address have problem");
             $('html,body').animate({scrollTop: $("#ShippingTo").offset().top}, 'slow');
         } else {
