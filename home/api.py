@@ -52,6 +52,7 @@ def ups(info):
 
     # Conversion unit of Weight
     if info["Weight unit"] != "pounds":  # KG to pounds
+        info["Weight unit"] = "pounds"
         info["Weight"] = round(float(info["Weight"]) * 2.20462262, 2)
 
     if float(info["Weight"]) > 150.00:
@@ -97,6 +98,7 @@ def ups(info):
     try:
         response = client.service.ProcessRate(_soapheaders=headers, Request=requestDictionary,
                                               Shipment=rateRequestDictionary)
+        # print(response)
 
         input_dict = helpers.serialize_object(response)
         output_dict = json.loads(json.dumps(input_dict))
@@ -181,6 +183,7 @@ def fedex(info):
     package1_weight = rate.create_wsdl_object_of_type('Weight')
     # Conversion unit of Weight
     if info["Weight unit"] != "pounds":  # KG to pounds
+        info["Weight unit"] = "pounds"
         info["Weight"] = round(float(info["Weight"]) * 2.20462262, 2)
 
     if float(info["Weight"]) > 150.00:
@@ -211,7 +214,7 @@ def fedex(info):
         # print(type(avc_request.response.Options))
         # for i in avc_request.response.Options:
         #     print(dict(i))
-
+        # print(rate.response)
         rst = list()
         for service in rate.response.RateReplyDetails:
             for rate_detail in service.RatedShipmentDetails:
@@ -250,6 +253,7 @@ def usps(info):
 
     # Conversion unit of Weight
     if info["Weight unit"] != "pounds":  # KG to pounds
+        info["Weight unit"] = "pounds"
         info["Weight"] = round(float(info["Weight"]) * 2.20462262, 2)
 
     try:
@@ -275,6 +279,7 @@ def sendle(info):
     if info["ShipFrom"]["Address"]["CountryCode"] == 'US' and info["ShipTo"]["Address"]["CountryCode"] == 'US':
         # Conversion unit of Weight
         if info["Weight unit"] != "pounds":  # KG to pounds
+            info["Weight unit"] = "pounds"
             info["Weight"] = round(float(info["Weight"]) * 2.20462262, 2)
 
         if float(info["Weight"]) > 70:
