@@ -1,8 +1,60 @@
 
 $(document).ready(function () {
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+          if (target.length) {
+            $('html, body').animate({
+              scrollTop: (target.offset().top - 72)
+            }, 1000, "easeInOutExpo");
+            return false;
+          }
+        }
+      });
+    
+      // Closes responsive menu when a scroll trigger link is clicked
+      $('.js-scroll-trigger').click(function() {
+        $('.navbar-collapse').collapse('hide');
+      });
+    
+      // Activate scrollspy to add active class to navbar items on scroll
+      $('body').scrollspy({
+        target: '#mainNav',
+        offset: 75
+      });
+    
+      // Collapse Navbar
+      var navbarCollapse = function() {
+        if ($("#mainNav").offset().top > 100) {
+          $("#mainNav").addClass("navbar-scrolled");
+        } else {
+          $("#mainNav").removeClass("navbar-scrolled");
+        }
+      };
+      // Collapse now if page is not at top
+      navbarCollapse();
+      // Collapse the navbar when page is scrolled
+      $(window).scroll(navbarCollapse);
+    
+      // Magnific popup calls
+    //   $('#portfolio').magnificPopup({
+    //     delegate: 'a',
+    //     type: 'image',
+    //     tLoading: 'Loading image #%curr%...',
+    //     mainClass: 'mfp-img-mobile',
+    //     gallery: {
+    //       enabled: true,
+    //       navigateByImgClick: true,
+    //       preload: [0, 1]
+    //     },
+    //     image: {
+    //       tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+    //     }
+    //   });
 
     function alert(e) {
-        $("body").append('<div class="zhezhao" id="zhezhao"></div><div id="msg"><div id="msg_top">warning<span class="msg_close">×</span></div><div id="msg_cont">' + e + '</div><div class="msg_close" id="msg_clear">close</div></div>');
+        $("body").append('<div class="zhezhao" id="zhezhao"></div><div id="msg"><div id="msg_top">Warning<span class="msg_close">×</span></div><div id="msg_cont">' + e + '</div><div class="msg_close" id="msg_clear">Close</div></div>');
         document.body.style.overflow = "hidden";
         $(".msg_close").click(function () {
             $("#msg").remove();
@@ -33,7 +85,7 @@ $(document).ready(function () {
                     window.location.hash = "";
                     $('html,body').animate({scrollTop: $("#Address_line").offset().top}, 'slow');
                 } else {
-                    $('html,body').animate({scrollTop: $("#submit").offset().top}, 'slow');
+                    //$('html,body').animate({scrollTop: $("#submit").offset().top}, 'slow');
                 }
                 $('tbody tr').click(function (element) {
                     var td = $(element.currentTarget.firstChild.lastChild).text();
@@ -95,33 +147,34 @@ $(document).ready(function () {
     $('#submit').click(function () {
         //alert('e');
         //$('.cscz').removeAttr('disabled');
-        //$('#datatable').dataTable().fnClearTable();
-        table.clear();
+        $('#datatable').dataTable().fnClearTable();
+        //table.clear();
 
+        checksize1 = true;
+        checksize2 = true;
+        checksize3 = true;
         TestSize();
         TestWeight();
         TestAddress1();
         TestAddress2();
-        checksize1 = true;
-        checksize2 = true;
-        checksize3 = true;
+        
 
 
-        if (sizePass === false) {
-            alert("The size have problem");
-            $('html,body').animate({scrollTop: $("#itemSize").offset().top}, 'slow');
-        } else if (weightPass === false) {
-            alert("The weight have problem");
-            $('html,body').animate({scrollTop: $("#itemWeight").offset().top}, 'slow');
-        } else if ( AddressPass1 === false) {
-            alert("The shipping from address have problem");
-            $('html,body').animate({scrollTop: $("#ShippingFrom").offset().top}, 'slow');
-        } else if( AddressPass2 === false) {
-            alert("The shipping to address have problem");
-            $('html,body').animate({scrollTop: $("#ShippingTo").offset().top}, 'slow');
+        if (sizePass == false) {
+            //alert("The size have problem.");
+            $('html,body').animate({scrollTop: $("#itemSize").offset().top - 100 + "px"}, 'slow');
+        } else if (weightPass == false) {
+            //alert("The weight have problem.");
+            $('html,body').animate({scrollTop: $("#itemSize").offset().top - 100 + "px"}, 'slow');
+        } else if ( AddressPass1 == false) {
+            //alert("The shipping from address have problem.");
+            $('html,body').animate({scrollTop: $("#ShippingFrom").offset().top - 110 + "px"}, 'slow');
+        } else if( AddressPass2 == false) {
+            //alert("The shipping to address have problem.");
+            $('html,body').animate({scrollTop: $("#ShippingFrom").offset().top - 110 + "px"}, 'slow');
         } else {
             table.ajax.url('input/?' + $('#search_form').serialize()).load();
-            $('html,body').animate({scrollTop: $("#ResultArea").offset().top}, 'slow');
+            $('html,body').animate({scrollTop: $("#ResultArea").offset().top - 100 + "px"}, 'slow');
         }
 
         //$('#divtable').css("visibility", "visible");

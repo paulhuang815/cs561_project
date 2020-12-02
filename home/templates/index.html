@@ -1,11 +1,14 @@
 {% extends "master.html" %}
 
 {% block content %}
-    <div class="form-group">
-        <h1><p style="color: crimson">Type in all your package dimensions and addresses</p></h1>
-        <p style="color: grey">To see all available shipping services</p>
-    </div>
 
+<div class="form-group" >
+    <div id="Smalltitle" class="alert alert-warning" role="alert" style="color: black;">
+        <i class="fas fa-exclamation-circle" style="color: #856404;"></i>&nbsp;&nbsp;
+        Due to Covid-19, the estimate time might be longer than normal.
+    </div>
+</div>
+<div> <p style="font-size: 10px;"><br></p></div>
 
     <form id="search_form" method="post" class="search_form" autocomplete="off">{% csrf_token %}
         {#    <!--{% csrf_token %}-->#}
@@ -49,7 +52,7 @@
                         <h3><p>Length</p></h3>
                     </div>
                     <div class="col-md-3 input-group">
-                        <input type="number" class="form-control" id="Length" name="Length"
+                        <input type="number" class="form-control TypeNumber" id="Length" name="Length"
                                placeholder="Enter Length" oninput="checksize1 = true;TestSize();" onblur="checksize1 = true;TestSize();">
                         <div class="input-group-append">
                             <span class="input-group-text item">inches</span>
@@ -60,7 +63,7 @@
                         <h3><p>Width</p></h3>
                     </div>
                     <div class="col-md-3 input-group">
-                        <input type="number" class="form-control" id="Width" name="Width"
+                        <input type="number" class="form-control TypeNumber" id="Width" name="Width"
                                placeholder="Enter Width" oninput="checksize2 = true;TestSize();" onblur="checksize2 = true;TestSize();">
                         <div class="input-group-append">
                             <span class="input-group-text item">inches</span>
@@ -71,7 +74,7 @@
                         <h3><p>Height</p></h3>
                     </div>
                     <div class="col-md-3 input-group">
-                        <input type="number" class="form-control" id="Height" name="Height"
+                        <input type="number" class="form-control TypeNumber" id="Height" name="Height"
                                placeholder="Enter Height" oninput="checksize3 = true;TestSize();" onblur="checksize3 = true;TestSize();">
                         <div class="input-group-append">
                             <span class="input-group-text item">inches</span>
@@ -88,13 +91,13 @@
 {#            <p id ="waring1p">Package exceeds the maximum size total constraints of 165 inches <br> hint: (length + girth, where girth is 2 x width plus 2 x height) </p>#}
 {#        </div>#}
 
-        <hr>
+        <hr id = "itemWeight">
 
         <div class="form-group">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-1">
-{#                        <h3><label for="Units">Units</label></h3>#}
+                    <div class="col-md-1" >
+{#                        <h3  ><label for="Units">Units</label></h3>#}
                         <h3><p>Units</p></h3>
                     </div>
                     <div class="tabber col-md-3" display= "flex">
@@ -118,7 +121,7 @@
                         <h3><p>Weight</p></h3>
                     </div>
                     <div class="col-md-3 input-group">
-                        <input type="number" class="form-control" id="Weight" name="Weight"
+                        <input type="number" class="form-control TypeNumber" id="Weight" name="Weight"
                                placeholder="Enter Weight" oninput="TestWeight()" >
                         <div class="input-group-append">
                             <span class="input-group-text weight">pounds</span>
@@ -157,7 +160,7 @@
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="From_AddressLine" name="From_AddressLine"
-                               placeholder="Enter your 'From' address" oninput="ClearFromZipcode();TestAddress1();" onFocus="geolocate_from()"
+                               placeholder="Enter your 'From' address" oninput="ClearFromZipcode();" onFocus="geolocate_from()"
                                autocomplete="nothing">
                     </div>
                 </div>
@@ -229,7 +232,7 @@
                     </div>
                     <div class="col-md-10">
                         <input type="text" class="form-control" id="To_AddressLine" name="To_AddressLine"
-                               placeholder="Enter your 'To' address" onFocus="geolocate_to()" oninput = "ClearToZipcode();TestAddress2();">
+                               placeholder="Enter your 'To' address" onFocus="geolocate_to()" oninput = "ClearToZipcode();">
                     </div>
                 </div>
             </div>
@@ -356,7 +359,7 @@
             <i class="fa fa-hands fa-2x" style="align: middle;"></i>
             <h3 style="margin-left: 10px;">Our Goal</h3>
     </div-->
-    <div class="form-inline" style="margin-bottom: 30px; margin-top: 100px;">
+    <!-- <div class="form-inline" style="margin-bottom: 30px; margin-top: 100px;">
             <i class="fa fa-flushed fa-2x" style="align: middle;"></i>
             <h3 style="margin-left: 10px;" id="AboutUs">About Us</h3>
     </div>
@@ -364,8 +367,53 @@
         <p style="color: black; font-size:18px;"> 
             This is a project for CS561 in 2020 Fall term. <br>
             Author: Sheng-Po Huang, Ta-wei Hwang, Yue Chen, Chuan Cheng, Jingyu Xiang, and Shih-Chao Hung.</p>
-    </div>
-
+    </div> -->
+    <div style="height: 350px;"></div>
+    <section class="page-section" id="AboutUs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="form-inline">
+                        <i class="fa fa-flushed fa-2x" style="align: middle;"></i>
+                        <h2 class="mt-0 ml-2" style="margin-bottom: 0px !important;">About Us</h2>
+                    </div>
+                    <p class="text-muted mb-5" style="margin-top: 1.5rem;"> This is a project for CS561 in 2020 Fall term. <br><br>
+                        Author: Sheng-Po Huang, Ta-wei Hwang, Yue Chen, Chuan Cheng, Jingyu Xiang, and Shih-Chao Hung.</p>
+                </div>
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-4">
+                    <img class="" src="../static/image/logo_new.png" width="300px" height="300px">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mt-0">Contact US!</h2>
+                    <hr class="divider my-4" />
+                    <p class="text-muted mb-5">If you have any question.</br>Please contact us!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                    <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+                    <a class="d-block" href="tel:+15417371000">+1 (541) 737-1000</a>
+                </div>
+                <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                    <a class="" href="https://github.com/CS561-Shipping-estimate-platform/cs561_project"><i class="fab fa-github fa-3x mb-3 text-muted"></i></a>
+                    <a class="d-block" href="https://github.com/CS561-Shipping-estimate-platform/cs561_project">Github</a>
+                </div>
+                <div class="col-lg-4 mr-auto text-center">
+                    <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+                    <!-- Make sure to change the email address in BOTH the anchor text and the link target below!-->
+                    <a class="d-block" href="mailto:hungshi@oregonstate.edu">Email us</a>
+                </div>
+            </div>
+        </div>
+    </section>
     {##}
     {#<table>#}
     {#    <tr>#}
