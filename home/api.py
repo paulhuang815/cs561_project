@@ -251,6 +251,11 @@ def usps(info):
         info["Length"] = round(float(info["Length"]) * 0.393700787, 2)
         info["Width"] = round(float(info["Width"]) * 0.393700787, 2)
 
+    if float(info["Length"]) + 2 * float(info["Height"]) + 2 * float(info["Width"]) > 108:
+        print('Package exceeds the maximum size total constraints of 108 inches ' \
+              '(length + girth, where girth is 2 x width plus 2 x height)')
+        return []
+
     # Conversion unit of Weight
     if info["Weight unit"] != "pounds":  # KG to pounds
         info["Weight unit"] = "pounds"
