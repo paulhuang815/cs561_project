@@ -96,11 +96,11 @@ $(document).ready(function () {
                     length = length * 0.393700787;
                     width = width * 0.393700787;
                 }
-    
+
                 if (w_unit === 'kg') {
                     weight = weight * 2.20462262;
                 }
-    
+
                 if ((length + (2 * width) + (2 * height)) > 108 || weight > 70) {
                     em = '<b>USPS</b> and <b>Sendle</b> only can deliver the size are smaller than 108 inches and 70 pounds.' + '<br>' + '(hint: length + girth, where girth is 2*width + 2*height)';
                 }
@@ -156,32 +156,32 @@ $(document).ready(function () {
                     }
                 }
                 // console.log(result);
-
+                var m = [];
                 var errormessage = '';
                 // console.log(check);
                 if (!check[0]) {
-                    errormessage += '<b>UPS</b> doesn’t support these addresses.';
+                    errormessage += '<b>UPS</b>';
                 }
                 if (!check[1]) {
                     if (errormessage) {
-                        errormessage += '<br>';
+                        errormessage += ', ';
                     }
-                    errormessage += '<b>Fedex</b> doesn’t support these addresses.';
+                    errormessage += '<b>Fedex</b>';
                 }
                 if (!check[2]) {
                     if (!em) {
                         if (errormessage) {
-                            errormessage += '<br>';
+                            errormessage += ', ';
                         }
-                        errormessage += '<b>USPS</b> doesn’t support these addresses.';
+                        errormessage += '<b>USPS</b>';
                     }
                 }
                 if (!check[3]) {
                     if (!em) {
                         if (errormessage) {
-                            errormessage += '<br>';
+                            errormessage += ', ';
                         }
-                        errormessage += '<b>Sendle</b> doesn’t support these addresses.';
+                        errormessage += '<b>Sendle</b>';
                     }
                 }
                 // console.log(em);
@@ -190,13 +190,13 @@ $(document).ready(function () {
                     $('#servicealret').removeAttr('style');
                     $('#servicealret').css("color", "black");
                     $('#servicealret').css("font-size", "1.5rem");
-                    $('#servicealret').html(errormessage);
+                    $('#servicealret').html(errormessage + ' couldn’t support these addresses.');
                 } else if (em && errormessage){
                     console.log('em not empty')
                     $('#servicealret').removeAttr('style');
                     $('#servicealret').css("color", "black");
                     $('#servicealret').css("font-size", "1.5rem");
-                    $('#servicealret').html(errormessage + '<br>' + em);
+                    $('#servicealret').html(errormessage + ' couldn’t support these addresses.' + '<br>' + em);
                 } else if (em) {
                     $('#servicealret').removeAttr('style');
                     $('#servicealret').css("color", "black");
