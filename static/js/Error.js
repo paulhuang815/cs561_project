@@ -30,7 +30,7 @@ function ChangeSize(){
         else{
             height = height * 2.54;
         }
-        document.getElementById('Height').value = height.toFixed(2);;
+        document.getElementById('Height').value = parseFloat(height.toFixed(1)).valueOf();
     }
     if(Length != ""){
         Length = Number(Length);
@@ -40,7 +40,7 @@ function ChangeSize(){
         else{
             Length = Length * 2.54;
         }
-        document.getElementById('Length').value = Length.toFixed(2);
+        document.getElementById('Length').value = parseFloat(Length.toFixed(1)).valueOf();
     }
     if(Width != ""){
         Width = Number(Width);
@@ -50,7 +50,7 @@ function ChangeSize(){
         else{
             Width = Width * 2.54;
         }
-        document.getElementById('Width').value = Width.toFixed(2);
+        document.getElementById('Width').value = parseFloat(Width.toFixed(1)).valueOf();
     }
 }
 
@@ -67,7 +67,7 @@ function ChangeWeight(){
         else{
             weight = weight * 0.45359237;
         }
-        document.getElementById('Weight').value = weight.toFixed(2);;
+        document.getElementById('Weight').value = parseFloat(weight.toFixed(1)).valueOf();
     }
 }
 
