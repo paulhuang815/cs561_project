@@ -78,29 +78,59 @@ $(document).ready(function () {
         "info": true,
         "drawCallback": function (setting) {
             var result = setting.json;
+            var check = [false, false, false, false];
+
+            var height = parseFloat($('#Height').val());
+            var length = parseFloat($('#Length').val());
+            var width = parseFloat($('#Width').val());
+            var s_unit = $('#t1').prop("checked");
+            s_unit = s_unit ? 'in' : 'cm';
+            var weight = parseFloat($('#Weight').val());
+            var w_unit = $('#t3').prop("checked");
+            w_unit = w_unit ? 'lb' : 'kg';
 
             if (result !== undefined) {
-                if (result.data.length === 0) {
-                    alert('Address is wrong, please check');
-                    window.location.hash = "";
-                    $('html,body').animate({scrollTop: $("#Address_line").offset().top}, 'slow');
-                } else {
-                    //$('html,body').animate({scrollTop: $("#submit").offset().top}, 'slow');
+                var em = '';
+                if (s_unit === 'cm') {
+                    height = height * 0.393700787;
+                    length = length * 0.393700787;
+                    width = width * 0.393700787;
                 }
+    
+                if (w_unit === 'kg') {
+                    weight = weight * 2.20462262;
+                }
+    
+                if ((length + (2 * width) + (2 * height)) > 108 || weight > 70) {
+                    em = '<b>USPS</b> and <b>Sendle</b> only can deliver the size are smaller than 108 inches and 70 pounds.' + '<br>' + '(hint: length + girth, where girth is 2*width + 2*height)';
+                }
+
+                // if (result.data.length === 0) {
+                //     alert('Address is wrong, please check');
+                //     window.location.hash = "";
+                //     $('html,body').animate({scrollTop: $("#Address_line").offset().top - 110 + 'px'}, 'slow');
+                // } 
+                // else {
+                //     //$('html,body').animate({scrollTop: $("#submit").offset().top}, 'slow');
+                // }
                 $('tbody tr').click(function (element) {
                     var td = $(element.currentTarget.firstChild.lastChild).text();
                     var ul = '';
                     switch (td) {
                     case "UPS":
+                        check[0] = true;
                         ul = "https://www.ups.com/us/en/global.page";
                         break;
                     case "Fedex":
+                        check[1] = true;
                         ul = "https://www.fedex.com/en-us/home.html";
                         break;
                     case "USPS":
+                        check[2] = true;
                         ul = "https://www.usps.com/ship/";
                         break;
                     case "Sendle":
+                        check[3] = true;
                         ul = "https://try.sendle.com/en-us/pricing";
                         break;
                     default:
@@ -108,6 +138,71 @@ $(document).ready(function () {
                     }
                     window.open(ul);
                 });
+
+                for (var i = 0; i < result.data.length; i++) {
+                    switch(result.data[i]['Company']) {
+                    case "UPS":
+                        check[0] = true;
+                        break;
+                    case "Fedex":
+                        check[1] = true;
+                        break;
+                    case "USPS":
+                        check[2] = true;
+                        break;
+                    case "Sendle":
+                        check[3] = true;
+                        break;
+                    }
+                }
+                // console.log(result);
+
+                var errormessage = '';
+                // console.log(check);
+                if (!check[0]) {
+                    errormessage += '<b>UPS</b> doesn’t support these addresses.';
+                }
+                if (!check[1]) {
+                    if (errormessage) {
+                        errormessage += '<br>';
+                    }
+                    errormessage += '<b>Fedex</b> doesn’t support these addresses.';
+                }
+                if (!check[2]) {
+                    if (!em) {
+                        if (errormessage) {
+                            errormessage += '<br>';
+                        }
+                        errormessage += '<b>USPS</b> doesn’t support these addresses.';
+                    }
+                }
+                if (!check[3]) {
+                    if (!em) {
+                        if (errormessage) {
+                            errormessage += '<br>';
+                        }
+                        errormessage += '<b>Sendle</b> doesn’t support these addresses.';
+                    }
+                }
+                // console.log(em);
+                // console.log(errormessage);
+                if (em === '' && errormessage) {
+                    $('#servicealret').removeAttr('style');
+                    $('#servicealret').css("color", "black");
+                    $('#servicealret').css("font-size", "1.5rem");
+                    $('#servicealret').html(errormessage);
+                } else if (em && errormessage){
+                    console.log('em not empty')
+                    $('#servicealret').removeAttr('style');
+                    $('#servicealret').css("color", "black");
+                    $('#servicealret').css("font-size", "1.5rem");
+                    $('#servicealret').html(errormessage + '<br>' + em);
+                } else if (em) {
+                    $('#servicealret').removeAttr('style');
+                    $('#servicealret').css("color", "black");
+                    $('#servicealret').css("font-size", "1.5rem");
+                    $('#servicealret').html(em);
+                }
             }
 
         },
@@ -158,7 +253,7 @@ $(document).ready(function () {
         TestAddress1();
         TestAddress2();
         
-
+        $('#servicealret').css('display', 'none');
 
         if (sizePass == false) {
             //alert("The size have problem.");

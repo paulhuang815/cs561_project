@@ -41,9 +41,14 @@ def ups(info):
 
     # Conversion unit of Dimension
     if info["Dimension units"] != "inches":  # CM to Inches
+        info["Dimension units"] = "inches"
         info["Height"] = round(float(info["Height"]) * 0.393700787, 2)
         info["Length"] = round(float(info["Length"]) * 0.393700787, 2)
         info["Width"] = round(float(info["Width"]) * 0.393700787, 2)
+
+    if float(info["Length"]) > 108:
+        print('Package exceeds the maximum length constraints of 108 inches ')
+        return []
 
     if float(info["Length"]) + 2 * float(info["Height"]) + 2 * float(info["Width"]) > 165:
         print('Package exceeds the maximum size total constraints of 165 inches ' \
@@ -52,6 +57,7 @@ def ups(info):
 
     # Conversion unit of Weight
     if info["Weight unit"] != "pounds":  # KG to pounds
+        info["Weight unit"] = "pounds"
         info["Weight"] = round(float(info["Weight"]) * 2.20462262, 2)
 
     if float(info["Weight"]) > 150.00:
@@ -97,6 +103,7 @@ def ups(info):
     try:
         response = client.service.ProcessRate(_soapheaders=headers, Request=requestDictionary,
                                               Shipment=rateRequestDictionary)
+        # print(response)
 
         input_dict = helpers.serialize_object(response)
         output_dict = json.loads(json.dumps(input_dict))
@@ -178,9 +185,26 @@ def fedex(info):
     rate.RequestedShipment.ShippingChargesPayment.PaymentType = 'SENDER'
 
     # item information
+    # Conversion unit of Dimension
+    if info["Dimension units"] != "inches":  # CM to Inches
+        info["Dimension units"] = "inches"
+        info["Height"] = round(float(info["Height"]) * 0.393700787, 2)
+        info["Length"] = round(float(info["Length"]) * 0.393700787, 2)
+        info["Width"] = round(float(info["Width"]) * 0.393700787, 2)
+
+    if float(info["Length"]) > 108:
+        print('Package exceeds the maximum length constraints of 108 inches ')
+        return []
+
+    if float(info["Length"]) + 2 * float(info["Height"]) + 2 * float(info["Width"]) > 165:
+        print('Package exceeds the maximum size total constraints of 165 inches ' \
+              '(length + girth, where girth is 2 x width plus 2 x height)')
+        return []
+
     package1_weight = rate.create_wsdl_object_of_type('Weight')
     # Conversion unit of Weight
     if info["Weight unit"] != "pounds":  # KG to pounds
+        info["Weight unit"] = "pounds"
         info["Weight"] = round(float(info["Weight"]) * 2.20462262, 2)
 
     if float(info["Weight"]) > 150.00:
@@ -211,7 +235,7 @@ def fedex(info):
         # print(type(avc_request.response.Options))
         # for i in avc_request.response.Options:
         #     print(dict(i))
-
+        # print(rate.response)
         rst = list()
         for service in rate.response.RateReplyDetails:
             for rate_detail in service.RatedShipmentDetails:
@@ -231,9 +255,7 @@ def fedex(info):
         return rst
 
     except Exception as e:
-
         print('Fedex error information:' + str(e))
-
         return []
 
 
@@ -244,24 +266,36 @@ def usps(info):
 
     # Conversion unit of Dimension
     if info["Dimension units"] != "inches":  # CM to Inches
+        info["Dimension units"] = "inches"
         info["Height"] = round(float(info["Height"]) * 0.393700787, 2)
         info["Length"] = round(float(info["Length"]) * 0.393700787, 2)
         info["Width"] = round(float(info["Width"]) * 0.393700787, 2)
 
+    if float(info["Length"]) > 108:
+        print('Package exceeds the maximum length constraints of 108 inches ')
+        return []
+
+    if float(info["Length"]) + 2 * float(info["Height"]) + 2 * float(info["Width"]) > 108:
+        print('Package exceeds the maximum size total constraints of 108 inches ' \
+              '(length + girth, where girth is 2 x width plus 2 x height)')
+        return []
+
     # Conversion unit of Weight
     if info["Weight unit"] != "pounds":  # KG to pounds
+        info["Weight unit"] = "pounds"
         info["Weight"] = round(float(info["Weight"]) * 2.20462262, 2)
 
     try:
         pack = Package(
             zip_origination=info["ShipFrom"]["Address"]["PostalCode"],
             zip_destination=info["ShipTo"]["Address"]["PostalCode"],
-            pounds=info["Weight"],
-            width=info["Width"],
-            length=info["Length"],
-            height=info["Height"],
+            pounds=str(info["Weight"]),
+            width=str(info["Width"]),
+            length=str(info["Length"]),
+            height=str(info["Height"]),
             country=info["ShipTo"]["Address"]["CountryCode"]
         )
+
         validation = usps_api.shipping_rate(pack)
         return validation.rst
     except Exception as e:
@@ -272,9 +306,26 @@ def usps(info):
 def sendle(info):
     import requests
 
+    # Conversion unit of Dimension
+    if info["Dimension units"] != "inches":  # CM to Inches
+        info["Dimension units"] = "inches"
+        info["Height"] = round(float(info["Height"]) * 0.393700787, 2)
+        info["Length"] = round(float(info["Length"]) * 0.393700787, 2)
+        info["Width"] = round(float(info["Width"]) * 0.393700787, 2)
+
+    if float(info["Length"]) > 108:
+        print('Package exceeds the maximum length constraints of 108 inches ')
+        return []
+
+    if float(info["Length"]) + 2 * float(info["Height"]) + 2 * float(info["Width"]) > 108:
+        print('Package exceeds the maximum size total constraints of 108 inches ' \
+              '(length + girth, where girth is 2 x width plus 2 x height)')
+        return []
+
     if info["ShipFrom"]["Address"]["CountryCode"] == 'US' and info["ShipTo"]["Address"]["CountryCode"] == 'US':
         # Conversion unit of Weight
         if info["Weight unit"] != "pounds":  # KG to pounds
+            info["Weight unit"] = "pounds"
             info["Weight"] = round(float(info["Weight"]) * 2.20462262, 2)
 
         if float(info["Weight"]) > 70:
@@ -293,7 +344,8 @@ def sendle(info):
 
     elif info["ShipFrom"]["Address"]["CountryCode"] == 'AU':
         # Conversion unit of Weight
-        if info["Weight unit"] == "pounds":  # pounds to KG
+        if info["Weight unit"] != "kilograms":  # pounds to KG
+            info["Weight unit"] = "kilograms"
             info["Weight"] = round(float(info["Weight"]) / 2.20462262, 2)
 
         if float(info["Weight"]) > 25:

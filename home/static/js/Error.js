@@ -118,6 +118,38 @@ function TestSize(){
         document.getElementById('waring1').style.display ="none";
     }
     
+    if (Length > 108){  
+        document.getElementById('waring1').style.display ="block";
+        //document.getElementById('submit').disabled = 'true';
+        document.getElementById('waring1p').innerHTML= "Length should be smaller than 108 inches / 274.32 cm.";
+        sizePass = false;
+        return;
+    }
+    else{
+        document.getElementById('waring1').style.display ="none";
+    }
+
+    if (Width > 108){  
+        document.getElementById('waring1').style.display ="block";
+        //document.getElementById('submit').disabled = 'true';
+        document.getElementById('waring1p').innerHTML= "Width should be smaller than 108 inches / 274.32 cm.";
+        sizePass = false;
+        return;
+    }
+    else{
+        document.getElementById('waring1').style.display ="none";
+    }
+
+    if (height > 108){  
+        document.getElementById('waring1').style.display ="block";
+        //document.getElementById('submit').disabled = 'true';
+        document.getElementById('waring1p').innerHTML= "Height should be smaller than 108 inches / 274.32 cm.";
+        sizePass = false;
+        return;
+    }
+    else{
+        document.getElementById('waring1').style.display ="none";
+    }
     
     if(checksize1 && checksize2 && checksize3){
         // if( height == '' || Length == '' || Width == ''){
@@ -152,9 +184,7 @@ function TestSize(){
             document.getElementById('waring1p').innerHTML= "The height/Weight/Width should be bigger than 0.";
             sizePass = false;
         }
-        else if (2*height+Length+2*Width > 165){
-  
-  
+        else if (2*height+Length+2*Width > 165){  
             document.getElementById('waring1').style.display ="block";
             //document.getElementById('submit').disabled = 'true';
             document.getElementById('waring1p').innerHTML= "Package exceeds the maximum size total constraints of 165 inches / 419.1 cm. <br> hint: (length + girth, where girth is 2 x width plus 2 x height)";
@@ -345,5 +375,9 @@ function skipAboutUs() {
 }
 
 function skip() {
-    $('html,body').animate({scrollTop: $("#itemSize").offset().top - 100 + "px"}, 'slow');
+    $('html,body').animate({scrollTop: $("#Smalltitle").offset().top - 110 + "px"}, 'slow');
+}
+
+function skipContact() {
+    $('html,body').animate({scrollTop: $("#contact").offset().top}, 'slow');
 }

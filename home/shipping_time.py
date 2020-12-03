@@ -42,12 +42,15 @@ def fedex_time(service, time_lst):
     for i in time_lst:
         i = dict(i)
         if service == i['Service']:
-            shipping_time = str((i['DeliveryDate'] - datetime.now().date()).days)
-            # print(shipping_time)
-            if shipping_time == '1':
-                return "{0} Day".format(shipping_time)
-            else:
-                return "{0} Days".format(shipping_time)
+            try:
+                shipping_time = str((i['DeliveryDate'] - datetime.now().date()).days)
+                # print(shipping_time)
+                if shipping_time == '1':
+                    return "{0} Day".format(shipping_time)
+                else:
+                    return "{0} Days".format(shipping_time)
+            except:
+                return '-'
 
     return '-'
 
@@ -89,8 +92,11 @@ def usps_time(service, from_country, to_country):
 
 
 def sendle_time(date_range, pickup_date):
-    shipping_time = []
-    for deliver_time in date_range:
-        shipping_time.append(
-            (datetime.strptime(deliver_time, '%Y-%m-%d') - datetime.strptime(pickup_date, '%Y-%m-%d')).days)
-    return "{0}-{1} Days".format(shipping_time[0], shipping_time[1])
+    try:
+        shipping_time = []
+        for deliver_time in date_range:
+            shipping_time.append(
+                (datetime.strptime(deliver_time, '%Y-%m-%d') - datetime.strptime(pickup_date, '%Y-%m-%d')).days)
+        return "{0}-{1} Days".format(shipping_time[0], shipping_time[1])
+    except:
+        return '-'
