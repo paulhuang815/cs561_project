@@ -14,6 +14,63 @@ $('.TypeNumber').keypress(function (evt) {
     console.log(evt);
 });
 
+function ChangeSize(){
+    var height = document.getElementById('Height').value;
+    var Length = document.getElementById('Length').value;
+    var Width = document.getElementById('Width').value;
+    var unit = document.getElementById('t1').checked;
+
+    var unit1 = unit ? 'in' : 'cm';
+
+    if(height != ''){
+        height = Number(height);
+        if(unit1 == 'in') {
+            height = height * 0.393700787;
+        }
+        else{
+            height = height * 2.54;
+        }
+        document.getElementById('Height').value = height.toFixed(2);;
+    }
+    if(Length != ""){
+        Length = Number(Length);
+        if(unit1 == 'in') {
+            Length = Length * 0.393700787;
+        }
+        else{
+            Length = Length * 2.54;
+        }
+        document.getElementById('Length').value = Length.toFixed(2);
+    }
+    if(Width != ""){
+        Width = Number(Width);
+        if(unit1 == 'in') {
+            Width = Width * 0.393700787;
+        }
+        else{
+            Width = Width * 2.54;
+        }
+        document.getElementById('Width').value = Width.toFixed(2);
+    }
+}
+
+function ChangeWeight(){
+    weight = document.getElementById('Weight').value;
+    var unit = document.getElementById('t3').checked;
+    var unit1 = unit ? 'lb' : 'kg';
+
+    if(weight != ''){
+        weight = Number(weight);
+        if(unit1 == 'lb') {
+            weight = weight * 2.20462262;
+        }
+        else{
+            weight = weight * 0.45359237;
+        }
+        document.getElementById('Weight').value = weight.toFixed(2);;
+    }
+}
+
 function TestSize(){
     
     var height = document.getElementById('Height').value;

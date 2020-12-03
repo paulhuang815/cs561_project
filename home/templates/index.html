@@ -31,9 +31,9 @@
                     </div> -->
                     <div class="tabber col-md-3" display= "flex">
                         <label for="t1">in</label>
-                        <input id="t1" name="Dimension_units" type="radio" checked onchange="ChangeSizeUnit();TestSize()" value="inches">
+                        <input id="t1" name="Dimension_units" type="radio" checked onchange="ChangeSizeUnit();TestSize();ChangeSize()" value="inches">
                         <label for="t2">cm</label>
-                        <input id="t2" name="Dimension_units" type="radio" onchange="ChangeSizeUnit();TestSize()" value="cm">
+                        <input id="t2" name="Dimension_units" type="radio" onchange="ChangeSizeUnit();TestSize();ChangeSize()" value="cm">
                         <div class="blob"></div>
                         <div name="unit_border" style="border: 0.2rem cornflowerblue;border-style: solid; border-radius: 1.5rem; width: 9.4rem;height: 1rem; padding-top: 2.6rem; margin-left: -4.4rem;z-index: -2;">
                         </div>
@@ -100,9 +100,9 @@
                     </div>
                     <div class="tabber col-md-3" display= "flex">
                         <label for="t3">lb</label>
-                        <input id="t3" name="Weight_unit" type="radio" checked onchange="ChangeWeightUnit()" value="pounds">
+                        <input id="t3" name="Weight_unit" type="radio" checked onchange="ChangeWeightUnit();ChangeWeight()" value="pounds">
                         <label for="t4">kg</label>
-                        <input id="t4" name="Weight_unit" type="radio" onchange="ChangeWeightUnit()"  value="kilograms">
+                        <input id="t4" name="Weight_unit" type="radio" onchange="ChangeWeightUnit();ChangeWeight()"  value="kilograms">
                         <div class="blob" style="margin-left:-9.2rem; margin-top:0.19rem"></div>
                         <div name="unit_border" style="border: 0.2rem cornflowerblue;border-style: solid; border-radius: 1.5rem; width: 9.4rem;height: 1rem; padding-top: 2.6rem; margin-left: -4.4rem;z-index: -2;">
                         </div>
