@@ -31,8 +31,8 @@ function initAutocomplete() {
         { types: ["geocode"] }
     );
     autocomplete_from = new google.maps.places.Autocomplete(
-    document.getElementById("From_AddressLine"),
-    { types: ["geocode"] }
+        document.getElementById("From_AddressLine"),
+        { types: ["geocode"] }
     );
     // Avoid paying for data that you don't need by restricting the set of
     // place fields that are returned to just the address components.
@@ -335,22 +335,3 @@ $("#To_AddressLine").focus(function() {
 //         closeAllLists(e.target);
 //     });
 // }
-function ChangeSizeUnit(){
-    var inCheckbox = document.getElementById('t1').checked;
-    var unit = inCheckbox ? 'inches' : 'cm';
-    var getUnits = document.getElementsByClassName('input-group-text');
-    // for(var unit of unit_var) {
-    //   unit.innerHTML = "cm"
-    // }
-    getUnits[0].innerHTML = unit;
-    getUnits[1].innerHTML = unit;
-    getUnits[2].innerHTML = unit;
-}
-
-function ChangeWeightUnit(){
-    var inCheckbox = document.getElementById('t3').checked;
-    var unit = inCheckbox ? 'pounds' : 'kg';
-    var getUnits = document.getElementsByClassName('input-group-text');
-
-    getUnits[3].innerHTML = unit;
-}

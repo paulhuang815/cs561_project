@@ -11,7 +11,7 @@ $('.TypeNumber').keypress(function (evt) {
     {
         evt.preventDefault();
     }
-    console.log(evt);
+    //console.log(evt);
 });
 
 function ChangeSize(){
@@ -72,7 +72,7 @@ function ChangeWeight(){
 }
 
 function TestSize(){
-    
+
     var height = document.getElementById('Height').value;
     var Length = document.getElementById('Length').value;
     var Width = document.getElementById('Width').value;
@@ -81,77 +81,71 @@ function TestSize(){
     var unit = document.getElementById('t1').checked;
     var unit1 = unit ? 'in' : 'cm';
 
-    if(checksize1 && Length == ''){
+    if (checksize1 && Length === '') {
         document.getElementById('waring1p').innerHTML = 'Please enter length.';
         //document.getElementById('submit').disabled = 'true';
-        document.getElementById('waring1').style.display ="block";
+        document.getElementById('waring1').style.display = "block";
         //document.getElementById('Length').style.border.fontcolor = "red";
         sizePass = false;
         return;
+    } else {
+        document.getElementById('waring1').style.display = "none";
     }
-    else{
-        document.getElementById('waring1').style.display ="none";
-    }
-    
 
-    if(checksize2 && Width == ''){
+
+    if (checksize2 && Width === '') {
         document.getElementById('waring1p').innerHTML = 'Please enter width.';
         //document.getElementById('submit').disabled = 'true';
-        document.getElementById('waring1').style.display ="block";
+        document.getElementById('waring1').style.display = "block";
         //document.getElementById('Length').style.border.fontcolor = "red";
         sizePass = false;
         return;
-    }
-    else{
-        document.getElementById('waring1').style.display ="none";
+    } else{
+        document.getElementById('waring1').style.display = "none";
     }
 
-    if(checksize3 && height == ''){
+    if (checksize3 && height === '') {
         document.getElementById('waring1p').innerHTML = 'Please enter heigth.';
         //document.getElementById('submit').disabled = 'true';
-        document.getElementById('waring1').style.display ="block";
+        document.getElementById('waring1').style.display = "block";
         //document.getElementById('Length').style.border.fontcolor = "red";
         sizePass = false;
         return;
-    }
-    else{
-        document.getElementById('waring1').style.display ="none";
-    }
-    
-    if (Length > 108){  
-        document.getElementById('waring1').style.display ="block";
-        //document.getElementById('submit').disabled = 'true';
-        document.getElementById('waring1p').innerHTML= "Length should be smaller than 108 inches / 274.32 cm.";
-        sizePass = false;
-        return;
-    }
-    else{
-        document.getElementById('waring1').style.display ="none";
+    } else {
+        document.getElementById('waring1').style.display = "none";
     }
 
-    if (Width > 108){  
-        document.getElementById('waring1').style.display ="block";
+    if (Length > 108) {  
+        document.getElementById('waring1').style.display = "block";
         //document.getElementById('submit').disabled = 'true';
-        document.getElementById('waring1p').innerHTML= "Width should be smaller than 108 inches / 274.32 cm.";
+        document.getElementById('waring1p').innerHTML = "Length should be smaller than 108 inches / 274.32 cm.";
         sizePass = false;
         return;
-    }
-    else{
-        document.getElementById('waring1').style.display ="none";
+    } else{
+        document.getElementById('waring1').style.display = "none";
     }
 
-    if (height > 108){  
-        document.getElementById('waring1').style.display ="block";
+    if (Width > 108) {  
+        document.getElementById('waring1').style.display = "block";
         //document.getElementById('submit').disabled = 'true';
-        document.getElementById('waring1p').innerHTML= "Height should be smaller than 108 inches / 274.32 cm.";
+        document.getElementById('waring1p').innerHTML = "Width should be smaller than 108 inches / 274.32 cm.";
         sizePass = false;
         return;
+    } else {
+        document.getElementById('waring1').style.display = "none";
     }
-    else{
-        document.getElementById('waring1').style.display ="none";
+
+    if (height > 108) {  
+        document.getElementById('waring1').style.display = "block";
+        //document.getElementById('submit').disabled = 'true';
+        document.getElementById('waring1p').innerHTML = "Height should be smaller than 108 inches / 274.32 cm.";
+        sizePass = false;
+        return;
+    } else {
+        document.getElementById('waring1').style.display = "none";
     }
-    
-    if(checksize1 && checksize2 && checksize3){
+
+    if (checksize1 && checksize2 && checksize3) {
         // if( height == '' || Length == '' || Width == ''){
         //     document.getElementById('waring1p').innerHTML = 'Package dimensions must be at least 1. Please enter an amount for each of the dimensions fields.';
         //     //document.getElementById('submit').disabled = 'true';
@@ -160,47 +154,44 @@ function TestSize(){
         //     sizePass = false;
         //     return;
         // }
-        
-        if( !reg.test(height) || !reg.test(Length) || !reg.test(Width)){
+
+        if (!reg.test(height) || !reg.test(Length) || !reg.test(Width)) {
             document.getElementById('waring1p').innerHTML = 'The size should be number.';
            // document.getElementById('submit').disabled = 'true';
-            document.getElementById('waring1').style.display ="block";
+            document.getElementById('waring1').style.display = "block";
             sizePass = false;
             return;
         }
-        
+
         height = Number(height);
         Length = Number(Length);
         Width = Number(Width);
-  
-        if(unit1 == 'cm') {
+
+        if (unit1 === 'cm') {
             height = height * 0.393700787;
             Length = Length * 0.393700787;
             Width = Width * 0.393700787;
         }
-        if(height<=0 || Length<=0 || Width<=0){
-            document.getElementById('waring1').style.display ="block";
+
+        if (height <= 0 || Length <= 0 || Width <= 0) {
+            document.getElementById('waring1').style.display = "block";
             //document.getElementById('submit').disabled = 'true';
-            document.getElementById('waring1p').innerHTML= "The height/Weight/Width should be bigger than 0.";
+            document.getElementById('waring1p').innerHTML = "The height/Weight/Width should be bigger than 0.";
             sizePass = false;
-        }
-        else if (2*height+Length+2*Width > 165){  
-            document.getElementById('waring1').style.display ="block";
+        } else if (2 * height + Length + 2 * Width > 165) {  
+            document.getElementById('waring1').style.display = "block";
             //document.getElementById('submit').disabled = 'true';
-            document.getElementById('waring1p').innerHTML= "Package exceeds the maximum size total constraints of 165 inches / 419.1 cm. <br> hint: (length + girth, where girth is 2 x width plus 2 x height)";
+            document.getElementById('waring1p').innerHTML = "Package exceeds the maximum size total constraints of 165 inches / 419.1 cm. <br> hint: (length + girth, where girth is 2 x width plus 2 x height)";
             sizePass = false;
-        }
-        else {
-            document.getElementById('waring1').style.display ="none";
+        } else {
+            document.getElementById('waring1').style.display = "none";
             //document.getElementById('submit').disabled = 'none';
             sizePass = true;
         }
     }
-      
+}
 
-  }
-
-  function TestWeight(){
+function TestWeight() {
 
     var weight = document.getElementById('Weight').value;
     // var unit23 = document.getElementById('Weight_unit').value;
@@ -209,39 +200,32 @@ function TestSize(){
     var unit1 = unit ? 'lb' : 'kg';
     //alert();
 
-    if (unit1 == 'kg') {
+    if (unit1 === 'kg') {
         weight = weight * 2.20462262;
     }
 
-    if(weight == ''){
+    if (weight === '') {
         document.getElementById('waring2p').innerHTML = 'Weight is required.';
         //document.getElementById('submit').disabled = 'true';
-        document.getElementById('waring2').style.display ="block";
+        document.getElementById('waring2').style.display = "block";
         weightPass = false;
-    }
-    else if( !reg.test(weight) || weight <= 0 ){
+    } else if (!reg.test(weight) || weight <= 0 ) {
         document.getElementById('waring2p').innerHTML = 'Only numeric values are allowed. Weight should be more than 0.';
         //document.getElementById('submit').disabled = 'true';
-        document.getElementById('waring2').style.display ="block";
+        document.getElementById('waring2').style.display = "block";
         weightPass = false;
-    }
-    else if (weight >= 150){
+    } else if (weight >= 150) {
         document.getElementById('waring2p').innerHTML = 'Max. weight 150 pounds / 68 kilograms.';
         // document.getElementById('submit').disabled = 'true';
-        document.getElementById('waring2').style.display ="block";
+        document.getElementById('waring2').style.display = "block";
         weightPass = false;
-    }
-    else {
-
-        document.getElementById('waring2').style.display ="none";
+    } else {
+        document.getElementById('waring2').style.display = "none";
         weightPass = true;
     }
+}
 
-  }
-
-  
-  function TestAddress1(){
-    
+function TestAddress1(){
     //sleep(2000);
     var space1 = document.getElementById('From_AddressLine').value;
     var space2 = document.getElementById('From_City').value;
@@ -249,8 +233,7 @@ function TestSize(){
     var space4 = document.getElementById('From_PostalCode').value;
     var space5 = document.getElementById('From_StateProvinceCode').value;
 
-    
-    if(space1 == ''){
+    if (space1 === '') {
         document.getElementById('waring3p').innerHTML = "Please enter 'Shipping From' address.";
         document.getElementById('waring3p').style.display = "block";
         AddressPass1 = false;
@@ -288,13 +271,14 @@ function TestSize(){
 }
 
 function TestAddress2() {
-    
+
     var space5 = document.getElementById('To_CountryCode').value;
     var space6 = document.getElementById('To_AddressLine').value;
     var space7 = document.getElementById('To_City').value;
     var space8 = document.getElementById('To_PostalCode').value;
     var space9 = document.getElementById('To_StateProvinceCode').value;
     //pauseTime(500);
+
     if (space6 === '') {
         document.getElementById('waring4p').innerHTML = "Please enter 'Shipping To' address.";
         document.getElementById('waring4p').style.display = "block";
@@ -380,4 +364,24 @@ function skip() {
 
 function skipContact() {
     $('html,body').animate({scrollTop: $("#contact").offset().top}, 'slow');
+}
+
+function ChangeSizeUnit(){
+    var inCheckbox = document.getElementById('t1').checked;
+    var unit = inCheckbox ? 'inches' : 'cm';
+    var getUnits = document.getElementsByClassName('input-group-text');
+    // for(var unit of unit_var) {
+    //   unit.innerHTML = "cm"
+    // }
+    getUnits[0].innerHTML = unit;
+    getUnits[1].innerHTML = unit;
+    getUnits[2].innerHTML = unit;
+}
+
+function ChangeWeightUnit(){
+    var inCheckbox = document.getElementById('t3').checked;
+    var unit = inCheckbox ? 'pounds' : 'kg';
+    var getUnits = document.getElementsByClassName('input-group-text');
+
+    getUnits[3].innerHTML = unit;
 }

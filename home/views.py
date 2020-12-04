@@ -41,7 +41,7 @@ start = False
 
 def shipping_api(data):
     from home.api import ups, fedex, usps, sendle
-    from home.tests import integration_test
+    from home.tests import integration_test, bcolors
     global start
 
     # print the input data.
@@ -49,19 +49,19 @@ def shipping_api(data):
 
     # call ups api.
     result_ups = ups(data)
-    print("result_ups : ", result_ups)
+    print("result_ups : ", (bcolors.FAIL + 'No service.' + bcolors.ENDC) if result_ups == [] else (bcolors.OKGREEN + 'Success.' + bcolors.ENDC))
 
     # call fedex api.
     result_fedex = fedex(data)
-    print("result_fedex : ", result_fedex)
+    print("result_fedex : ", (bcolors.FAIL + 'No service.' + bcolors.ENDC) if result_fedex == [] else (bcolors.OKGREEN + 'Success.' + bcolors.ENDC))
 
     # call usps api.
     result_usps = usps(data)
-    print("result_usps : ", result_usps)
+    print("result_usps : ", (bcolors.FAIL + 'No service.' + bcolors.ENDC) if result_usps == [] else (bcolors.OKGREEN + 'Success.' + bcolors.ENDC))
 
     # call sendle api.
     result_sendle = sendle(data)
-    print("result_sendle : ", result_sendle)
+    print("result_sendle : ", (bcolors.FAIL + 'No service.' + bcolors.ENDC) if result_sendle == [] else (bcolors.OKGREEN + 'Success.' + bcolors.ENDC))
 
     # Run integration test.
     if (start == False):

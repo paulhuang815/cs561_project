@@ -11,33 +11,33 @@ $(document).ready(function () {
             return false;
           }
         }
-      });
-    
-      // Closes responsive menu when a scroll trigger link is clicked
-      $('.js-scroll-trigger').click(function() {
+    });
+
+    // Closes responsive menu when a scroll trigger link is clicked
+    $('.js-scroll-trigger').click(function() {
         $('.navbar-collapse').collapse('hide');
-      });
-    
-      // Activate scrollspy to add active class to navbar items on scroll
-      $('body').scrollspy({
+    });
+
+    // Activate scrollspy to add active class to navbar items on scroll
+    $('body').scrollspy({
         target: '#mainNav',
         offset: 75
-      });
-    
-      // Collapse Navbar
-      var navbarCollapse = function() {
-        if ($("#mainNav").offset().top > 100) {
-          $("#mainNav").addClass("navbar-scrolled");
-        } else {
-          $("#mainNav").removeClass("navbar-scrolled");
-        }
-      };
-      // Collapse now if page is not at top
-      navbarCollapse();
-      // Collapse the navbar when page is scrolled
-      $(window).scroll(navbarCollapse);
-    
-      // Magnific popup calls
+    });
+
+    // Collapse Navbar
+    var navbarCollapse = function() {
+    if ($("#mainNav").offset().top > 100) {
+        $("#mainNav").addClass("navbar-scrolled");
+    } else {
+        $("#mainNav").removeClass("navbar-scrolled");
+    }
+    };
+    // Collapse now if page is not at top
+    navbarCollapse();
+    // Collapse the navbar when page is scrolled
+    $(window).scroll(navbarCollapse);
+
+    // Magnific popup calls
     //   $('#portfolio').magnificPopup({
     //     delegate: 'a',
     //     type: 'image',
@@ -109,7 +109,7 @@ $(document).ready(function () {
                 //     alert('Address is wrong, please check');
                 //     window.location.hash = "";
                 //     $('html,body').animate({scrollTop: $("#Address_line").offset().top - 110 + 'px'}, 'slow');
-                // } 
+                // }
                 // else {
                 //     //$('html,body').animate({scrollTop: $("#submit").offset().top}, 'slow');
                 // }
@@ -118,24 +118,21 @@ $(document).ready(function () {
                     var ul = '';
                     switch (td) {
                     case "UPS":
-                        check[0] = true;
                         ul = "https://www.ups.com/us/en/global.page";
                         break;
                     case "Fedex":
-                        check[1] = true;
                         ul = "https://www.fedex.com/en-us/home.html";
                         break;
                     case "USPS":
-                        check[2] = true;
                         ul = "https://www.usps.com/ship/";
                         break;
                     case "Sendle":
-                        check[3] = true;
                         ul = "https://try.sendle.com/en-us/pricing";
                         break;
                     default:
                         break;
                     }
+                    console.log('User go to ' + url + ' link.');
                     window.open(ul);
                 });
 
@@ -152,6 +149,8 @@ $(document).ready(function () {
                         break;
                     case "Sendle":
                         check[3] = true;
+                        break;
+                    default:
                         break;
                     }
                 }
@@ -192,7 +191,7 @@ $(document).ready(function () {
                     $('#servicealret').css("font-size", "1.5rem");
                     $('#servicealret').html(errormessage + ' couldn’t support these addresses.');
                 } else if (em && errormessage){
-                    console.log('em not empty')
+                    //console.log('em not empty')
                     $('#servicealret').removeAttr('style');
                     $('#servicealret').css("color", "black");
                     $('#servicealret').css("font-size", "1.5rem");
@@ -252,7 +251,7 @@ $(document).ready(function () {
         TestWeight();
         TestAddress1();
         TestAddress2();
-        
+
         $('#servicealret').css('display', 'none');
 
         if (sizePass == false) {

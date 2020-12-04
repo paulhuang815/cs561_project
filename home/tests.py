@@ -278,16 +278,16 @@ def integration_test(data_from_web, data_from_ups_api, data_from_fedex_api, data
     get_data_from_web_test(data_from_web)
 
     # Run get_data_from_api_test to check ups.
-    get_data_from_api_test('ups', data_from_ups_api)
+    get_data_from_api_test('UPS', data_from_ups_api)
 
     # Run get_data_from_api_test to check fedex.
-    get_data_from_api_test('fedex', data_from_fedex_api)
+    get_data_from_api_test('FEDEX', data_from_fedex_api)
 
     # Run get_data_from_api_test to check usps.
-    get_data_from_api_test('usps', data_from_usps_api)
+    get_data_from_api_test('USPS', data_from_usps_api)
 
     # Run get_data_from_api_test to check Sendle.
-    get_data_from_api_test('Sendle', data_frin_sendle_api)
+    get_data_from_api_test('SENDLE', data_frin_sendle_api)
 
     # End integration test.
     print(bcolors.HEADER + '---------- End Test : Integration test ----------' + bcolors.ENDC)
