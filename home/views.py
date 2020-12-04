@@ -49,19 +49,19 @@ def shipping_api(data):
 
     # call ups api.
     result_ups = ups(data)
-    print("result_ups : ", (bcolors.FAIL + 'No service.' + bcolors.ENDC) if result_ups == [] else (bcolors.OKGREEN + 'Success.' + bcolors.ENDC))
+    print("result_ups : ", (bcolors.FAIL + ' No service. ' + bcolors.ENDC) if result_ups == [] else (bcolors.OKGREEN + ' Success. ' + bcolors.ENDC))
 
     # call fedex api.
     result_fedex = fedex(data)
-    print("result_fedex : ", (bcolors.FAIL + 'No service.' + bcolors.ENDC) if result_fedex == [] else (bcolors.OKGREEN + 'Success.' + bcolors.ENDC))
+    print("result_fedex : ", (bcolors.FAIL + ' No service. ' + bcolors.ENDC) if result_fedex == [] else (bcolors.OKGREEN + ' Success. ' + bcolors.ENDC))
 
     # call usps api.
     result_usps = usps(data)
-    print("result_usps : ", (bcolors.FAIL + 'No service.' + bcolors.ENDC) if result_usps == [] else (bcolors.OKGREEN + 'Success.' + bcolors.ENDC))
+    print("result_usps : ", (bcolors.FAIL + ' No service. ' + bcolors.ENDC) if result_usps == [] else (bcolors.OKGREEN + ' Success. ' + bcolors.ENDC))
 
     # call sendle api.
     result_sendle = sendle(data)
-    print("result_sendle : ", (bcolors.FAIL + 'No service.' + bcolors.ENDC) if result_sendle == [] else (bcolors.OKGREEN + 'Success.' + bcolors.ENDC))
+    print("result_sendle : ", (bcolors.FAIL + ' No service. ' + bcolors.ENDC) if result_sendle == [] else (bcolors.OKGREEN + ' Success. ' + bcolors.ENDC))
 
     # Run integration test.
     if (start == False):
