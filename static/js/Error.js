@@ -262,11 +262,11 @@ function TestSize(){
     } else if (space2 === "") {
         document.getElementById('waring3p').innerHTML = "Can't find city name. Please input.";
         document.getElementById('waring3p').style.display = "block";
-        AddressPass2 = false;
+        AddressPass1 = false;
     } else if (space4 === "" ) {
         document.getElementById('waring3p2').innerHTML = "Can't find zipcode. Please input.";
         document.getElementById('waring3p2').style.display = "block";
-        AddressPass2 = false;
+        AddressPass1 = false;
     } else {
         document.getElementById('waring3p').style.display = "none";
         document.getElementById('waring3p2').style.display = "none";
