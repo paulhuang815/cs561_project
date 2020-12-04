@@ -1,4 +1,7 @@
 from django.test import TestCase
+import json
+from home.api import ups, fedex, usps, sendle
+from home.views import shipping_api
 
 
 # This is to give text color.
@@ -23,9 +26,6 @@ class ApiTest(TestCase):
         pass
 
     def test_UPS_api(self):
-        import json
-        from home.api import ups
-
         print('----------Start Ups Api Test----------')
 
         with open("./home/test.json", 'r', encoding='UTF-8') as f:
@@ -39,10 +39,6 @@ class ApiTest(TestCase):
         print('----------End Ups Api Test----------\n')
 
     def test_Fedex_api(self):
-        import json
-
-        from home.api import fedex
-
         print('----------Start Fedex Api Test----------')
 
         with open("./home/test.json", 'r', encoding='UTF-8') as f:
@@ -56,9 +52,6 @@ class ApiTest(TestCase):
         print('----------End Fedex Api Test----------\n')
 
     def test_Usps_api(self):
-        import json
-        from home.api import usps
-
         print('----------Start USPS Api Test----------')
 
         with open("./home/test.json", 'r', encoding='UTF-8') as f:
@@ -72,9 +65,6 @@ class ApiTest(TestCase):
         print('----------End USPS Api Test----------\n')
 
     def test_Sendle_api(self):
-        import json
-        from home.api import sendle
-
         print('----------Start Sendle Api Test----------')
 
         with open("./home/test.json", 'r', encoding='UTF-8') as f:
@@ -88,9 +78,6 @@ class ApiTest(TestCase):
         print('----------End Sendle Api Test----------\n')
 
     def test_Shipping(self):
-        import json
-        from home.views import shipping_api
-
         print('----------Start Shipping Test----------')
 
         with open("./home/info.json", 'r', encoding='UTF-8') as f:
@@ -105,6 +92,89 @@ class ApiTest(TestCase):
 
         with open("./home/info.json", 'r', encoding='UTF-8') as f:
             info_dict = json.load(f)
+
+
+class ShippingTimeTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        print('**********Start shipping time Test**********')
+        pass
+
+    def test_UPS_api(self):
+        print('----------Start Ups Shipping time Test----------')
+
+        with open("./home/test.json", 'r', encoding='UTF-8') as f:
+            info_dict = json.load(f)
+
+        num = 0
+        for i in info_dict.values():
+            result = ups(i)
+            if not result:
+                self.assertIsNotNone(result)
+            else:
+                for service in result:
+                    self.assertIsNotNone(service['Time'])
+            print('Pass test case {0}'.format(num))
+            num += 1
+
+        print('----------Pass Ups Shipping time Unit Test----------\n')
+
+    def test_Fedex_api(self):
+        print('----------Start Fedex Shipping time Test----------')
+
+        with open("./home/test.json", 'r', encoding='UTF-8') as f:
+            info_dict = json.load(f)
+
+        num = 0
+        for i in info_dict.values():
+            result = ups(i)
+            if not result:
+                self.assertIsNotNone(result)
+            else:
+                for service in result:
+                    self.assertIsNotNone(service['Time'])
+            print('Pass test case {0}'.format(num))
+            num += 1
+
+        print('----------Pass Fedex Shipping time Unit Test----------\n')
+
+    def test_Usps_api(self):
+        print('----------Start USPS Shipping time Test----------')
+
+        with open("./home/test.json", 'r', encoding='UTF-8') as f:
+            info_dict = json.load(f)
+
+        num = 0
+        for i in info_dict.values():
+            result = ups(i)
+            if not result:
+                self.assertIsNotNone(result)
+            else:
+                for service in result:
+                    self.assertIsNotNone(service['Time'])
+            print('Pass test case {0}'.format(num))
+            num += 1
+
+        print('----------Pass USPS Api Unit Test----------\n')
+
+    def test_Sendle_api(self):
+        print('----------Start Sendle Shipping time Test----------')
+
+        with open("./home/test.json", 'r', encoding='UTF-8') as f:
+            info_dict = json.load(f)
+
+        num = 0
+        for i in info_dict.values():
+            result = ups(i)
+            if not result:
+                self.assertIsNotNone(result)
+            else:
+                for service in result:
+                    self.assertIsNotNone(service['Time'])
+            print('Pass test case {0}'.format(num))
+            num += 1
+
+        print('----------Pass Sendle Shipping time Unit Test----------\n')
 
 
 def get_data_from_web_test(
