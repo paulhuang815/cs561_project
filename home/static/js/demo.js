@@ -132,7 +132,7 @@ $(document).ready(function () {
                     default:
                         break;
                     }
-                    console.log('User go to ' + url + ' link.');
+                    console.log('User go to ' + ul + ' link.');
                     window.open(ul);
                 });
 
