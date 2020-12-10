@@ -31,4 +31,4 @@ jobs:
       with:
         app-name: 'shippingcheap'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_27e641862c8c4452ab351c81bfea2c34 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e886b12d18b5418eaee5654b2012b9c6 }}
